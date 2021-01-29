@@ -1,0 +1,161 @@
+---
+title: "Lab1"
+author: "Samuel Kelly"
+date: "`r Sys.Date()`"
+output: 
+  html_document:
+    toc: yes
+    toc_float: yes
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+
+# Tasks
+
+## Task 1
+
+Find the working directory
+
+```{r}
+getwd()
+```
+
+## Task 2
+
+Read in the DDT data.
+
+```{r}
+ddt <- read.csv("DDT.csv")
+head(ddt)
+```
+
+## Task 3
+
+  a. The qualitative variables are RIVER and SPECIES
+  b. The quantitative variables are MILE, DDT, LENGTH, and WEIGHT
+  c. CCATFISH, SMBUFFALO, and LMBASS. There are three different species in the data set.
+```{r}
+with(ddt, table(SPECIES))
+```
+  
+  d. 
+```{r}
+b800 <- with(ddt, ddt[WEIGHT>800 & SPECIES=="LMBASS",])
+b800
+```
+  e.
+```{r}
+scm4 <- with(ddt, ddt[RIVER=="SCM" & DDT>4.0,])
+scm4
+```
+## Task 4
+
+  a. Make a table of the rivers.
+```{r}
+riv=with(ddt, table(RIVER))
+riv
+```
+  b. Make a color coded barplot of the rivers.
+```{r}
+barplot(riv, col = 1:4)
+```
+  
+  c. Make a table of the rivers crossed with the species of fish.
+```{r}
+rivsp=with(ddt, table(RIVER,SPECIES))
+rivsp
+```
+  d. Make a barplot of the rivers crossed with the species of fish.
+```{r}
+barplot(rivsp,beside = T, col = cm.colors(3))
+```
+
+## Task 5
+
+  a. Make a pie chart of Fish SPECIES
+```{r}
+sp=with(ddt, table(SPECIES))
+pie(sp, col = 5:7)
+```
+  
+  b. Make a pie chart of RIVERS
+```{r}
+pie(riv, col=3:7)
+```
+
+## Task 6
+
+  a. Make a boxplot of the variable DDT
+  b. Make a boxplot of the variable WEIGHT
+  c. Make a boxplot of the variable LENGTH
+```{r}
+layout(matrix(c(1,2,3), nrow = 1, ncol = 3))
+with(ddt, boxplot(DDT, ylab = "DDT",col = "Green",notch=T))
+with(ddt, boxplot(WEIGHT, ylab="WEIGHT",col="Yellow",notch=T))
+with(ddt, boxplot(LENGTH, ylab="Length",col="Red",notch=T))
+```
+  
+## Task 7
+
+  a. Make a coplot of LENGTH Vs WEIGHT given RIVER
+```{r}
+fishcol = with(ddt,ifelse(SPECIES=="CCATFISH","Red",
+                          ifelse(SPECIES=="SMBUFFALO","Blue","Green")))
+coplot(LENGTH~WEIGHT|RIVER, col = fishcol, data = ddt)
+```
+  
+  b. Make a coplot of DDT Vs WEIGHT given SPECIES
+```{r}
+rivcol=with(ddt, ifelse(RIVER=="FCM","Red",
+                        ifelse(RIVER=="LCM","Green",
+                               ifelse(RIVER=="SCM","Blue","Black"))))
+coplot(DDT~WEIGHT|SPECIES, col = rivcol, data=ddt)
+```
+  
+## Task 8
+
+  a. Use ggplot and make the following boxplots (be sure to put your name on the title using ggtitle())
+```{r}
+library(dplyr)
+library(ggplot2)
+ddt %>% ggplot(aes(x=SPECIES,y=WEIGHT,fill=RIVER)) + geom_boxplot() + ggtitle("Samuel Kelly")
+
+```
+  
+  b. Use ggplot and make the following violin plots (name on the title)
+```{r}
+ddt %>% ggplot(aes(x=RIVER,y=LENGTH,fill=SPECIES)) + geom_violin() + ggtitle("Samuel Kelly")
+```
+  
+  c. Use ggplot and make the following scatter plots (name on the title)
+```{r}
+ddt %>% ggplot(aes(x=WEIGHT,y=LENGTH,fill=SPECIES,color=SPECIES)) + geom_point() + ggtitle("Samuel Kelly")
+```
+  
+## CLICKER QUESTIONS!
+
+  1. The average length of the fish is 42.8125.
+```{r}
+mean(ddt$LENGTH)
+```
+  2. The standard deviation of the fish's weight is 376.5461.
+```{r}
+sd(ddt$WEIGHT)
+```
+  3. No, the length and width are on the opposite axis.
+```{r}
+plot(ddt$LENGTH, ddt$WEIGHT)
+```
+  
+  
+  4. It equals 1.00.
+```{r}
+v=1:20
+v/20
+```
+  
+  
+$$R^2=\frac{MSS}{TSS}$$
