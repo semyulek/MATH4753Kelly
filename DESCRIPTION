@@ -9,3 +9,5 @@ Description: More about what it does (maybe more than one line)
 License: What license is it under?
 Encoding: UTF-8
 LazyData: true
+URL: https://github.com/semyulek/MATH4753Kelly
+BugReports: https://github.com/semyulek/MATH4753Kelly/issues
