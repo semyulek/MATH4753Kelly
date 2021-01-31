@@ -23,7 +23,18 @@ getwd()
 ## Task 2
 Display head of EPAGAS.csv file
 ```{r}
-epgs<-read.csv("EPAGAS.csv")
-head(epgs)
+mpg.df<-read.csv("EPAGAS.csv")
+head(mpg.df)
+```
+
+## Task 3
+  a. Transform the mpg variable to z and verify these results, $$z=0, s=1$$
+```{r}
+mpg<-mpg.df$ï..MPG
+z=(mpg-mean(mpg))/sd(mpg)
+layout(matrix(c(1, 2, 3), nrow = 1, ncol = 3))
+head(z)
+mean(z)
+sd(z)
 ```
 

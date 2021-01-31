@@ -283,8 +283,8 @@ div.tocify {
 <div id="task-2" class="section level2">
 <h2>Task 2</h2>
 <p>Display head of EPAGAS.csv file</p>
-<pre class="r"><code>epgs&lt;-read.csv(&quot;EPAGAS.csv&quot;)
-head(epgs)</code></pre>
+<pre class="r"><code>mpg.df&lt;-read.csv(&quot;EPAGAS.csv&quot;)
+head(mpg.df)</code></pre>
 <pre><code>##   ï..MPG
 ## 1   36.3
 ## 2   41.0
@@ -292,6 +292,21 @@ head(epgs)</code></pre>
 ## 4   37.1
 ## 5   44.9
 ## 6   36.8</code></pre>
+</div>
+<div id="task-3" class="section level2">
+<h2>Task 3</h2>
+<ol style="list-style-type: lower-alpha">
+<li>Transform the mpg variable to z and verify these results, <span class="math display">\[z=0, s=1\]</span></li>
+</ol>
+<pre class="r"><code>mpg&lt;-mpg.df$ï..MPG
+z=(mpg-mean(mpg))/sd(mpg)
+layout(matrix(c(1, 2, 3), nrow = 1, ncol = 3))
+head(z)</code></pre>
+<pre><code>## [1] -0.28702628  1.65681163 -0.03887676  0.04383975  3.26978352 -0.08023501</code></pre>
+<pre class="r"><code>mean(z)</code></pre>
+<pre><code>## [1] 1.058709e-16</code></pre>
+<pre class="r"><code>sd(z)</code></pre>
+<pre><code>## [1] 1</code></pre>
 </div>
 </div>
 
