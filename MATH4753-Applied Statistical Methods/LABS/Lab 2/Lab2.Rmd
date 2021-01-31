@@ -60,3 +60,11 @@ dp
   
 ## Task 4
   
+  a. Boxplot of mpg variable
+```{r}
+bpMPG<- boxplot(mpg.df$ï..MPG, col = "Black", 
+                notch = T, main = "Boxplot of MPG", 
+                horizontal = T, xlab ="MPG")
+```
+ 
+  b. 
