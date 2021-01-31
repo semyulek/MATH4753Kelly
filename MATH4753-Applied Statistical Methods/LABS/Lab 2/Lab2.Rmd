@@ -45,11 +45,18 @@ mpg[abs(z)>3]
 z[abs(z)>=2 & abs(z)<=3]
 ```
   c. Find actual outliers
+```{r}
+mpg[abs(z)>3]
+```
+  
   d. Use lattice package to create dotplot
 ```{r}
 library(lattice)
 mpg.col = ifelse(abs(z)>3, "Red",
                  ifelse(abs(z)>=2 & abs(z)<=3, "Blue", "Green"))
-dotplot(mpg,col=mpg.col)
+dp<-dotplot(mpg,col=mpg.col)
+dp
 ```
+  
+## Task 4
   
