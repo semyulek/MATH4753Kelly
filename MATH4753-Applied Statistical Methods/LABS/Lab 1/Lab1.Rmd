@@ -39,6 +39,11 @@ head(ddt)
   c. CCATFISH, SMBUFFALO, and LMBASS. There are three different species in the data set.
 ```{r}
 with(ddt, table(SPECIES))
+weight <- ddt$WEIGHT
+z=(weight-mean(weight))/sd(weight)
+weight[abs(z)>3]
+weight[abs(z)>=2 & abs(z)<=3]
+sd(z)
 ```
   
   d. 

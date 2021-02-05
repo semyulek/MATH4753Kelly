@@ -30,12 +30,12 @@ head(mpg.df)
 ## Task 3
   a. Transform the mpg variable to z and verify these results, $$z=0, s=1$$
 ```{r}
-mpg<-mpg.df$ï..MPG
+mpg<-mpg.df$MPG
 z=(mpg-mean(mpg))/sd(mpg)
 layout(matrix(c(1, 2, 3), nrow = 1, ncol = 3))
 head(z)
-mean(z)
-sd(z)
+print(paste0("mean = ",round(mean(z), digits = 4)), quote = FALSE)
+print(paste0("sd = ",sd(z)),quote=F)
 ```
 
   b. Find possible outliers of z.
@@ -53,7 +53,7 @@ mpg[abs(z)>3]
 ```{r}
 library(lattice)
 mpg.col = ifelse(abs(z)>3, "Red",
-                 ifelse(abs(z)>=2 & abs(z)<=3, "Blue", "Green"))
+                 ifelse(abs(z)>=2 & abs(z)<=3, "Blue", "Black"))
 dp<-dotplot(mpg,col=mpg.col)
 dp
 ```
@@ -62,7 +62,7 @@ dp
   
   a. Boxplot of mpg variable
 ```{r}
-bpMPG<- boxplot(mpg.df$ï..MPG, col = "Black", 
+bpMPG<- boxplot(mpg.df$MPG, col = "Green", 
                 notch = T, main = "Boxplot of MPG", 
                 horizontal = T, xlab ="MPG")
 ```
