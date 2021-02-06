@@ -1,7 +1,7 @@
 ---
 title: "Lab 3: MATH 4753"
-author: "Your name"
-date: "January 28, 2019"
+author: "Samuel Kelly"
+date: "`r Sys.Date()`"
 output: 
   html_document:
     toc: yes
