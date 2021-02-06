@@ -62,9 +62,31 @@ dp
   
   a. Boxplot of mpg variable
 ```{r}
-bpMPG<- boxplot(mpg.df$MPG, col = "Green", 
+bpMPG<- boxplot(mpg, col = "Green", 
                 notch = T, main = "Boxplot of MPG", 
                 horizontal = T, xlab ="MPG")
 ```
  
-  b. 
+  b. Chebyshev's Rule is $$1-\frac{1}{k^2}$$
+
+  If we are looking the proportion of data that will be in two standard deviations, then we will look at k = 2.
+```{r}
+cheby <- 1 - (1/2^2)
+print(paste0("Proportion of predicted data in two standard deviations is: ",cheby),quote = F)
+```
+  c. The exact proportion based off of the data within two standard deviations will be at least:
+```{r}
+length(mpg[abs(z) < 2])/length(mpg)
+```
+  d. Since 96% of the data is within 2 standard deviations, it agrees with Chebyshev's rule, since at least 75% had to be within 2 standard deviations.
+  
+  e. The empirical rule requires that are data be unimodal, or a single hump, and be symmetrical around the mode. According to the empirical rule approximately ~95% of data will be within 2 standard deviations.
+  
+```{r}
+plot(density(mpg), main = "MPG Data Set")
+abline(v = mean(mpg), col = "Red")
+```
+  
+  f. The data corresponds correctly with the empirical rule as the data set is unimodal, and is symmetrical about the mean.
+  
+  g. The empirical rule is valid because the data is unimodal, and symmetrical around the mean.
