@@ -1,18 +1,21 @@
 #This will be a different path if in the lab or at home
-dird="C:/Users/semyu/OneDrive/Desktop/IDE/RPackages/MATH4753Kelly/MATH4753-Applied Statistical Methods/LABS/Lab 3"
-#my function to read data
-myread=function(csv){
-  fl=paste(dird,csv,sep="")
-  read.table(fl,header=TRUE,sep=",")
-}
-getwd()
-#EASY WAY TO READ IN FILES
-fin.df=read.csv("FINTUBES.csv")
-spruce.df=read.csv("SPRUCE.csv")#MS pg478
+#dird="\\Users\\HyDRO-Lab\\Desktop\\MATH4753\\DATAxls\\"
 
+#my function to read data
+#myread=function(csv){
+ # fl=paste(dird,csv,sep="")
+  #read.table(fl,header=TRUE,sep=",")
+#}
+#EASY WAY TO READ IN FILES
+fin.df=read.csv("MATH4753-Applied Statistical Methods/LABS/Lab 3/FINTUBES.csv")
+spruce.df=read.csv("MATH4753-Applied Statistical Methods/LABS/Lab 3/SPRUCE.csv")#MS pg478
+##Task 1
+getwd()
+
+##Task 2
+head(fin.df)
 # Or use
 fin.df=read.table(file.choose(),header=TRUE,sep=",")
-
 #Top six lines
 head(fin.df)
 
@@ -123,3 +126,4 @@ predict(ht.lm, data.frame(RATIO=c(2,2.3,2.5)))
 # Regression analysis of variance table
 #Can you find some of the ss in here?
 anova(ht.lm)
+
