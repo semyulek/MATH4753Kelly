@@ -69,6 +69,7 @@ abline(spruce.lm)
   g. A straight line does not capture the more general trend of the trees eventually leveling off after a certain height. A smooth curve would be more appropriate as it would fit the data set better.
 
 # Task 4
+  a.
 ```{r}
 layout(matrix(1:4, nrow = 2, ncol = 2, byrow = T))
 #layout.show(4)
@@ -76,7 +77,15 @@ plot(spruce.df$BHDiameter, spruce.df$Height, main = "Spruce Height vs. BHDiamete
      xlab = "BHDiameter(cm)", ylab = "Height(m)", pch = 21, bg = "Blue", cex = 1.2,
      ylim = c(0, 1.1 * max(spruce.df$Height)), xlim = c(0, 1.1 * max(spruce.df$BHDiameter)))
 abline(spruce.lm)
+
+plot(spruce.df$BHDiameter, spruce.df$Height, main = "Spruce Height vs. BHDiameter",
+     xlab = "BHDiameter(cm)", ylab = "Height(m)", pch = 21, bg = "Blue", cex = 1.2,
+     ylim = c(0, 1.1 * max(spruce.df$Height)), xlim = c(0, 1.1 * max(spruce.df$BHDiameter)))
+abline(spruce.lm)
 ```
+  
+  
+  
 # Me
 
 ```{r}
