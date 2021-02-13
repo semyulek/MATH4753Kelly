@@ -36,17 +36,27 @@ inputPanel(
   
   
   selectInput("plotg", "Choose plot type",
-      list(`points` = c("g", "gheat", "gratio"),
-           `point size` = c("gsheat", "gsratio")
+      list(`points` = c("points", "points with line segments"),
+           `SLR` = c("linear regression plot")
       )
     )
 )
 
 renderPlot({
   
- g = ggplot(fin.df, aes(x = RATIO, y = HEAT)) + geom_point() 
+  g = ggplot(spruce.df, aes(x = BHDiameter, y = Height, color = BHDiameter))
+  g = g + geom_point() + geom_line() +geom_smooth(method = "lm")
+  g + ggtitle("Height VS BHDiameter")
 
- gh = g + geom_point(aes(col = HEAT)) 
+ gp = plot(spruce.df$BHDiameter, spruce.df$Height, 
+     main = "Spruce Height vs. BHDiameter",
+     xlab = "BHDiameter(cm)", ylab = "Height(m)", pch = 21, 
+     bg = "Blue", cex = .8, ylim = c(0, 1.1 * max(spruce.df$Height)),
+     xlim = c(0, 1.1 * max(spruce.df$BHDiameter)))
+ 
+ gl = ggplot(spruce.df, aes(x = BHDiameter, y = Height, color = BHDiameter))
+  gl = gl + geom_line() +geom_point() 
+  gl + ggtitle("Height VS BHDiameter")
  
  gr = g + geom_point(aes(col = RATIO)) 
  
@@ -54,16 +64,11 @@ renderPlot({
  
  gsr = g + geom_point(aes(size = RATIO, col = RATIO))
   
- if(input$plotg == "g") print(g)
+ if(input$plotg == "points") print(gp)
  
- if(input$plotg == "gheat")   print(gh)
+ if(input$plotg == "points with line segments")   print(gl)
  
- if(input$plotg == "gsratio")   print(gsr)
- 
- if(input$plotg == "gsheat")   print(gsh)
- 
- if(input$plotg == "gratio")   print(gr)
- 
+ if(input$plotg == "linear regression plot")   print(g)
    
 })
 ```
