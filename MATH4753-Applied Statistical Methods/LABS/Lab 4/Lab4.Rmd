@@ -30,4 +30,64 @@ tail(spruce.df)
 ```
 
 # Task 3
+## Trendscatter plot
+Make a trendscatter plot with f=.5, of Height(m) vs BHDiameter(cm).
+```{r}
+library(s20x)
+trendscatter(Height~BHDiameter,data = spruce.df,f = .5)
+```
+
+## Linear Model
+Make the spruce linear model.
+```{r}
+spruce.lm = with(spruce.df, lm(Height~BHDiameter))
+```
+
+## Find Residuals
+```{r}
+height.res = residuals(spruce.lm)
+```
+
+## Find Fitted
+```{r}
+height.fit = fitted(spruce.lm)
+```
+
+## Plot Residuals vs. Fitted
+```{r}
+plot(height.res~height.fit)
+```
+
+## Plot Residuals vs. Fitted Using Trendscatter
+```{r}
+trendscatter(height.fit,height.res)
+```
+
+## What shape?
+The trendscatter of residuals vs fitted clearly shows there is a curve. This curve is also observed in the first trendscatter plot that we plotted above. Side-by-side comparison.
+```{r}
+layout(matrix(1:2,nrow = 2,ncol = 1,byrow = F))
+trendscatter(Height~BHDiameter,data = spruce.df,f = .5)
+trendscatter(height.fit,height.res)
+```
+
+## Residual Plot
+The linear model automatically prints out 4 different plots, so we must specify which one we want to use.
+```{r}
+plot(spruce.lm, which = 1)
+```
+
+## Normality
+```{r}
+normcheck(spruce.lm,shapiro.wilk = T)
+```
+
+## P-value, NULL Hypothesis
+ ########################################################
+
+## Validity
+ ########################################################
+
+# Task 4
+
 
