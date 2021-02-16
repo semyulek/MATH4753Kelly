@@ -12,3 +12,22 @@ output:
 knitr::opts_chunk$set(echo = TRUE)
 ```
 
+
+# Task 1
+
+## Get Working Directory
+```{r}
+getwd()
+```
+
+# Task 2
+
+## Read SPRUCE.csv
+Read the .csv file and output the tail.
+```{r}
+spruce.df <- read.table("SPRUCE.csv", header = T, sep = ",")
+tail(spruce.df)
+```
+
+# Task 3
+
