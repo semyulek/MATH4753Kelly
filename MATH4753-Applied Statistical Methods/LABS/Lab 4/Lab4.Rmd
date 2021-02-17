@@ -124,3 +124,18 @@ plot(spruce.df, main = "Spruce Height vs. BHDiameter Prediction",
 curve(myplot2, lwd = 2, col = "steelblue", add = T)
 ```
 
+## Quad Fit
+```{r}
+quad.fit = fitted(quad.lm)
+```
+
+## Quadratic Residual vs Fitted
+```{r}
+plot(quad.lm, which = 1)
+```
+
+## Normcheck
+```{r}
+normcheck(quad.lm, shapiro.wilk = T)
+```
+
