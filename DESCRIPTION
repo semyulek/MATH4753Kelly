@@ -6,8 +6,9 @@ Author: Who wrote it
 Maintainer: The package maintainer <yourself@somewhere.net>
 Description: More about what it does (maybe more than one line)
     Use four spaces when indenting paragraphs within the Description.
-License: What license is it under?
+License: MIT + file LICENSE
 Encoding: UTF-8
 LazyData: true
 URL: https://github.com/semyulek/MATH4753Kelly
 BugReports: https://github.com/semyulek/MATH4753Kelly/issues
+RoxygenNote: 7.1.1
