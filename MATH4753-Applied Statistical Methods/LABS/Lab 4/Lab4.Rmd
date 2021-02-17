@@ -83,11 +83,44 @@ normcheck(spruce.lm,shapiro.wilk = T)
 ```
 
 ## P-value, NULL Hypothesis
- ########################################################
+We should not reject the null hypothesis, since our p-value is .29, then our bell curve is distributed normally. P-value of .29 is not significant.
 
 ## Validity
- ########################################################
+To validate our claim then we must see that the height residuals mean equals 0. 
+```{r}
+round(mean(height.res),digits = 4)
+```
+When we look at the residuals vs fitted graph, we can see that the data curves and is not straight, so we should use a quadratic, since we need a curve with concavity.
 
 # Task 4
 
+## Quadratic
+Square the x-value or BHDiameter, and leave it as is.
+```{r}
+quad.lm <- lm(Height~BHDiameter + I(BHDiameter^2),data = spruce.df)
+plot(spruce.df$BHDiameter, spruce.df$Height, main = "Spruce Height vs. BHDiameter Prediction",
+     xlab = "BHDiameter(cm)", ylab = "Height(m)", pch = 21, bg = "Blue", cex = 1.2,
+     ylim = c(0, 1.1 * max(spruce.df$Height)), xlim = c(0, 1.1 * max(spruce.df$BHDiameter)))
+```
+
+## Add curve
+```{r}
+coef(quad.lm)
+myplot = function(x){
+  0.86089580 + 1.46959217*x -0.02745726*x^2
+}
+plot(spruce.df$BHDiameter, spruce.df$Height, main = "Spruce Height vs. BHDiameter Prediction",
+     xlab = "BHDiameter(cm)", ylab = "Height(m)", pch = 21, bg = "Blue", cex = 1.2)
+curve(myplot, lwd = 2, col = "steelblue", add = T)
+```
+
+## Alternative formula for calculating quadratic in R
+```{r}
+myplot2 = function(x){
+  quad.lm$coef[1] + quad.lm$coef[2]*x + quad.lm$coef[3]*x^2
+}
+plot(spruce.df, main = "Spruce Height vs. BHDiameter Prediction",
+     xlab = "BHDiameter(cm)", ylab = "Height(m)", pch = 21, bg = "Blue", cex = 1.2)
+curve(myplot2, lwd = 2, col = "steelblue", add = T)
+```
 
