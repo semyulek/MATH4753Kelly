@@ -218,3 +218,12 @@ summary(quad.lm)$r.squared
 ```
 
 # Task 6
+
+## Cooks
+```{r}
+cooks20x(quad.lm)
+```
+
+## Cook's Influence
+Cook's plot is mainly used to identify outliers/influencers on the data set. Here it shows that data value 24 has the highest influence with 18 and 21 following after. If 24 is removed the R-squared values should increase, since 24 seems to be an outlier in the data.
+
