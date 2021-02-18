@@ -219,11 +219,30 @@ summary(quad.lm)$r.squared
 
 # Task 6
 
-## Cooks
+## Cook's
 ```{r}
 cooks20x(quad.lm)
 ```
 
 ## Cook's Influence
 Cook's plot is mainly used to identify outliers/influencers on the data set. Here it shows that data value 24 has the highest influence with 18 and 21 following after. If 24 is removed the R-squared values should increase, since 24 seems to be an outlier in the data.
+
+## Removing 24
+```{r}
+quad2.lm <- lm(data = spruce.df[-24,],formula = Height~BHDiameter + I(BHDiameter^2))
+```
+
+## Summary
+```{r}
+summary(quad.lm)
+summary(quad2.lm)
+```
+The multiple R-squared value has increased after removing the datum 24. The residual values have decreased which means that are quadratic model better fits with the data.
+
+## Conclusion
+Cook's plot showed that datum 24 had largest effect on the data set. After removing 24 from the data, we see that the multiple R-squared value has increased, so removing 24 has had a positive effect on our data.
+
+# Task 7
+
+
 
