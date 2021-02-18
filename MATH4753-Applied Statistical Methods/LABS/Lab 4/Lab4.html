@@ -11,7 +11,7 @@
 
 <meta name="author" content="Samuel Kelly" />
 
-<meta name="date" content="2021-02-17" />
+<meta name="date" content="2021-02-18" />
 
 <title>Lab4</title>
 
@@ -267,7 +267,7 @@ div.tocify {
 
 <h1 class="title toc-ignore">Lab4</h1>
 <h4 class="author">Samuel Kelly</h4>
-<h4 class="date">2021-02-17</h4>
+<h4 class="date">2021-02-18</h4>
 
 </div>
 
@@ -539,6 +539,62 @@ curve(myplot2, lwd = 2, col = &quot;steelblue&quot;, add = T)</code></pre>
 <h2>Cook’s Influence</h2>
 <p>Cook’s plot is mainly used to identify outliers/influencers on the data set. Here it shows that data value 24 has the highest influence with 18 and 21 following after. If 24 is removed the R-squared values should increase, since 24 seems to be an outlier in the data.</p>
 </div>
+<div id="removing-24" class="section level2">
+<h2>Removing 24</h2>
+<pre class="r"><code>quad2.lm &lt;- lm(data = spruce.df[-24,],formula = Height~BHDiameter + I(BHDiameter^2))</code></pre>
+</div>
+<div id="summary-1" class="section level2">
+<h2>Summary</h2>
+<pre class="r"><code>summary(quad.lm)</code></pre>
+<pre><code>## 
+## Call:
+## lm(formula = Height ~ BHDiameter + I(BHDiameter^2), data = spruce.df)
+## 
+## Residuals:
+##     Min      1Q  Median      3Q     Max 
+## -3.2966 -0.6245 -0.0707  0.7442  3.2541 
+## 
+## Coefficients:
+##                  Estimate Std. Error t value Pr(&gt;|t|)    
+## (Intercept)      0.860896   2.205022   0.390 0.698731    
+## BHDiameter       1.469592   0.243786   6.028 8.88e-07 ***
+## I(BHDiameter^2) -0.027457   0.006635  -4.138 0.000227 ***
+## ---
+## Signif. codes:  0 &#39;***&#39; 0.001 &#39;**&#39; 0.01 &#39;*&#39; 0.05 &#39;.&#39; 0.1 &#39; &#39; 1
+## 
+## Residual standard error: 1.382 on 33 degrees of freedom
+## Multiple R-squared:  0.7741, Adjusted R-squared:  0.7604 
+## F-statistic: 56.55 on 2 and 33 DF,  p-value: 2.182e-11</code></pre>
+<pre class="r"><code>summary(quad2.lm)</code></pre>
+<pre><code>## 
+## Call:
+## lm(formula = Height ~ BHDiameter + I(BHDiameter^2), data = spruce.df[-24, 
+##     ])
+## 
+## Residuals:
+##      Min       1Q   Median       3Q      Max 
+## -3.11233 -0.48227  0.01253  0.71727  2.59146 
+## 
+## Coefficients:
+##                  Estimate Std. Error t value Pr(&gt;|t|)    
+## (Intercept)     -0.341500   2.068479  -0.165     0.87    
+## BHDiameter       1.564793   0.226102   6.921 7.78e-08 ***
+## I(BHDiameter^2) -0.029242   0.006114  -4.782 3.74e-05 ***
+## ---
+## Signif. codes:  0 &#39;***&#39; 0.001 &#39;**&#39; 0.01 &#39;*&#39; 0.05 &#39;.&#39; 0.1 &#39; &#39; 1
+## 
+## Residual standard error: 1.266 on 32 degrees of freedom
+## Multiple R-squared:  0.8159, Adjusted R-squared:  0.8044 
+## F-statistic: 70.91 on 2 and 32 DF,  p-value: 1.74e-12</code></pre>
+<p>The multiple R-squared value has increased after removing the datum 24. The residual values have decreased which means that are quadratic model better fits with the data.</p>
+</div>
+<div id="conclusion" class="section level2">
+<h2>Conclusion</h2>
+<p>Cook’s plot showed that datum 24 had largest effect on the data set. After removing 24 from the data, we see that the multiple R-squared value has increased, so removing 24 has had a positive effect on our data.</p>
+</div>
+</div>
+<div id="task-7" class="section level1">
+<h1>Task 7</h1>
 </div>
 
 
