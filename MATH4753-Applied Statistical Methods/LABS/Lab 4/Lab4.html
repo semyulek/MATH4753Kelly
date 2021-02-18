@@ -595,6 +595,44 @@ curve(myplot2, lwd = 2, col = &quot;steelblue&quot;, add = T)</code></pre>
 </div>
 <div id="task-7" class="section level1">
 <h1>Task 7</h1>
+<div id="proof-piece-wise-regression" class="section level2">
+<h2>Proof Piece-wise Regression</h2>
+<p><span class="math display">\[
+Prove \: that \:
+\]</span> <span class="math display">\[
+\begin{equation} y = \beta_{0} + \beta_{1}x + \beta_{2}(x - x_{k})I(x &gt; x_{k}) \end{equation}
+\]</span> <span class="math display">\[
+\: where \: I() \: is \: 1 \: when \: x&gt;x_{k} \:and \:0 \:else.
+\]</span></p>
+<p><span class="math display">\[\\\\\]</span></p>
+<p><span class="math display">\[
+Suppose \:that \:l_{1}:\:y=\beta_{0} +\beta_{1}x \:\:and \: \: l_{2}:\: y=\beta_{0} + \delta +(\beta_{1} +\beta_{2})x
+\]</span> <span class="math display">\[
+so:\: y_{k}=\beta_{0} +\beta_{1}x_{k} = \beta_{0} + \delta +(\beta_{1} +\beta_{2})x_{k}
+\]</span> <span class="math display">\[
+Distribute \:x_{k}:  \beta_{0} +\beta_{1}x_{k} = \beta_{0} + \delta + \beta_{1}x_{k} +\beta_{2}x_{k}
+\]</span> <span class="math display">\[
+Then \: subtract \: \beta_{0} +\beta_{1}x_{k} \: from \: both \: sides.
+\]</span> <span class="math display">\[
+0 = \delta+\beta_{2}x_{k} \Rightarrow\delta=-\beta_{2}x_{k}
+\]</span> <span class="math display">\[
+Now \: that \:we \:have\: \delta\: substitute\: \delta\: back\: into\: l_{2}
+\]</span> <span class="math display">\[
+l_{2}:y=\beta_{0} + \delta +(\beta_{1} +\beta_{2})x\Rightarrow y=\beta_{0}  -\beta_{2}x_{k} +(\beta_{1} +\beta_{2})x
+\]</span> <span class="math display">\[
+Distribute:y=\beta_{0}-\beta_{2}x_{k}+\beta_{1}x+\beta_{2}x
+\]</span> <span class="math display">\[
+Group:y=\beta_{0}+\beta_{1}x+\beta_{2}x-\beta_{2}x_{k}
+\]</span> <span class="math display">\[
+Factor \:out \: \beta_{2}:y=\beta_{0}+\beta_{1}x+(x-x_{k})\beta_{2}
+\]</span> <span class="math display">\[
+Therefor:y = \beta_{0} + \beta_{1}x + \beta_{2}(x - x_{k})I(x &gt; x_{k}) \: when \:x &gt; x_{k} 
+\:then \: I() \: is, \: else \: 0.
+\]</span></p>
+</div>
+<div id="reproduce-plot" class="section level2">
+<h2>Reproduce Plot</h2>
+</div>
 </div>
 
 

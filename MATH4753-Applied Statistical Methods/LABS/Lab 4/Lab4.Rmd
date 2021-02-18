@@ -244,5 +244,54 @@ Cook's plot showed that datum 24 had largest effect on the data set. After remov
 
 # Task 7
 
+## Proof Piece-wise Regression
 
+$$
+Prove \: that \:
+$$
+$$
+\begin{equation} y = \beta_{0} + \beta_{1}x + \beta_{2}(x - x_{k})I(x > x_{k}) \end{equation}
+$$
+$$
+\: where \: I() \: is \: 1 \: when \: x>x_{k} \:and \:0 \:else.
+$$
+
+$$\\\\$$
+
+$$
+Suppose \:that \:l_{1}:\:y=\beta_{0} +\beta_{1}x \:\:and \: \: l_{2}:\: y=\beta_{0} + \delta +(\beta_{1} +\beta_{2})x
+$$
+$$
+so:\: y_{k}=\beta_{0} +\beta_{1}x_{k} = \beta_{0} + \delta +(\beta_{1} +\beta_{2})x_{k}
+$$
+$$
+Distribute \:x_{k}:  \beta_{0} +\beta_{1}x_{k} = \beta_{0} + \delta + \beta_{1}x_{k} +\beta_{2}x_{k}
+$$ 
+$$
+Then \: subtract \: \beta_{0} +\beta_{1}x_{k} \: from \: both \: sides.
+$$
+$$
+0 = \delta+\beta_{2}x_{k} \Rightarrow\delta=-\beta_{2}x_{k}
+$$
+$$
+Now \: that \:we \:have\: \delta\: substitute\: \delta\: back\: into\: l_{2}
+$$ 
+$$
+l_{2}:y=\beta_{0} + \delta +(\beta_{1} +\beta_{2})x\Rightarrow y=\beta_{0}  -\beta_{2}x_{k} +(\beta_{1} +\beta_{2})x
+$$
+$$
+Distribute:y=\beta_{0}-\beta_{2}x_{k}+\beta_{1}x+\beta_{2}x
+$$
+$$
+Group:y=\beta_{0}+\beta_{1}x+\beta_{2}x-\beta_{2}x_{k}
+$$
+$$
+Factor \:out \: \beta_{2}:y=\beta_{0}+\beta_{1}x+(x-x_{k})\beta_{2}
+$$
+$$
+Therefor:y = \beta_{0} + \beta_{1}x + \beta_{2}(x - x_{k})I(x > x_{k}) \: when \:x > x_{k} 
+\:then \: I() \: is, \: else \: 0.
+$$
+
+## Reproduce Plot
 
