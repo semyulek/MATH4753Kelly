@@ -139,3 +139,8 @@ plot(quad.lm, which = 1)
 normcheck(quad.lm, shapiro.wilk = T)
 ```
 
+## Validity
+The P-value is .684 which suggests that we accept the null hypothesis, so the data is normally distributed.
+We can conclude that the quadratic model fits better than the linear model we used in lab 3.
+
+# Task 5
