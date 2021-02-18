@@ -414,6 +414,122 @@ curve(myplot2, lwd = 2, col = &quot;steelblue&quot;, add = T)</code></pre>
 </div>
 <div id="task-5" class="section level1">
 <h1>Task 5</h1>
+<div id="summary" class="section level2">
+<h2>Summary</h2>
+<pre class="r"><code>summary(quad.lm)</code></pre>
+<pre><code>## 
+## Call:
+## lm(formula = Height ~ BHDiameter + I(BHDiameter^2), data = spruce.df)
+## 
+## Residuals:
+##     Min      1Q  Median      3Q     Max 
+## -3.2966 -0.6245 -0.0707  0.7442  3.2541 
+## 
+## Coefficients:
+##                  Estimate Std. Error t value Pr(&gt;|t|)    
+## (Intercept)      0.860896   2.205022   0.390 0.698731    
+## BHDiameter       1.469592   0.243786   6.028 8.88e-07 ***
+## I(BHDiameter^2) -0.027457   0.006635  -4.138 0.000227 ***
+## ---
+## Signif. codes:  0 &#39;***&#39; 0.001 &#39;**&#39; 0.01 &#39;*&#39; 0.05 &#39;.&#39; 0.1 &#39; &#39; 1
+## 
+## Residual standard error: 1.382 on 33 degrees of freedom
+## Multiple R-squared:  0.7741, Adjusted R-squared:  0.7604 
+## F-statistic: 56.55 on 2 and 33 DF,  p-value: 2.182e-11</code></pre>
+</div>
+<div id="beta-values" class="section level2">
+<h2>Beta values</h2>
+<p><span class="math display">\[\hat{\beta}_{0} = 0.860896\]</span> <span class="math display">\[\hat{\beta}_{1} = 1.469592 \]</span> <span class="math display">\[\hat{\beta}_{2} = -0.027457\]</span></p>
+</div>
+<div id="interval-beta-estimates" class="section level2">
+<h2>Interval Beta estimates</h2>
+<p>This shows the z-scores for the upper and lower limits with a 95% accuracy.</p>
+<pre class="r"><code>ciReg(quad.lm)</code></pre>
+<pre><code>##                 95 % C.I.lower    95 % C.I.upper
+## (Intercept)           -3.62525           5.34705
+## BHDiameter             0.97361           1.96558
+## I(BHDiameter^2)       -0.04096          -0.01396</code></pre>
+</div>
+<div id="fitted-line-equation" class="section level2">
+<h2>Fitted Line Equation</h2>
+<p><span class="math display">\[Height = 0.860896 + 1.469592*x + (-0.027457)*x^2\]</span></p>
+</div>
+<div id="prediction" class="section level2">
+<h2>Prediction</h2>
+<pre class="r"><code>predict(quad.lm, data.frame(BHDiameter = c(15, 18, 20)))</code></pre>
+<pre><code>##        1        2        3 
+## 16.72690 18.41740 19.26984</code></pre>
+</div>
+<div id="comparison" class="section level2">
+<h2>Comparison</h2>
+<pre class="r"><code>predict(spruce.lm, data.frame(BHDiameter = c(15, 18, 20)))</code></pre>
+<pre><code>##        1        2        3 
+## 16.36895 17.81338 18.77632</code></pre>
+<p>The values are overall larger in the quadratic prediction.</p>
+</div>
+<div id="r-squared" class="section level2">
+<h2>R-Squared</h2>
+<pre class="r"><code>summary(spruce.lm)$r.squared</code></pre>
+<pre><code>## [1] 0.6569146</code></pre>
+<pre class="r"><code>summary(quad.lm)$r.squared</code></pre>
+<pre><code>## [1] 0.7741266</code></pre>
+</div>
+<div id="adjusted-r-squared" class="section level2">
+<h2>Adjusted R-Squared</h2>
+<pre class="r"><code>summary(spruce.lm)$adj.r.squared</code></pre>
+<pre><code>## [1] 0.6468239</code></pre>
+<pre class="r"><code>summary(quad.lm)$adj.r.squared</code></pre>
+<pre><code>## [1] 0.7604373</code></pre>
+<p>The adjusted R-squared for the quadratic is higher than the linear model. Adjusted R-squared is a sort of accountability for adding too many variables that might have a chance correlation with your data, thus adjusted R-squared will decrease the more variables are added which do not correlate. Since our adjusted comparison for the quadratic is higher than the linear, we should use the quadratic.</p>
+</div>
+<div id="multiple-r-squared" class="section level2">
+<h2>Multiple R-Squared</h2>
+<p>The multiple R-squared describes how good the models fit with the data.</p>
+</div>
+<div id="variability" class="section level2">
+<h2>Variability</h2>
+<p>The higher the R-squared value that we can use can explain the variance in the data.</p>
+<pre class="r"><code>summary(spruce.lm)$r.squared</code></pre>
+<pre><code>## [1] 0.6569146</code></pre>
+<pre class="r"><code>summary(spruce.lm)$adj.r.squared</code></pre>
+<pre><code>## [1] 0.6468239</code></pre>
+<pre class="r"><code>summary(quad.lm)$r.squared</code></pre>
+<pre><code>## [1] 0.7741266</code></pre>
+<pre class="r"><code>summary(quad.lm)$adj.r.squared</code></pre>
+<pre><code>## [1] 0.7604373</code></pre>
+<p>Since the quadratic model is greater than the linear model, then it can explain the variance in height better than the linear model.</p>
+</div>
+<div id="anova-comparison" class="section level2">
+<h2>Anova comparison</h2>
+<pre class="r"><code>anova(spruce.lm, quad.lm)</code></pre>
+<pre><code>## Analysis of Variance Table
+## 
+## Model 1: Height ~ BHDiameter
+## Model 2: Height ~ BHDiameter + I(BHDiameter^2)
+##   Res.Df    RSS Df Sum of Sq      F    Pr(&gt;F)    
+## 1     34 95.703                                  
+## 2     33 63.007  1    32.696 17.125 0.0002269 ***
+## ---
+## Signif. codes:  0 &#39;***&#39; 0.001 &#39;**&#39; 0.01 &#39;*&#39; 0.05 &#39;.&#39; 0.1 &#39; &#39; 1</code></pre>
+<p>The smaller the residual sum of squares is, the better the data fits with the chosen model. In this case the quadratic model fits best with the data.</p>
+</div>
+<div id="rss-mss-tss" class="section level2">
+<h2>RSS, MSS, TSS</h2>
+<pre class="r"><code>height.qfit = fitted(quad.lm)
+(RSS = with(spruce.df, sum((Height - height.qfit)^2)))</code></pre>
+<pre><code>## [1] 63.00683</code></pre>
+<pre class="r"><code>(MSS = with(spruce.df, sum((height.qfit - mean(Height))^2)))</code></pre>
+<pre><code>## [1] 215.9407</code></pre>
+<pre class="r"><code>(TSS = with(spruce.df, sum((Height - mean(Height))^2)))</code></pre>
+<pre><code>## [1] 278.9475</code></pre>
+<pre class="r"><code>MSS/TSS</code></pre>
+<pre><code>## [1] 0.7741266</code></pre>
+<pre class="r"><code>summary(quad.lm)$r.squared</code></pre>
+<pre><code>## [1] 0.7741266</code></pre>
+</div>
+</div>
+<div id="task-6" class="section level1">
+<h1>Task 6</h1>
 </div>
 
 

@@ -144,3 +144,77 @@ The P-value is .684 which suggests that we accept the null hypothesis, so the da
 We can conclude that the quadratic model fits better than the linear model we used in lab 3.
 
 # Task 5
+
+## Summary
+```{r}
+summary(quad.lm)
+```
+
+## Beta values
+$$\hat{\beta}_{0} = 0.860896$$
+$$\hat{\beta}_{1} = 1.469592 $$
+$$\hat{\beta}_{2} = -0.027457$$
+
+## Interval Beta estimates
+This shows the z-scores for the upper and lower limits with a 95% accuracy.
+```{r}
+ciReg(quad.lm)
+```
+
+## Fitted Line Equation
+$$Height = 0.860896 + 1.469592*x + (-0.027457)*x^2$$
+
+## Prediction
+```{r}
+predict(quad.lm, data.frame(BHDiameter = c(15, 18, 20)))
+```
+
+## Comparison
+```{r}
+predict(spruce.lm, data.frame(BHDiameter = c(15, 18, 20)))
+```
+The values are overall larger in the quadratic prediction.
+
+## R-Squared
+```{r}
+summary(spruce.lm)$r.squared
+summary(quad.lm)$r.squared
+```
+
+## Adjusted R-Squared
+```{r}
+summary(spruce.lm)$adj.r.squared
+summary(quad.lm)$adj.r.squared
+```
+The adjusted R-squared for the quadratic is higher than the linear model. Adjusted R-squared is a sort of accountability for adding too many variables that might have a chance correlation with your data, thus adjusted R-squared will decrease the more variables are added which do not correlate. Since our adjusted comparison for the quadratic is higher than the linear, we should use the quadratic.
+
+## Multiple R-Squared
+The multiple R-squared describes how good the models fit with the data.
+
+## Variability
+The higher the R-squared value that we can use can explain the variance in the data.
+```{r}
+summary(spruce.lm)$r.squared
+summary(spruce.lm)$adj.r.squared
+summary(quad.lm)$r.squared
+summary(quad.lm)$adj.r.squared
+```
+Since the quadratic model is greater than the linear model, then it can explain the variance in height better than the linear model.
+
+## Anova comparison
+```{r}
+anova(spruce.lm, quad.lm)
+```
+The smaller the residual sum of squares is, the better the data fits with the chosen model. In this case the quadratic model fits best with the data.
+
+## RSS, MSS, TSS
+```{r}
+height.qfit = fitted(quad.lm)
+(RSS = with(spruce.df, sum((Height - height.qfit)^2)))
+(MSS = with(spruce.df, sum((height.qfit - mean(Height))^2)))
+(TSS = with(spruce.df, sum((Height - mean(Height))^2)))
+MSS/TSS
+summary(quad.lm)$r.squared
+```
+
+# Task 6
