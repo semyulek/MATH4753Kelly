@@ -294,4 +294,39 @@ Therefor:y = \beta_{0} + \beta_{1}x + \beta_{2}(x - x_{k})I(x > x_{k}) \: when \
 $$
 
 ## Reproduce Plot
+```{r}
+spruce2.df <- within(spruce.df, X<-(BHDiameter - 18)*(BHDiameter > 18))
+head(spruce2.df)
+```
+### Create Linear model
+```{r}
+spruce2.lm <- lm(data = spruce2.df, Height~BHDiameter + X)
+summary(spruce2.lm)
+```
+### Create Function
+```{r}
+piecewise.reg <-function(x){
+  spruce2.lm$coefficients[1] + spruce2.lm$coefficients[2]*x + spruce2.lm$coefficients[3]*(x-18)*(x-18 > 0)
+}
+```
+
+### Plot
+```{r}
+plot(spruce.df$BHDiameter, spruce.df$Height, main = "Piecewise Regression",
+     xlab = "BHDiameter(cm)", ylab = "Height(m)", pch = 21, bg = "Black", cex = 1.2)
+
+curve(piecewise.reg, lwd = 2, col = "blue", add = T)
+abline(v = 18)
+text(18, 16, paste("R-sq=",round(summary(spruce2.lm)$r.squared, 4)))
+```
+
+
+
+# Task 8
+## Function
+The function "myplot" plots out the quadratic function using the coefficients gathered from the quadratic model. To plot points we just need to give the function some x values to plug in, i.e., 1:40. Since the functions' name is the same as a built in one, we have to always call it using the packages name.
+```{r}
+library(MATH4753Kelly)
+MATH4753Kelly::myplot(1:40)
+```
 
