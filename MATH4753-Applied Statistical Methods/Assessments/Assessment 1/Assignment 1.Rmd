@@ -131,3 +131,6 @@ Cluster sampling is where out of the entire population, we take a few clusters o
 Systematic sampling is where we pick out every kth unit in the population.
 
 # Question 5
+NEED MTBE DATA
+
+# Question 6
