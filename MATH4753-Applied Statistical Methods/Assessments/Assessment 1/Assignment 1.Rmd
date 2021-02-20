@@ -134,3 +134,6 @@ Systematic sampling is where we pick out every kth unit in the population.
 NEED MTBE DATA
 
 # Question 6
+NEED EQ DATA
+
+# Question 7
