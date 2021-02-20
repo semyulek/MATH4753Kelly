@@ -49,3 +49,52 @@ Worth 30%.
 
 A (90): B (80): C(60): D (50): F (<50)
 No curves!!!
+
+# Question 2
+
+## Get data
+
+```{r}
+ddt <- read.csv("C:/Users/semyu/OneDrive/Desktop/IDE/RPackages/MATH4753Kelly/MATH4753-Applied Statistical Methods/LABS/Lab 1/DDT.csv")
+head(ddt)
+```
+
+## Get mile from data frame
+```{r}
+mile = with(ddt, as.numeric(MILE))
+```
+
+
+## Make coplot
+
+```{r}
+coplot(data = ddt, LENGTH~WEIGHT | RIVER * SPECIES, pch = 19, col = mile)
+```
+
+## Interpret FCM, LCM, SCM given CCATFISH
+
+What we see in these three graphs is the LENGTH vs WEIGHT of the CCATFISH. The Length of these catfish ALMOST all above 40cm. Their weight has a much wider variance.
+```{r}
+by(data = ddt$WEIGHT, INDICES = ddt$RIVER, FUN = mean)
+```
+As we can see the catfish FCM < LCM < SCM. The weight becomes more significant and closer at SCM as opposed to FCM which is more spread out.
+
+## Line A
+Line A goes through the data frame and stores the MILE variable from the data frame into variable m.
+
+## Line B
+```{r}
+length(unique(mile))
+```
+Line B outputs the number of unique elements in the numeric variable m, or mile in my ".Rmd" file. So 17 is the amount of unique miles where the Corps of Engineers caught the fish.
+
+## 6 plots
+The top 6 plots are empty due to the engineers not catching any other fish except CCATFISH in the FCM, LCM, SCM rivers. Since we plotted a conditional plot and those rivers had no other species caught, that is why those 6 are blank.
+
+## Mean
+```{r}
+fcm.cat <- subset(ddt, RIVER=="FCM" & SPECIES=="CCATFISH")
+mean(fcm.cat$DDT)
+```
+
+
