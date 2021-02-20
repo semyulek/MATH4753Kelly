@@ -11,3 +11,16 @@ output:
 ```{r setup, include=FALSE}
 knitr::opts_chunk$set(echo = TRUE)
 ```
+
+# Task 1
+Get working directory
+```{r}
+getwd()
+```
+
+# Task 2
+
+```{r}
+
+```
+
