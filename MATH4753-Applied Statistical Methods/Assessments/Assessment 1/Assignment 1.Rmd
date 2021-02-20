@@ -68,7 +68,7 @@ mile = with(ddt, as.numeric(MILE))
 ## Make coplot
 
 ```{r}
-coplot(data = ddt, LENGTH~WEIGHT | RIVER * SPECIES, pch = 19, col = mile)
+coplot(data = ddt, LENGTH~WEIGHT | RIVER * SPECIES, pch = 21, col = mile)
 ```
 
 ## Interpret FCM, LCM, SCM given CCATFISH
@@ -97,4 +97,23 @@ fcm.cat <- subset(ddt, RIVER=="FCM" & SPECIES=="CCATFISH")
 mean(fcm.cat$DDT)
 ```
 
+# Question 3
+All highway bridges in the US are inspected periodically for deficiency by FHWA. Data from the FHWA inspections are compiled into the NBI. Several of the nearly 100 variables maintained by the NBI are listed below. Classify each variable as quantitative or qualitative.
 
+## Qualitative
+c: Toll bridge(Y, N)
+
+e: Condition of deck
+
+g: Route Type
+
+## Quantitative
+a: Length of maximum span(feet)
+
+b: Number of lanes
+
+d: Average daily traffic
+
+f: Bypass or detour route
+
+# Question 4
