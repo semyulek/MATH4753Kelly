@@ -1,0 +1,51 @@
+---
+title: "Assessment 1"
+author: "Samuel Kelly"
+date: "`r Sys.Date()`"
+output: 
+  html_document:
+    toc: yes
+    toc_float: yes
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+# Question 1
+
+Summarize how I will workout your final grade for the course. Give percentages etc. Give my
+grading scale also e.g. What percentage is an A etc.
+
+## Assignments
+
+There will be 4 assignments making up 15% of the grade.
+
+## Laboratories
+
+Roughly 16 will be assigned making up 10% of the grade.
+
+## Projects
+
+2 Projects worth 10% of the grade. Second project is worth twice as much as the first.
+
+## In-Class Quizzes
+
+Worth 10%.
+
+## CANVAS Quizzes
+
+Worth 5%.
+
+## Midterm Exams
+
+Worth 20%.
+
+## Final Exam
+
+Worth 30%.
+
+## Grade Scale
+
+A (90): B (80): C(60): D (50): F (<50)
+No curves!!!
