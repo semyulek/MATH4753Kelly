@@ -117,3 +117,17 @@ d: Average daily traffic
 f: Bypass or detour route
 
 # Question 4
+
+## Simple Random Sample
+A simple random sample gives each sample size an equal opportunity of being selected, for a truly random experience.
+
+## Stratified Random Sample
+Stratified random sampling is where we separate the population into strata or subgroups, then take a small part of each subgroup to make the sample, to make a more representative sample of the population.
+
+## Cluster Sample
+Cluster sampling is where out of the entire population, we take a few clusters or subgroups of the population and analize them in their entirety.
+
+## Systematic Sample
+Systematic sampling is where we pick out every kth unit in the population.
+
+# Question 5
