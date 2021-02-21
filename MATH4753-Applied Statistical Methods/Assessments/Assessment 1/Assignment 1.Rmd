@@ -138,6 +138,15 @@ NEED EQ DATA
 
 # Question 7
 
+## Collection method
+The Corps of Engineers used a designed experiment where each subgroup was a different part of the river or a tributary creek.
+
+## Population
+The population is the entire Tennessee River and it's Tributary Creeks.
+
+## Qualitative
+The River that the fish was caught in, and the species are both qualitative variables in this experiment.
+
 # Question 8
 
 # Question 9
