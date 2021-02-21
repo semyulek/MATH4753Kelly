@@ -224,6 +224,19 @@ Microsoft needs to focus in on the issue of remote code execution.
 
 # Question 10
 
+```{r}
+sw.def <- read.csv("C:/Users/semyu/OneDrive/Desktop/IDE/RPackages/MATH4753Kelly/MATH4753-Applied Statistical Methods/Projects/Project 1/SWDEFECTS.csv")
+head(sw.def)
+library(plotrix)
+tab = table(sw.def$defect)
+rtab = tab / sum(tab)
+round(rtab,2)
+pie3D(rtab, labels = list("OK", "Defective"), main = "Pie Plot of SWD")
+```
+
+The software is more likely to be OK than defective. 90% of the software is OK, so it is a 1 in 10 chance that the software is defective.
+
+
 # Question 11
 
 # Question 12
