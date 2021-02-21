@@ -1,6 +1,6 @@
 ---
 title: "Project 1"
-author: "Dr. Wayne Stewart"
+author: "Samuel Kelly"
 date: "`r Sys.Date()`"
 output:
   html_document:
@@ -31,7 +31,7 @@ abstract: This project is all about analysing the SWDEFECTS file using R and pro
 
 <center>
 
-![Dr. Wayne Stewart](wayne.jpg "My Picture"){ width=20% }
+ ![Samuel Kelly](Moon.jpg "My Picture"){ width=20% }
 
 </center>
 
@@ -47,30 +47,43 @@ knitr::opts_chunk$set(echo = TRUE)
 ## Data and variables(see MS pg. 77,125)
 Describe the data and the problem we wish to investigate.
 
+### Describe data
+
+The SWDEFECTS.csv contains 498 different software codes, where each line of these 498 programs were assigned a value of true or false. False for correct, not defective code, and true for defective code.
+
+### Problem to solve
+
+Our goal is to find whether a piece of software code is defective.
+
 ## Summary Table 
 
 Create the summary table (TABLE SIA3.2) found on page 125. You can use RMD code to do it -- see MARKDOWN QUICK REFERENCE in Rstudio help.
 
-### Example RMD to make a table
+```{r}
+sw.def <- read.csv("SWDEFECTS.csv")
 ```
-First Header  | Second Header
-------------- | -------------
-Content Cell  | Content Cell
-Content Cell  | Content Cell
-```
-First Header  | Second Header
-------------- | -------------
-Content Cell  | Content Cell
-Content Cell  | Content Cell
 
+```
+              Module has defects
+         |-----------------------------|
+         |False         | True         |
+         |------------- | -------------|
+Algorithm|a             | b            |
+Predicts |c             | d            |
+Defects  |-----------------------------|
+```
 ### Make formulae 
 
 Using $\LaTeX$ construct the formulae for 
 
 1. Accuracy
+$$P(Algorithm \: is \: correct) = \frac{(a+b)}{(a+b+c+d)}$$
 2. Detection rate
+$$P(predict \:defect| \: module \: has \: defect) = \frac{d}{(b+d)}$$
 3. False alarm rate
+$$P(predict \: defect|\: module \:has \:no \:defect)=\frac{c}{(a+c)}$$
 4. Precision
+$$P(module \: has \: defect| \: predict \: defect)=\frac{d}{(c+d)}$$
 
 Latex Example: See (http://www.stat.cmu.edu/~cshalizi/rmarkdown/#elements-of-math-mode)
 
@@ -154,6 +167,6 @@ The function will need to create two things
     1. A barplot of the table
     2. Commandline output in the form of a list containing the table
     
-    
-![](barplot.png){ width=70% }
+    #barplot.png
+![](Moon.jpg){ width=70% }
 
