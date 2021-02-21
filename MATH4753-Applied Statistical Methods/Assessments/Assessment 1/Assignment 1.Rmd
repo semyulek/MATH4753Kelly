@@ -149,6 +149,56 @@ The River that the fish was caught in, and the species are both qualitative vari
 
 # Question 8
 
+## Type of Graph
+Histogram
+
+## Variable measured
+Whether the robot has legs, wheels, both, or none. The type of robotic limbs.
+
+## Graph
+
+```{r}
+barplot(c(15,8,63,20),xlab = "Types of Robotic Limbs",ylab = "Number of Robots",names.arg = c("None","Both","Legs","Wheels"))
+```
+
+From the graph we can see that robots with legs are used the most.
+
+## Relative Frequecy
+
+```{r}
+none.rf <- 15/106
+both.rf <- 8/106
+legs.rf <- 63/106
+wheels.rf <- 20/106
+print(paste0("None: ", round(none.rf, 4)))
+print(paste0("Both: ", round(both.rf,4)))
+print(paste0("Legs: ", round(legs.rf,4)))
+print(paste0("Wheels: ", round(wheels.rf,4)))
+```
+## Pareto
+
+```{r}
+freq=c(15,8,63,20)
+RL=c("None","Both","Legs","Wheels")
+l=rep(RL,freq)
+pareto<-function(x,mn="Pareto barplot",...){  # x is a vector
+x.tab=table(x)
+xx.tab=sort(x.tab, decreasing=TRUE,index.return=FALSE)
+cumsum(as.vector(xx.tab))->cs
+length(x.tab)->lenx
+bp<-barplot(xx.tab,ylim=c(0,max(cs)),las=2)
+lb<-seq(0,cs[lenx],l=11)
+axis(side=4,at=lb,labels=paste(seq(0,100,length=11),"%",sep=""),las=1,line=-1,col="Blue",col.axis="Red")
+for(i in 1:(lenx-1)){
+segments(bp[i],cs[i],bp[i+1],cs[i+1],col=i,lwd=2)
+}
+title(main=mn,...)
+
+}
+pareto(l)
+```
+
+
 # Question 9
 
 # Question 10
