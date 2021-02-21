@@ -181,6 +181,7 @@ print(paste0("Wheels: ", round(wheels.rf,4)))
 freq=c(15,8,63,20)
 RL=c("None","Both","Legs","Wheels")
 l=rep(RL,freq)
+
 pareto<-function(x,mn="Pareto barplot",...){  # x is a vector
 x.tab=table(x)
 xx.tab=sort(x.tab, decreasing=TRUE,index.return=FALSE)
@@ -195,11 +196,31 @@ segments(bp[i],cs[i],bp[i+1],cs[i+1],col=i,lwd=2)
 title(main=mn,...)
 
 }
+
 pareto(l)
 ```
 
 
 # Question 9
+
+## Pie
+
+```{r}
+pie(x = c(32,6,12),labels = c("Windows", "Explorer", "Office"),col = heat.colors(3))
+```
+
+Internet Explorer had the lowest amount of issues.
+
+## Pareto
+
+```{r}
+freq=c(6,8,22,3,11)
+RL=c("DOS", "Info Disclosure", "Remote Code Execution", "Spoofing", "Privilege Elevation")
+l=rep(RL,freq)
+pareto(l)
+```
+
+Microsoft needs to focus in on the issue of remote code execution.
 
 # Question 10
 
