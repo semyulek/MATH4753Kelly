@@ -61,6 +61,16 @@ Create the summary table (TABLE SIA3.2) found on page 125. You can use RMD code 
 
 ```{r}
 sw.def <- read.csv("SWDEFECTS.csv")
+tab <- table(sw.def$predict.loc.50, sw.def$defect)
+tab
+a = tab[1,1]
+
+b = tab[1,2]
+
+c = tab[2,1]
+
+d = tab[2,2]
+
 ```
 
 ```
@@ -98,31 +108,31 @@ $$
 # R functions
 Using the above definitions make R functions that will create the required probabilities, please remove `eval=FALSE` when creating the functions :
 
-```{r accuracy, eval=FALSE}
+```{r accuracy}
 acc=function(a,b,c,d)
 {
-  
+ (a + d)/(a + b + c + d)
 }
 ```
 
-```{r detecton, eval=FALSE}
+```{r detecton}
 detect=function(b,d)
 {
-  
+  d / (b + d)
 }
 ```
 
-```{r alarm, eval=FALSE}
+```{r alarm}
 falarm=function(a,c)
 {
-  
+  c / (a + c)
 }
 ```
 
-```{r precision, eval=FALSE}
+```{r precision}
 prec=function(c,d)
 {
-  
+  d / (c + d)
 }
 ```
 
@@ -130,17 +140,32 @@ prec=function(c,d)
 # Create the tables in Figure SIA3.1
 
 The tables do not have to be formatted exactly as those in the book. Have the functions produce a suitable barplot also. 
-In other wordss you will use R code to make these tables (again formatting does not have to be the same as the book)
+In other words you will use R code to make these tables (again formatting does not have to be the same as the book)
 
 As a guide and help -- see code below
 
 ```{r }
-swd=read.csv("swdefects.csv")
-head(swd)
-tab=with(swd, table(predict.loc.50,defect))
+head(sw.def)
+tab=with(sw.def, table(predict.loc.50,defect))
 barplot(tab, beside=TRUE, leg=TRUE)
 tab2=addmargins(tab)
 tab2
+
+tab=with(sw.def, table(predict.vg.10,defect))
+barplot(tab, beside=TRUE, leg=TRUE)
+tab2=addmargins(tab)
+tab2
+
+tab=with(sw.def, table(predict.evg.14.5,defect))
+barplot(tab, beside=TRUE, leg=TRUE)
+tab2=addmargins(tab)
+tab2
+
+tab=with(sw.def, table(predict.ivg.9.2,defect))
+barplot(tab, beside=TRUE, leg=TRUE)
+tab2=addmargins(tab)
+tab2
+
 ```
 
 
