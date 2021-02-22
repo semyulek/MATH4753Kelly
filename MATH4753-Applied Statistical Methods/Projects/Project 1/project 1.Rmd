@@ -31,7 +31,7 @@ abstract: This project is all about analysing the SWDEFECTS file using R and pro
 
 <center>
 
- ![Samuel Kelly](Moon.jpg "My Picture"){ width=20% }
+ ![Samuel Kelly](project_picture.jpg "My Picture"){ width=20% }
 
 </center>
 
@@ -191,7 +191,5 @@ The function will need to create two things
 >
     1. A barplot of the table
     2. Commandline output in the form of a list containing the table
-    
-    #barplot.png
-![](Moon.jpg){ width=70% }
+
 
