@@ -178,6 +178,51 @@ Using the functions you have made **or otherwise**, create the corrected table (
  
 You can call this table `tab3`
 
+```{r Probability measures}
+prob.meas=function(tab)
+{
+  a = tab[1,1]
+
+  b = tab[1,2]
+
+  c = tab[2,1]
+
+  d = tab[2,2]
+  
+  measures <- c(acc(a = a,b = b,c = c,d = d),
+  detect(b = b,d = d),
+  falarm(a = a,c = c),
+  prec(c = c,d = d))
+}
+```
+
+```{r}
+tab <- table(sw.def$predict.loc.50, sw.def$defect)
+loc.meas<-prob.meas(tab = tab)
+
+tab <- table(sw.def$predict.vg.10, sw.def$defect)
+cyclo.meas <- prob.meas(tab = tab)
+
+tab <- table(sw.def$predict.evg.14.5, sw.def$defect)
+essential.meas <- prob.meas(tab = tab)
+
+tab <- table(sw.def$predict.ivg.9.2, sw.def$defect)
+design.meas <- prob.meas(tab = tab)
+
+accuracy<-c(loc.meas[1],cyclo.meas[1],essential.meas[1],design.meas[1])
+detection<-c(loc.meas[2],cyclo.meas[2],essential.meas[2],design.meas[2])
+false.alarm<-c(loc.meas[3],cyclo.meas[3],essential.meas[3],design.meas[3])
+precision<-c(loc.meas[4],cyclo.meas[4],essential.meas[4],design.meas[4])
+```
+
+```{r Table}
+prob.df.1 <- data.frame(accuracy,detection,false.alarm,precision)
+prob.df.2 <- data.frame(loc.meas,cyclo.meas,essential.meas,design.meas)
+rownames(prob.df.1)<-c("Lines of code", "Cyclomatic", "Essential", "Design")
+names(prob.df.1)<-c("Accuracy", "Detection", "False Alarm", "Precision")
+round(prob.df.1, 3)
+```
+
 Now create a function `mybar()`that will have as its input variables
 
 >
@@ -191,5 +236,18 @@ The function will need to create two things
 >
     1. A barplot of the table
     2. Commandline output in the form of a list containing the table
+
+
+```{r}
+mybar<-function(dec){
+  barplot(t(as.matrix(prob.df.2)),beside = TRUE,
+          legend.text = c("Lines of code", "Cyclomatic", "Essential", "Design"),col=c("red","green","blue","purple"))
+  list(round(prob.df.1,dec))
+}
+```
+
+```{r}
+mybar(3)
+```
 
 
