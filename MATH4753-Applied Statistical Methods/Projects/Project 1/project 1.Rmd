@@ -218,9 +218,25 @@ precision<-c(loc.meas[4],cyclo.meas[4],essential.meas[4],design.meas[4])
 ```{r Table}
 prob.df.1 <- data.frame(accuracy,detection,false.alarm,precision)
 prob.df.2 <- data.frame(loc.meas,cyclo.meas,essential.meas,design.meas)
+measure.name<-c("Accuracy", "Detection", "False Alarm", "Precision")
+detect.names<-c("Lines of code", "Cyclomatic", "Essential", "Design")
 rownames(prob.df.1)<-c("Lines of code", "Cyclomatic", "Essential", "Design")
+
+test.df<-data.frame(matrix(ncol = 4,nrow = 4))
+test.df[1,]=loc.meas
+test.df[2,]=cyclo.meas
+test.df[3,]=essential.meas
+test.df[4,]=design.meas
+names(test.df)<-measure.name
+rownames(test.df)<-detect.names
+test.df
+
+list(test.df)
+
 names(prob.df.1)<-c("Accuracy", "Detection", "False Alarm", "Precision")
 round(prob.df.1, 3)
+names(prob.df.1)
+with(prob.df.1, xtabs())
 ```
 
 Now create a function `mybar()`that will have as its input variables
