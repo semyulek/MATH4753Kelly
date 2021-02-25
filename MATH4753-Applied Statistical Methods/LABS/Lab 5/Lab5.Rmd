@@ -154,3 +154,38 @@ mysample(n = 1000, iter = 1, time = 1)
 The function goes through the number of iterations specified, waiting a specified amount of second before outputting the next graph, using a sample size n.
 
 # Task 5
+
+## Choose
+
+```{r}
+choose(n = 8,k = 4)
+```
+
+## Pois
+$$P(Y>4),Y~is~distributed~as~Pois(\lambda=2)$$
+P(Y>4)+P(Y<=4)=1, so the lower tail is P(Y>4) = 1-P(Y<=4)
+```{r}
+ppois(lambda = 2,lower.tail = T,q = 4)
+```
+
+## NegBin
+
+```{r}
+dnbinom(size = 3,prob = .4,x = 10-3)
+```
+
+## Bin
+
+```{r}
+pbinom(size = 15,q = 8,prob = .4,lower.tail = T)
+```
+
+# Task 6
+
+## Function
+
+```{r}
+library(MATH4753Kelly)
+MATH4753Kelly::mybin(iter = 1000,n = 5,p = .1)
+```
+
