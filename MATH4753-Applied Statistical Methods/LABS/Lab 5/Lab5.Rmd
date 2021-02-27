@@ -165,7 +165,7 @@ choose(n = 8,k = 4)
 $$P(Y>4),Y~is~distributed~as~Pois(\lambda=2)$$
 P(Y>4)+P(Y<=4)=1, so the lower tail is P(Y>4) = 1-P(Y<=4)
 ```{r}
-ppois(lambda = 2,lower.tail = T,q = 4)
+1-ppois(lambda = 2,q = 2)
 ```
 
 ## NegBin
