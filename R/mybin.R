@@ -1,8 +1,8 @@
 #' @title A binomial function
 #'
-#' @param iter
-#' @param n
-#' @param p
+#' @param iter Iterates the function
+#' @param n Size of sample space
+#' @param p Probability
 #'
 #' @return Returns a table of the binomial values, and returns a graph illustrating the number of successes of the simulation
 #' @export

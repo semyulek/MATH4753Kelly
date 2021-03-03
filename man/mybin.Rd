@@ -7,7 +7,11 @@
 mybin(iter = 100, n = 10, p = 0.5)
 }
 \arguments{
-\item{p}{}
+\item{iter}{Iterates the function}
+
+\item{n}{Size of sample space}
+
+\item{p}{Probability}
 }
 \value{
 Returns a table of the binomial values, and returns a graph illustrating the number of successes of the simulation
