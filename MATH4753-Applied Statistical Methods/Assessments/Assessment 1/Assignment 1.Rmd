@@ -131,10 +131,24 @@ Cluster sampling is where out of the entire population, we take a few clusters o
 Systematic sampling is where we pick out every kth unit in the population.
 
 # Question 5
-NEED MTBE DATA
+
+```{r}
+library(readxl)
+mtbe <- read_excel("C:/Users/semyu/OneDrive/Desktop/Class Work/MATH4753-Applied Statistical Methods/Data/K25936_Downloads/Excel/MTBE.xls")
+head(mtbe)
+dim(mtbe)
+ind = sample(1:223,5,replace = F)
+mtbe[ind,]
+```
+
 
 # Question 6
-NEED EQ DATA
+
+```{r}
+eq <- read_excel("C:/Users/semyu/OneDrive/Desktop/Class Work/MATH4753-Applied Statistical Methods/Data/K25936_Downloads/Excel/EARTHQUAKE.xls")
+head(eq)
+```
+
 
 # Question 7
 

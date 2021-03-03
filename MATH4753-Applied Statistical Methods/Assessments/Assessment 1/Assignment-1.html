@@ -11,7 +11,7 @@
 
 <meta name="author" content="Samuel Kelly" />
 
-<meta name="date" content="2021-02-21" />
+<meta name="date" content="2021-03-02" />
 
 <title>Assessment 1</title>
 
@@ -267,7 +267,7 @@ div.tocify {
 
 <h1 class="title toc-ignore">Assessment 1</h1>
 <h4 class="author">Samuel Kelly</h4>
-<h4 class="date">2021-02-21</h4>
+<h4 class="date">2021-03-02</h4>
 
 </div>
 
@@ -407,11 +407,49 @@ mean(fcm.cat$DDT)</code></pre>
 </div>
 <div id="question-5" class="section level1">
 <h1>Question 5</h1>
-<p>NEED MTBE DATA</p>
+<pre class="r"><code>library(readxl)</code></pre>
+<pre><code>## Warning: package &#39;readxl&#39; was built under R version 4.0.4</code></pre>
+<pre class="r"><code>mtbe &lt;- read_excel(&quot;C:/Users/semyu/OneDrive/Desktop/Class Work/MATH4753-Applied Statistical Methods/Data/K25936_Downloads/Excel/MTBE.xls&quot;)
+head(mtbe)</code></pre>
+<pre><code>## # A tibble: 6 x 16
+##      pH SpConduct DissOxy RoadsPct IndPct UrbanPct DevPct WellClass Aquifier
+##   &lt;dbl&gt;     &lt;dbl&gt;   &lt;dbl&gt;    &lt;dbl&gt;  &lt;dbl&gt;    &lt;dbl&gt;  &lt;dbl&gt; &lt;chr&gt;     &lt;chr&gt;   
+## 1  7.87      290    0.580     1.34      0     17.8   17.8 Private   Bedrock 
+## 2  8.63      226.   0.84      0.72      0     10.4   10.4 Private   Bedrock 
+## 3  7.11      157.   8.37      1.92      0     29.6   50.0 Private   Bedrock 
+## 4  7.98      724.   0.41      2.76      0     41.6   41.6 Private   Bedrock 
+## 5  7.88      149.   1.44      3.51      0     51.2   51.2 Private   Bedrock 
+## 6  8.36      198.   0.18      1.48      0     22.5   29.2 Private   Bedrock 
+## # ... with 7 more variables: Depth &lt;dbl&gt;, SafeYld &lt;dbl&gt;, Distance &lt;dbl&gt;,
+## #   `MTBE-Detect` &lt;chr&gt;, `MTBE-Level` &lt;dbl&gt;, HouseDen &lt;dbl&gt;, PopDen &lt;dbl&gt;</code></pre>
+<pre class="r"><code>dim(mtbe)</code></pre>
+<pre><code>## [1] 223  16</code></pre>
+<pre class="r"><code>ind = sample(1:223,5,replace = F)
+mtbe[ind,]</code></pre>
+<pre><code>## # A tibble: 5 x 16
+##      pH SpConduct DissOxy RoadsPct IndPct UrbanPct DevPct WellClass Aquifier
+##   &lt;dbl&gt;     &lt;dbl&gt;   &lt;dbl&gt;    &lt;dbl&gt;  &lt;dbl&gt;    &lt;dbl&gt;  &lt;dbl&gt; &lt;chr&gt;     &lt;chr&gt;   
+## 1  7.75      864.    0.5      3.17  14.9     41.6   47.6  Public    Bedrock 
+## 2  6.33      421.    3.32     1.48   4.86    23.0   33.0  Public    Bedrock 
+## 3  8.22      585.    4.5      2.26   0       25.6   39.7  Public    Bedrock 
+## 4  7.15      483.    3.43     0.48   0        7.17   7.17 Private   Bedrock 
+## 5  8.63      226.    0.84     0.72   0       10.4   10.4  Private   Bedrock 
+## # ... with 7 more variables: Depth &lt;dbl&gt;, SafeYld &lt;dbl&gt;, Distance &lt;dbl&gt;,
+## #   `MTBE-Detect` &lt;chr&gt;, `MTBE-Level` &lt;dbl&gt;, HouseDen &lt;dbl&gt;, PopDen &lt;dbl&gt;</code></pre>
 </div>
 <div id="question-6" class="section level1">
 <h1>Question 6</h1>
-<p>NEED EQ DATA</p>
+<pre class="r"><code>eq &lt;- read_excel(&quot;C:/Users/semyu/OneDrive/Desktop/Class Work/MATH4753-Applied Statistical Methods/Data/K25936_Downloads/Excel/EARTHQUAKE.xls&quot;)
+head(eq)</code></pre>
+<pre><code>## # A tibble: 6 x 6
+##   YEAR  MONTH DAY   HOUR  MINUTE MAGNITUDE
+##   &lt;chr&gt; &lt;chr&gt; &lt;chr&gt; &lt;chr&gt; &lt;chr&gt;      &lt;dbl&gt;
+## 1 1994  1     17    12    30           6.7
+## 2 1994  1     17    12    31           5.5
+## 3 1994  1     17    12    32           3.3
+## 4 1994  1     17    12    34           4.2
+## 5 1994  1     17    12    36           3.8
+## 6 1994  1     17    12    37           3.7</code></pre>
 </div>
 <div id="question-7" class="section level1">
 <h1>Question 7</h1>
