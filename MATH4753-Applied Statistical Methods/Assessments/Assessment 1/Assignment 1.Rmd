@@ -132,6 +132,8 @@ Systematic sampling is where we pick out every kth unit in the population.
 
 # Question 5
 
+## Create sample
+
 ```{r}
 library(readxl)
 mtbe <- read_excel("C:/Users/semyu/OneDrive/Desktop/Class Work/MATH4753-Applied Statistical Methods/Data/K25936_Downloads/Excel/MTBE.xls")
@@ -141,13 +143,39 @@ ind = sample(1:223,5,replace = F)
 mtbe[ind,]
 ```
 
+## Mean depth
+
+```{r}
+mtbe.na = na.omit(mtbe)
+depth=mtbe.na[mtbe.na$Aquifier=="Bedrock",]$Depth
+mean(depth)
+```
+
 
 # Question 6
+
+## Create sample
 
 ```{r}
 eq <- read_excel("C:/Users/semyu/OneDrive/Desktop/Class Work/MATH4753-Applied Statistical Methods/Data/K25936_Downloads/Excel/EARTHQUAKE.xls")
 head(eq)
+dim(eq)
+ind2 = sample(1:2929,30,replace = F)
+eq[ind2,]
 ```
+
+## Plot
+
+```{r}
+plot(ts(eq$MAGNITUDE))
+```
+
+## Median
+
+```{r}
+median(eq$MAGNITUDE)
+```
+
 
 
 # Question 7
