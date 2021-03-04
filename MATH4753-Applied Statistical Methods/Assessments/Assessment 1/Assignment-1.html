@@ -272,6 +272,12 @@ div.tocify {
 </div>
 
 
+<div id="total-completion" class="section level1">
+<h1>TOTAL COMPLETION</h1>
+<div id="section" class="section level2">
+<h2>12/15</h2>
+</div>
+</div>
 <div id="question-1" class="section level1">
 <h1>Question 1</h1>
 <p>Summarize how I will workout your final grade for the course. Give percentages etc. Give my grading scale also e.g. What percentage is an A etc.</p>
@@ -431,11 +437,11 @@ mtbe[ind,]</code></pre>
 <pre><code>## # A tibble: 5 x 16
 ##      pH SpConduct DissOxy RoadsPct IndPct UrbanPct DevPct WellClass Aquifier
 ##   &lt;dbl&gt;     &lt;dbl&gt;   &lt;dbl&gt;    &lt;dbl&gt;  &lt;dbl&gt;    &lt;dbl&gt;  &lt;dbl&gt; &lt;chr&gt;     &lt;chr&gt;   
-## 1  7.37      182.    0.63     0.59    0       9.46   9.46 Public    Bedrock 
-## 2  6.65      363.    3.88     1.52    0      20.9   21.2  Private   Bedrock 
-## 3  7.34      523.    0.53     3.99   15.3    60.1   60.1  Public    Bedrock 
-## 4  6.53      222.    0.39     1.28    0      10.1   23.1  Public    Bedrock 
-## 5  7.06      139.    4.88     0.88    0       8.51  11.1  Private   Bedrock 
+## 1  8.12      235.    0.53     1.2    0        18.6   29.2 Public    Bedrock 
+## 2  7.22      286.    0.6      3.28   0        40.8   40.8 Public    Bedrock 
+## 3  7.47      872.    0.39     4.62   3.07     43.6   43.6 Public    Bedrock 
+## 4  7.61      608.    0.61     2.05   0        38.6   38.6 Private   Bedrock 
+## 5  7.4       221.    1.36     2.26   4.9      40.2   52.0 Private   Bedrock 
 ## # ... with 7 more variables: Depth &lt;dbl&gt;, SafeYld &lt;dbl&gt;, Distance &lt;dbl&gt;,
 ## #   `MTBE-Detect` &lt;chr&gt;, `MTBE-Level` &lt;dbl&gt;, HouseDen &lt;dbl&gt;, PopDen &lt;dbl&gt;</code></pre>
 </div>
@@ -469,16 +475,16 @@ eq[ind2,]</code></pre>
 <pre><code>## # A tibble: 30 x 6
 ##    YEAR  MONTH DAY   HOUR  MINUTE MAGNITUDE
 ##    &lt;chr&gt; &lt;chr&gt; &lt;chr&gt; &lt;chr&gt; &lt;chr&gt;      &lt;dbl&gt;
-##  1 1994  1     18    21    36           2.5
-##  2 1994  1     21    1     37           2  
-##  3 1994  1     25    23    28           1.6
-##  4 1994  2     2     16    25           2.2
-##  5 1994  2     2     16    49           1.9
-##  6 1994  1     19    16    22           1.8
-##  7 1994  2     1     22    32           1.8
-##  8 1994  1     17    17    58           2  
-##  9 1994  1     21    10    1            2.3
-## 10 1994  1     19    21    42           3.5
+##  1 1994  2     4     5     23           1.6
+##  2 1994  1     28    19    50           2.1
+##  3 1994  1     26    22    50           2.5
+##  4 1994  1     28    18    34           1.8
+##  5 1994  1     19    4     15           2.5
+##  6 1994  2     2     19    9            2.1
+##  7 1994  1     22    7     56           2  
+##  8 1994  1     18    9     25           2.1
+##  9 1994  1     31    14    35           1.5
+## 10 1994  1     27    16    28           2.3
 ## # ... with 20 more rows</code></pre>
 </div>
 <div id="plot" class="section level2">
@@ -622,6 +628,11 @@ round(rtab,2)</code></pre>
 </div>
 <div id="question-12" class="section level1">
 <h1>Question 12</h1>
+<pre class="r"><code>rp &lt;- c(1.72,2.5,2.16,2.13,1.06,2.24,2.31,2.03,1.09,1.40,2.57,2.64,1.26,2.05,1.19,2.13,1.27,1.51,2.41,1.95)
+mean(rp) - 2*sd(rp) </code></pre>
+<pre><code>## [1] 0.8331772</code></pre>
+<pre class="r"><code>mean(rp) + 2*sd(rp) </code></pre>
+<pre><code>## [1] 2.928823</code></pre>
 </div>
 <div id="question-13" class="section level1">
 <h1>Question 13</h1>

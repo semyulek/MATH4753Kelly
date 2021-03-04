@@ -12,6 +12,10 @@ output:
 knitr::opts_chunk$set(echo = TRUE)
 ```
 
+# TOTAL COMPLETION
+
+## 12/15
+
 # Question 1
 
 Summarize how I will workout your final grade for the course. Give percentages etc. Give my
@@ -281,9 +285,13 @@ The software is more likely to be OK than defective. 90% of the software is OK, 
 
 # Question 11
 
-
-
 # Question 12
+
+```{r}
+rp <- c(1.72,2.5,2.16,2.13,1.06,2.24,2.31,2.03,1.09,1.40,2.57,2.64,1.26,2.05,1.19,2.13,1.27,1.51,2.41,1.95)
+mean(rp) - 2*sd(rp) 
+mean(rp) + 2*sd(rp) 
+```
 
 # Question 13
 
