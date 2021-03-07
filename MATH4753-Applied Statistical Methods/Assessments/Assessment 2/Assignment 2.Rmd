@@ -1,9 +1,14 @@
 ---
 title: "Assignment 2"
 author: "Samuel Kelly"
-date: "`r Sys.Date()`"
+date: '`r format(Sys.Date(),format="%A, %B %d, %Y")`'
 output: 
   html_document:
+    df_print: paged
+    fig_caption: true
+    highlights: pygments
+    number_sections: no
+    theme: spacelab
     toc: yes
     toc_float: yes
 ---
