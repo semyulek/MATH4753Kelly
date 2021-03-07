@@ -1,0 +1,47 @@
+---
+title: "Assignment 2"
+author: "Samuel Kelly"
+date: "`r Sys.Date()`"
+output: 
+  html_document:
+    toc: yes
+    toc_float: yes
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+# 1. [3 marks] MS 3.36 pg 105-106
+
+# 2. [3 marks] MS 3.52 - pg 111
+
+# 3. [1 marks] MS Theorem 3.1 - pg 113 Prove the theorem in your own words.
+
+# 4. [1 marks] MS Theorem 3.2 - pg 114 Prove the theorem in your own words.
+
+# 5. [1 marks] MS Theorem 3.3 - pg 116 Prove the theorem in your own words.
+
+# 6. [1 marks] MS Theorem 3.4 - pg 117 Prove the theorem in your own words.
+
+# 7. [3 marks] MS 4.2 - pg 138
+
+# 8. [4 marks] MS 4.12 - pg 143
+
+# 9. [4 marks] MS 4.34 - pg 154
+
+# 10. [2 marks] MS 4.46 - pg 158
+
+# 11. [2 marks] MS 4.54 - pg 162
+
+# 12. [2 marks] MS 4.66 - pg 168
+
+# 13. [3 marks] MS 4.78 - pg 173
+
+# 14. [4 marks] MS 5.2 - pg 191
+
+# 15. [3 marks] MS 5.10 - pg 196
+
+# 16. [3 marks] MS 5.36 - pg 205
+
+# 17. [5 marks] MS 5.38- pg 205
