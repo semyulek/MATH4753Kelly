@@ -21,6 +21,65 @@ getwd()
 
 # Task 2
 
+## 4 curves
+
+$$\mu=10,\sigma=4$$
+$$\mu=10,\sigma=2$$
+$$\mu=5,\sigma=10$$
+$$\mu=5,\sigma=\frac{1}{2}$$
+```{r}
+layout(matrix(1:4,nrow = 2,ncol = 2))
+#xlim is using the empirical rule of three sd to graph 99% of the data
+curve(dnorm(x,mean = 10,sd = 4),xlim = c(10-3*4,10+3*4))
+curve(dnorm(x,mean = 10,sd = 2),xlim = c(10-3*2,10+3*2))
+curve(dnorm(x,mean = 5,sd = 10),xlim = c(5-3*10,5+3*10))
+curve(dnorm(x,mean = 5,sd = 1/2),xlim = c(5-3*(1/2),5+3*(1/2)))
+```
+
+## Plot regions and probabilities
+
+$$Y\sim N(0,1),P(Y\geq2)$$
+```{r}
+curve(dnorm(x,0,1),xlim = c(0-3*1,0+3*1))
+#make xcurve go to 3 since that is the xlim
+xcurve = seq(2,3,length = 1000)
+ycurve = dnorm(xcurve,0,1)
+
+polygon(c(2,xcurve,3),c(0,ycurve,0),col = "red")
+#since we are looking at Y>=2, we want 1-pnorm to get the area
+prob = 1-pnorm(2,0,1)
+prob = round(prob, 4)
+text(2,dnorm(2,0,1)/2,paste0("Area=",prob))
+```
+
+$$Y\sim N(\mu=4,\sigma=2),P(1\leq Y<5)$$
+```{r}
+curve(dnorm(x,4,2),xlim = c(4-3*2,4+3*2))
+
+xcurve = seq(1,5,length = 1000)
+ycurve = dnorm(xcurve,4,2)
+
+polygon(c(1,xcurve,5),c(0,ycurve,0),col = "red")
+
+prob = pnorm(5,4,2) - pnorm(1,4,2)
+prob = round(prob, 4)
+text((5/2),dnorm((5/2),4,2)/2,paste0("Area=",prob))
+```
+
+$$Y\sim N(\mu=-2,\sigma=\frac{1}{2}),P(-3<Y\leq-2)$$
+```{r}
+curve(dnorm(x,-2,1/2),xlim = c(-2-3*(1/2),-2+3*(1/2)))
+
+xcurve = seq(-3,-2,length = 1000)
+ycurve = dnorm(xcurve,-2,1/2)
+
+polygon(c(-3,xcurve,-2),c(0,ycurve,0),col = "red")
+
+prob = pnorm(-2,-2,1/2) - pnorm(-3,-2,1/2)
+prob = round(prob, 4)
+text((-5/2),dnorm((-5/2),-2,1/2)/2,paste0("Area=",prob))
+```
+
 # Task 3
 
 # Task 4
