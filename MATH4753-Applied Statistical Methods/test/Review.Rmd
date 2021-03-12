@@ -1,0 +1,194 @@
+---
+title: "Review"
+author: "Samuel Kelly"
+date: "3/11/2021"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+# WD
+```{r}
+getwd()
+```
+
+# read data
+
+```{r}
+ddt <- read.csv("DDT.csv")
+head(ddt)
+```
+
+# create table
+
+```{r}
+names(ddt)
+tab <- table(ddt$RIVER,ddt$SPECIES)
+addmargins(tab)
+# OR
+with(ddt, table(RIVER,SPECIES))
+```
+
+# and
+
+```{r}
+addmargins(tab)
+#P(FCM AND CAT)
+6/144
+```
+# or
+```{r}
+addmargins(tab)
+#P(LCM OR BASS)
+(6+12)/144
+```
+
+# given
+
+```{r}
+addmargins(tab)
+#P(FCM|CAT)
+6/96
+```
+
+# Probs
+
+$$P(A\cup B)=P(A)+P(B)-P(A\cap B)$$
+
+$$P(A\cap B) = 0,~ A\cap B=0 ~ mutually ~exclusive$$
+
+$$P(A|B)=\frac{P(A\cap B)}{P(B)}\Rightarrow P(A|B)P(B)=P(A\cap B)$$
+
+# Bayes' Rule
+
+$$P(A|B)=\frac{P(A\cap B)}{P(B)} \\ P(B|A)=\frac{P(A\cap B)}{P(A)}$$
+
+$$P(A|B)P(B)=P(A\cap B) \\ =~~~~~~~~~~~~~~~=\\P(B|A)P(A)=P(A\cap B)$$
+
+BAYES' RULE
+$$P(A|B)=\frac{P(A)P(B|A)}{P(B)}$$
+
+# drug testing
+
+```{r}
+positive = .9
+negative = .8
+falsePos = .2
+negative + falsePos
+prob.of.user = .05
+
+#What is the probability that someone who tests positive is actually a cannabis user
+#P(user|positive) = P(positive|user)P(user)  /  P(positive)
+(positive*prob.of.user)/((positive*prob.of.user)+(falsePos*(1-prob.of.user)))
+```
+
+# z scores
+$$Z_i=\frac{x_i-mean(x)}{standard~deviation(x)}$$
+```{r}
+mpg.df <- read.csv("EPAGAS.csv")
+mpg <-mpg.df$MPG
+
+z = (mpg - mean(mpg))/sd(mpg)
+z
+# mean of z is 0
+mean(z)
+# sd of z is 1
+sd(z)
+```
+
+# possible outliers
+
+```{r}
+#actual outlier
+z[abs(z)>3]
+mpg[abs(z)>3]
+
+#possible outlier
+z[abs(z)>=2 & abs(z) <=3]
+mpg[abs(z)>=2 & abs(z) <=3]
+
+# mainline
+mpg[abs(z)<2 & abs(z) >=0]
+```
+
+# chebyshev rule
+
+$$1-\frac{1}{k^2}$$
+AT least 3/4 of the data lie within 2 sd of the mean, 8/9 within 3 sd of the mean
+```{r}
+length(mpg[abs(z) < 2])/length(mpg)
+```
+
+
+# empirical rule
+Data be unimodal and symmetrical around the mode
+Approximately 68% is within 1 sd
+Approximately 95% is within 2 sd
+Approximately 99.7% is within 3 sd
+```{r}
+plot(density(mpg), main = "MPG Data Set")
+abline(v = mean(mpg), col = "Red")
+```
+
+# Densities
+
+$$Density~is~f(y)=\frac{dF(y)}{dy}$$
+
+Properties of Density
+1.f(y)>=0
+2.$$\int_{\infty}^{\infty}f(y)dy=F(\infty)=1$$ This is the total area under the curve
+3.$$P(a<Y<b)=\int_{a}^{b}f(y)dy=F(b)-F(a), ~where ~a,~b ~are~ constants$$
+
+
+# Prob discrete
+
+$$Y\sim Bin(n=20,p=.7)$$
+
+P(Y>10)
+```{r}
+1-pbinom(10,20,.7)
+```
+
+P(Y<=9)
+```{r}
+pbinom(9,20,.7)
+```
+
+P(Y=17)
+```{r}
+dbinom(17,20,.7)
+```
+
+P(8<Y<=12)
+
+```{r}
+pbinom(12,20,.7)-pbinom(7,20,.7)
+```
+
+
+
+# prob cont
+
+$$Y\sim N(\mu=10,\sigma=5)$$
+P(Y>10)
+```{r}
+1-pnorm(10,10,5)
+```
+ENDpoints don't matter
+P(Y<=5)
+```{r}
+pnorm(5,10,5)
+```
+
+P(8<=Y<=12)
+```{r}
+pnorm(12,10,5)-pnorm(8,10,5)
+```
+
+P(Y=20)=0
+
+# Moment generating function
+
+
