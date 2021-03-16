@@ -6,6 +6,7 @@ output:
   html_document:
     toc: yes
     toc_float: yes
+    theme: darkly
 ---
 
 ```{r setup, include=FALSE}
@@ -81,6 +82,52 @@ text((-5/2),dnorm((-5/2),-2,1/2)/2,paste0("Area=",prob))
 ```
 
 # Task 3
+
+$$Y\sim Gamma(shape = 1, scale=1)$$
+$$Y\sim Gamma(shape = 3, scale=1)$$
+$$Y\sim Gamma(shape = 5, scale=1)$$
+
+```{r}
+curve(dgamma(x,shape = 1,scale = 1),xlim = c(0,10),lwd = 2, col = "red",ylim=c(0,1),ylab = "Gamma Density", main="beta=1")
+curve(dgamma(x,shape = 3,scale = 1),xlim = c(0,10),lwd = 2, col = "pink",ylim=c(0,1),add = T)
+curve(dgamma(x,shape = 5,scale = 1),xlim = c(0,10),lwd = 2, col = "purple",ylim=c(0,1),add = T)
+text(1,.7,paste0("alpha=",1))
+text(2,.3,paste0("alpha=",3))
+text(4,.25,paste0("alpha=",5))
+```
+$$Y\sim Gamma(shape = 3, scale=2),P(2<Y<5)$$
+```{r}
+curve(dgamma(x,shape = 3,scale = 2),xlim = c(0,10),lwd = 2, col = "red",ylim=c(0,.2),xlab = "Y",ylab = "Gamma Density", main="Gamma, Shape=3, Scale=2")
+xgam = seq(2,5,length=1000)
+ygam = dgamma(xgam,shape = 3,scale = 2)
+polygon(c(2,xgam,5),c(0,ygam,0),col = "pink")
+gprob = pgamma(5,shape = 3,scale = 2)-pgamma(2,shape = 3,scale = 2)
+gprob=round(gprob,4)
+text(3.5,.05,paste("P(2<Y<5)=",gprob))
+```
+
+$$Y\sim Gamma(shape = 6, scale=3),P(1\leq Y\leq4)$$
+```{r}
+curve(dgamma(x,shape = 6,scale = 3),xlim = c(0,10),lwd = 2, col = "green",ylim=c(0,.05),xlab = "Y",ylab = "Gamma Density", main="Gamma, Shape=6, Scale=3")
+xgam = seq(1,4,length=1000)
+ygam = dgamma(xgam,shape = 6,scale = 3)
+polygon(c(1,xgam,4),c(0,ygam,0),col = "blue")
+gprob = pgamma(4,shape = 6,scale = 3)-pgamma(1,shape = 6,scale = 3)
+gprob=round(gprob,4)
+text(2.5,.01,paste("P(1<=Y<=4)=",gprob))
+```
+
+$$Y\sim Gamma(shape = 2, scale=4),P(3\leq Y<6)$$
+```{r}
+curve(dgamma(x,shape = 2,scale = 4),xlim = c(0,10),lwd = 2, col = "orange",ylim=c(0,.1),xlab = "Y",ylab = "Gamma Density", main="Gamma, Shape=2, Scale=4")
+xgam = seq(3,6,length=1000)
+ygam = dgamma(xgam,shape = 2,scale = 4)
+polygon(c(3,xgam,6),c(0,ygam,0),col = "purple")
+gprob = pgamma(6,shape = 2,scale = 4)-pgamma(3,shape = 2,scale = 4)
+gprob=round(gprob,4)
+text(4.5,.03,paste("P(3<=Y<6)=",gprob))
+```
+
 
 # Task 4
 
