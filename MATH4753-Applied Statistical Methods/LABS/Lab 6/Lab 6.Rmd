@@ -128,11 +128,158 @@ gprob=round(gprob,4)
 text(4.5,.03,paste("P(3<=Y<6)=",gprob))
 ```
 
-
 # Task 4
+$$Y\sim chisq(df=1)$$
+$$Y\sim chisq(df=2)$$
+$$Y\sim chisq(df=4)$$
+$$Y\sim chisq(df=20)$$
+```{r}
+layout(matrix(c(1:4),byrow = T,nrow = 2,ncol = 2))
+curve(dchisq(x,df = 1),xlim = c(0,10),lwd = 2,ylab = "Chisq Density", main="df=1")
+curve(dchisq(x,df = 2),xlim = c(0,10),lwd = 2,ylab = "Chisq Density", main="df=2")
+curve(dchisq(x,df = 4),xlim = c(0,10),lwd = 2,ylab = "Chisq Density", main="df=4")
+curve(dchisq(x,df = 20),xlim = c(0,10),lwd = 2,ylab = "Chisq Density", main="df=20")
+```
 
+$$Y\sim chisq(df=2),P(2\leq Y\leq 4)$$
+```{r}
+curve(dchisq(x,df = 2),xlim = c(0,5),xlab = "Y",ylab = "Chisq Density", main="Chisq, df=2",col = "violet", lwd = 2,ylim=c(0,.5))
+xchi = seq(2,4,length = 1000)
+ychi = dchisq(xchi,df = 2)
+polygon(c(2,xchi,4),c(0,ychi,0),col = "red")
+cprob = pchisq(4,df = 2)-pchisq(2,df = 2)
+cprob=round(cprob,4)
+text(3,.03,paste("P(2<=Y<=4)=",cprob))
+```
+
+$$Y\sim chisq(df=3),P(3\leq Y\leq 5)$$
+```{r}
+curve(dchisq(x,df = 3),xlim = c(0,6),xlab = "Y",ylab = "Chisq Density", main="Chisq, df=3",col = "pink", lwd = 2,ylim=c(0,.3))
+xchi = seq(3,5,length = 1000)
+ychi = dchisq(xchi,df = 3)
+polygon(c(3,xchi,5),c(0,ychi,0),col = "green")
+cprob = pchisq(5,df = 3)-pchisq(3,df = 3)
+cprob=round(cprob,4)
+text(4,.03,paste("P(3<=Y<=5)=",cprob))
+```
+
+$$Y\sim chisq(df=20),P(10< Y\leq 21)$$
+```{r}
+curve(dchisq(x,df = 20),xlim = c(0,22),xlab = "Y",ylab = "Chisq Density", main="Chisq, df=20",col = "blue", lwd = 2,ylim=c(0,.07))
+xchi = seq(10,21,length = 1000)
+ychi = dchisq(xchi,df = 20)
+polygon(c(10,xchi,21),c(0,ychi,0),col = "purple")
+cprob = pchisq(21,df = 20)-pchisq(10,df = 20)
+cprob=round(cprob,4)
+text(17,.03,paste("P(10<Y<=21)=",cprob))
+```
 # Task 5
+
+## Test out WEIBULL 
+
+```{r}
+curve(dweibull(x,shape = 1,scale = 1),xlim = c(0,10))
+pweibull(4,shape = 1,scale = 1) - pweibull(2,shape = 1,scale = 1)
+```
+
+## 4 plots
+$$Y\sim Weibull(shape=1,scale=1)$$
+$$Y\sim Weibull(shape=2,scale=2)$$
+$$Y\sim Weibull(shape=5,scale=5)$$
+$$Y\sim Weibull(shape=7,scale=7)$$
+```{r}
+layout(matrix(c(1:4),byrow = T,nrow = 2,ncol = 2))
+curve(dweibull(x,shape = 1,scale = 1),xlim = c(0,10),lwd = 2,ylab = "Weibull Density", main="Shape=1, Scale=1")
+curve(dweibull(x,shape = 2,scale = 2),xlim = c(0,10),lwd = 2,ylab = "Weibull Density", main="Shape=2, Scale=2")
+curve(dweibull(x,shape = 5,scale = 5),xlim = c(0,10),lwd = 2,ylab = "Weibull Density", main="Shape=5, Scale=5")
+curve(dweibull(x,shape = 7,scale = 7),xlim = c(0,10),lwd = 2,ylab = "Weibull Density", main="Shape=7, Scale=7")
+```
+
+## Probabilities
+
+$$Y\sim Weibull(shape=1,scale=2),P(1\leq Y\leq 3)$$
+```{r}
+curve(dweibull(x,shape = 1,scale = 2),xlim = c(0,5),xlab = "Y",ylab = "Weibull Density", main="Weibull, shape=1, scale=2",col = "black", lwd = 2,ylim=c(0,1))
+xbull = seq(1,3,length = 1000)
+ybull = dweibull(xbull,shape = 1,scale = 2)
+polygon(c(1,xbull,3),c(0,ybull,0),col = "red")
+wprob = pweibull(3,shape = 1,scale = 2)-pweibull(1,shape = 1,scale = 2)
+wprob=round(wprob,4)
+text(2,.1,paste("P(1<=Y<=3)=",wprob))
+```
+
+$$Y\sim Weibull(shape=6,scale=2),P(2\leq Y\leq 3)$$
+```{r}
+curve(dweibull(x,shape = 6,scale = 2),xlim = c(0,4),xlab = "Y",ylab = "Weibull Density", main="Weibull, shape=6, scale=2",col = "yellow", lwd = 2,ylim=c(0,1.2))
+xbull = seq(2,3,length = 1000)
+ybull = dweibull(xbull,shape = 6,scale = 2)
+polygon(c(2,xbull,3),c(0,ybull,0),col = "orange")
+wprob = pweibull(3,shape = 6,scale = 2)-pweibull(2,shape = 6,scale = 2)
+wprob=round(wprob,4)
+text(2,.1,paste("P(2<=Y<=3)=",wprob))
+```
+
+$$Y\sim Weibull(shape=35,scale=50),P(45\leq Y\leq 51)$$
+```{r}
+curve(dweibull(x,shape = 35,scale = 50),xlim = c(42,55),xlab = "Y",ylab = "Weibull Density", main="Weibull, shape=35, scale=50",col = "blue", lwd = 2,ylim=c(0,.3))
+xbull = seq(45,51,length = 1000)
+ybull = dweibull(xbull,shape = 35,scale = 50)
+polygon(c(45,xbull,51),c(0,ybull,0),col = "azure")
+wprob = pweibull(51,shape = 35,scale = 50)-pweibull(45,shape = 35,scale = 50)
+wprob=round(wprob,4)
+text(49,.05,paste("P(45<=Y<=51)=",wprob))
+```
 
 # Task 6
 
+$$Y\sim Beta(shape1=1,shape2=1)$$
+$$Y\sim Beta(shape1=2,shape2=2)$$
+$$Y\sim Beta(shape1=5,shape2=5)$$
+$$Y\sim Beta(shape1=7,shape2=7)$$
+```{r}
+layout(matrix(c(1:4),byrow = T,nrow = 2,ncol = 2))
+curve(dbeta(x,shape1 = 1,shape2 = 1),lwd = 2,ylab = "Beta Density", main="Shape1=1, Shape2=1")
+curve(dbeta(x,shape1 = 2,shape2 = 2),lwd = 2,ylab = "Beta Density", main="Shape1=2, Shape2=2")
+curve(dbeta(x,shape1 = 5,shape2 = 5),lwd = 2,ylab = "Beta Density", main="Shape1=5, Shape2=5")
+curve(dbeta(x,shape1 = 7,shape2 = 7),lwd = 2,ylab = "Beta Density", main="Shape1=7, Shape2=7")
+```
+
+$$Y\sim Beta(shape1=2,shape2=2),P(.5\leq Y\leq 1)$$
+```{r}
+curve(dbeta(x,shape1 = 2,shape2 = 2),xlab = "Y",ylab = "Beta Density", main="Beta, shape1=2, shape2=2",col = "slateblue", lwd = 2)
+xbeta = seq(.5,1,length = 1000)
+ybeta = dbeta(xbeta,shape1 = 2,shape2 = 2)
+polygon(c(.5,xbeta,1),c(0,ybeta,0),col = "violetred")
+bprob = pbeta(1,shape1 = 2,shape2 = 2) - pbeta(.5,shape1 = 2,shape2 = 2)
+bprob = round(bprob,4)
+text(.75,.5,paste("P(.5<=Y<=1)=",bprob))
+```
+
+$$Y\sim Beta(shape1=3,shape2=5),P(.6\leq Y\leq .8)$$
+```{r}
+curve(dbeta(x,shape1 = 3,shape2 = 5),xlab = "Y",ylab = "Beta Density", main="Beta, shape1=3, shape2=5",col = "plum", lwd = 2)
+xbeta = seq(.6,.8,length = 1000)
+ybeta = dbeta(xbeta,shape1 = 3,shape2 = 5)
+polygon(c(.6,xbeta,.8),c(0,ybeta,0),col = "darkturquoise")
+bprob = pbeta(.8,shape1 = 3,shape2 = 5) - pbeta(.6,shape1 = 3,shape2 = 5)
+bprob = round(bprob,4)
+text(.4,.5,paste("P(.6<=Y<=.8)=",bprob))
+```
+
+$$Y\sim Beta(shape1=10,shape2=3),P(.4\leq Y\leq .8)$$
+```{r}
+curve(dbeta(x,shape1 = 10,shape2 = 3),xlab = "Y",ylab = "Beta Density", main="Beta, shape1=10, shape2=3",col = "olivedrab", lwd = 2)
+xbeta = seq(.4,.8,length = 1000)
+ybeta = dbeta(xbeta,shape1 = 10,shape2 = 3)
+polygon(c(.4,xbeta,.8),c(0,ybeta,0),col = "maroon")
+bprob = pbeta(.8,shape1 = 10,shape2 = 3) - pbeta(.4,shape1 = 10,shape2 = 3)
+bprob = round(bprob,4)
+text(.4,1,paste("P(.4<=Y<=.8)=",bprob))
+```
+
 # Task 7
+
+```{r}
+#myncurve(20,5,6)
+```
+
