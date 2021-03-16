@@ -1,0 +1,128 @@
+---
+title: "Test"
+author: "Samuel Kelly"
+date: "3/12/2021"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+
+# WD
+```{r}
+getwd()
+```
+
+# read data
+
+```{r}
+mtbe.df<-read.csv("MTBE.csv")
+head(mtbe.df)
+```
+
+# create table
+
+```{r}
+tab <- table(mtbe.df$WellClass,mtbe.df$Aquifier)
+addmargins(tab)
+```
+
+# 1
+```{r}
+addmargins(tab)
+
+round(98/120,4)
+```
+
+# 2
+```{r}
+round(120/223,4)
+```
+# 3
+
+```{r}
+tab <- table(mtbe.df$WellClass,mtbe.df$MTBE.Detect)
+addmargins(tab)
+round(81/223,4)
+```
+
+
+# 4
+## drug testing
+
+```{r}
+positive = .91
+negative = .82
+falsePos = .18
+negative + falsePos
+prob.of.user = .05
+
+#What is the probability that someone who tests positive is actually a cannabis user
+#P(user|positive) = P(positive|user)P(user)  /  P(positive)
+(positive*prob.of.user)/((positive*prob.of.user)+(falsePos*(1-prob.of.user)))
+```
+
+
+# 5
+```{r}
+mpg.df <- read.csv("EPAGAS.csv")
+mpg <-mpg.df$MPG
+
+z = (mpg - mean(mpg))/sd(mpg)
+
+# mean of z is 0
+mean(z)
+# sd of z is 1
+sd(z)
+```
+
+# possible outliers
+
+```{r}
+#possible outlier
+#smallest Z is -2.892596
+z[abs(z)>=2 & abs(z) <=3]
+#mpg[abs(z)>=2 & abs(z) <=3]
+```
+
+# 6
+```{r}
+length(mpg[abs(z) < 3])/length(mpg)
+sum(mpg>mean(mpg)-3*sd(mpg) & mpg < mean(mpg)+3*sd(mpg))/length(mpg)
+```
+
+# 7
+
+```{r}
+mean(mpg)+sd(mpg)
+```
+
+
+# 8
+```{r}
+3/8
+```
+
+
+# 9
+0
+# 10
+
+F(4)-F(1)=(3/9)(4^3-1^3)
+```{r}
+(3/9)*(64-1)
+```
+
+
+
+# 11
+$$Y\sim N(\mu=12,\sigma=4)$$
+P(8<=Y<=13)
+```{r}
+pnorm(13,12,4)-pnorm(8,12,4)
+```
+
+# 12
+

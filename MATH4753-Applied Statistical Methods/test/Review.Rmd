@@ -1,7 +1,7 @@
 ---
 title: "Review"
 author: "Samuel Kelly"
-date: "3/11/2021"
+date: "`r Sys.Date()`"
 output: html_document
 ---
 
@@ -17,7 +17,7 @@ getwd()
 # read data
 
 ```{r}
-ddt <- read.csv("DDT.csv")
+mtbe.df<-read.csv("MTBE.csv")
 head(ddt)
 ```
 
@@ -25,18 +25,129 @@ head(ddt)
 
 ```{r}
 names(ddt)
-tab <- table(ddt$RIVER,ddt$SPECIES)
+tab <- table(mtbe.df$WellClass,mtbe.df$Aquifier)
 addmargins(tab)
 # OR
 with(ddt, table(RIVER,SPECIES))
 ```
 
-# and
-
+# 1
 ```{r}
 addmargins(tab)
 #P(FCM AND CAT)
-6/144
+round(98/120,4)
+```
+
+# 2
+```{r}
+round(120/223,4)
+```
+# 3
+
+```{r}
+tab <- table(mtbe.df$WellClass,mtbe.df$MTBE.Detect)
+addmargins(tab)
+round(81/223,4)
+```
+
+
+# 4
+## drug testing
+
+```{r}
+positive = .91
+negative = .82
+falsePos = .18
+negative + falsePos
+prob.of.user = .05
+
+#What is the probability that someone who tests positive is actually a cannabis user
+#P(user|positive) = P(positive|user)P(user)  /  P(positive)
+(positive*prob.of.user)/((positive*prob.of.user)+(falsePos*(1-prob.of.user)))
+```
+
+
+# 5
+```{r}
+mpg.df <- read.csv("EPAGAS.csv")
+mpg <-mpg.df$MPG
+
+z = (mpg - mean(mpg))/sd(mpg)
+
+# mean of z is 0
+mean(z)
+# sd of z is 1
+sd(z)
+```
+
+# possible outliers
+
+```{r}
+#actual outlier
+#z[abs(z)>3]
+#mpg[abs(z)>3]
+
+#possible outlier
+#smallest Z is -2.892596
+z[abs(z)>=2 & abs(z) <=3]
+#mpg[abs(z)>=2 & abs(z) <=3]
+
+# mainline
+#mpg[abs(z)<2 & abs(z) >=0]
+```
+
+# 6
+```{r}
+length(mpg[abs(z) < 3])/length(mpg)
+sum(mpg>mean(mpg)-3*sd(mpg) & mpg < mean(mpg)+3*sd(mpg))/length(mpg)
+```
+
+# 7
+
+```{r}
+mean(mpg)+sd(mpg)
+```
+
+
+# 8
+```{r}
+3/8
+```
+
+
+# 9
+0
+# 10
+
+```{r}
+
+```
+
+
+# 11
+$$Y\sim N(\mu=12,\sigma=4)$$
+P(8<=Y<=13)
+```{r}
+pnorm(13,12,4)-pnorm(8,12,4)
+```
+
+# 12
+
+# 1
+```{r}
+addmargins(tab)
+round(98/120,4)
+```
+
+
+
+
+# and
+# 1
+```{r}
+addmargins(tab)
+#P(FCM AND CAT)
+round(98/120,4)
 ```
 # or
 ```{r}
@@ -138,7 +249,7 @@ $$Density~is~f(y)=\frac{dF(y)}{dy}$$
 
 Properties of Density
 1.f(y)>=0
-2.$$\int_{\infty}^{\infty}f(y)dy=F(\infty)=1$$ This is the total area under the curve
+2.$$\int_{-\infty}^{\infty}f(y)dy=F(\infty)=1$$ This is the total area under the curve
 3.$$P(a<Y<b)=\int_{a}^{b}f(y)dy=F(b)-F(a), ~where ~a,~b ~are~ constants$$
 
 
