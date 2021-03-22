@@ -174,6 +174,31 @@ invisible(list(w=w,summary=summary(w),sdw=sd(w),fun="T")) # some output to use i
 }
 ```
 
+## T Statistic
+
+$$t=\frac{\bar{y}-\mu}{S/\sqrt{n}}$$
+$$\bar{y}~is~the~normally~distributed~random~variable$$
+$$\mu ~is~the~expected~value~of~\bar{y}$$
+$$S~is~the~variance$$
+$$n ~is~ the~ population$$
+
+## 4 plots
+
+```{r}
+myTsim2(n1 = 10,n2 = 10,mean1 = 5,mean2 = 10,sigma1 = 4,sigma2 = 4,iter = 1000,ymax = .45,x = 1.5)
+myTsim2(n1 = 20,n2 = 10,mean1 = 3,mean2 = 5,sigma1 = 10,sigma2 = 10,iter = 1000,ymax = .45,x = 1)
+myTsim2(n1 = 50,n2 = 50,mean1 = 5,mean2 = 10,sigma1 = 4,sigma2 = 4,iter = 10000,ymax = .45,x = 1)
+myTsim2(n1 = 80,n2 = 50,mean1 = 3,mean2 = 5,sigma1 = 10,sigma2 = 10,iter = 10000,ymax = .45,x = 1)
+```
+
+## Histogram of w
+
+```{r}
+T <- myTsim2(iter = 10000)
+hist(T$w,col = rainbow(15),xlab = "T Values")
+```
+
+
 # Task 6
 
 ## 2 population myFsim function
@@ -197,6 +222,26 @@ title=expression(F==frac(s[1]^2,s[2]^2)*frac(sigma[2]^2,sigma[1]^2)) #mathematic
 legend(x,y,c("Simulated","Theoretical"),col=c("Blue","Red"),lwd=4,lty=1:2,bty="n",title=title)# Legend #
 invisible(list(w=w,summary=summary(w),sd=sd(w),fun="F")) # some output to use if needed
 }
+```
+
+## F statistics
+
+The S is the sample variance, and the sigma is the population variance. Since this is a product of ratios, we do not need the variances to equal each other, otherwise we will simply get a 1 for one or both terms.
+
+## Parameter
+
+```{r}
+myFsim2(n1 = 10,n2 = 10,mean1 = 5,mean2 = 10,sigma1 = 5,sigma2 = 10,iter = 1000,x = 4)
+myFsim2(n1 = 20,n2 = 10,mean1 = 10,mean2 = 5,sigma1 = 2,sigma2 = 20,iter = 1000,x = 4)
+myFsim2(n1 = 50,n2 = 50,mean1 = 5,mean2 = 10,sigma1 = 1,sigma2 = 2,iter = 10000,x = 2.5,ymax = 1.5)
+myFsim2(n1 = 80,n2 = 50,mean1 = 3,mean2 = 5,sigma1 = 15,sigma2 = 5,iter = 10000,x = 2.5,ymax = 1.7)
+```
+
+## Histogram of w
+
+```{r}
+F <- myFsim2(iter = 10000)
+hist(F$w,col = rainbow(15),xlab = "F Values")
 ```
 
 # Task 7
@@ -227,3 +272,6 @@ Error: 'fire' is not an exported object from 'namespace:MATH4753Kelly'
 #' @source \url{https://www.routledge.com/Statistics-for-Engineering-and-the-Sciences-Sixth-Edition/Mendenhall-Sincich/p/book/9781498728850}
 "fire"
 ```
+
+## NAMESPACE
+When I remove fire.R from the R folder, the package builds just fine, but when I add this code above into that R folder in fire.R, it gives me the error above. I used  this code to get the right output, but I cannot use any functions that I have in my package, just the data that I just forced in. devtools::install(build_vignettes= TRUE, force = TRUE)
