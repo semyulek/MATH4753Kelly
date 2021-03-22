@@ -12,3 +12,5 @@ LazyData: true
 URL: https://github.com/semyulek/MATH4753Kelly
 BugReports: https://github.com/semyulek/MATH4753Kelly/issues
 RoxygenNote: 7.1.1
+Depends: 
+    R (>= 2.10)
