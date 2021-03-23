@@ -94,7 +94,7 @@ invisible(list(w=w,summary=summary(w),sd=sd(w),fun="T")) # some output to use if
 myTsim(n1 = 10,iter = 1000,mean1 = 10,sigma1 = 4,ymax = .4)
 myTsim(n1 = 20,iter = 1000,mean1 = 10,sigma1 = 4,ymax = .4)
 myTsim(n1 = 100,iter = 1000,mean1 = 10,sigma1 = 4,ymax = .4,x = -3.5)
-myTsim(n1 = 200,iter = 1000,mean1 = 10,sigma1 = 4,ymax = .4)
+myTsim(n1 = 200,iter = 1000,mean1 = 10,sigma1 = 4,ymax = .4,x = 1.5)
 ```
 
 ## Histogram of w
@@ -103,8 +103,6 @@ myTsim(n1 = 200,iter = 1000,mean1 = 10,sigma1 = 4,ymax = .4)
 T <- myTsim(n1 = 10,iter = 1500,mean1 = 20,sigma1 = 10,ymax = .4)
 hist(T$w,xlab = "T Value",col = rainbow(15))
 ```
-
-############################################################# RECORD
 
 # Task 4
 
