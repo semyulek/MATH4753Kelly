@@ -349,7 +349,6 @@ div.tocify {
 </div>
 <div id="marks-ms-4.2---pg-138" class="section level1">
 <h1>7. [3 marks] MS 4.2 - pg 138</h1>
-<p><span class="math display">\[2\frac{\mu g}{g}\]</span> Random sample of 4 homes</p>
 <div id="a.-2" class="section level2">
 <h2>a.</h2>
 <p>P(0)+P(1)+P(2)+P(3)+P(4)=1</p>
@@ -371,6 +370,53 @@ div.tocify {
 </div>
 <div id="marks-ms-4.12---pg-143" class="section level1">
 <h1>8. [4 marks] MS 4.12 - pg 143</h1>
+<div id="properties" class="section level2">
+<h2>Properties</h2>
+<p><span class="math display">\[0\leq P(y)\leq1\\\sum_{all ~y}P(y)=1\]</span></p>
+</div>
+<div id="a.-3" class="section level2">
+<h2>a.</h2>
+<div id="condition-1" class="section level3">
+<h3>Condition 1</h3>
+<p>All probabilities lie in the specified range.</p>
+</div>
+<div id="condition-2" class="section level3">
+<h3>Condition 2</h3>
+<pre class="r"><code>.17+.1+.11+.11+.1+.1+.07+.05+.03+.02+.02+.02+.02+.02+.01+.01+.01+.01+.01+.005+.005</code></pre>
+<pre><code>## [1] 1</code></pre>
+</div>
+</div>
+<div id="b.-3" class="section level2">
+<h2>b.</h2>
+<p><span class="math display">\[P(Y\geq 10)\]</span></p>
+<pre class="r"><code>.02+.02+.02+.02+.01+.01+.01+.01+.01+.005+.005</code></pre>
+<pre><code>## [1] 0.14</code></pre>
+</div>
+<div id="c.-3" class="section level2">
+<h2>c.</h2>
+<div id="mean" class="section level3">
+<h3>MEAN</h3>
+<pre class="r"><code>mu&lt;-0*.17+1*.1+2*.11+3*.11+4*.1+5*.1+6*.07+7*.05+8*.03+9*.02+10*.02+11*.02+12*.02+13*.02+14*.01+15*.01+16*.01+17*.01+18*.01+19*.005+20*.005
+mu</code></pre>
+<pre><code>## [1] 4.655</code></pre>
+</div>
+<div id="variance" class="section level3">
+<h3>VARIANCE</h3>
+<pre class="r"><code>variance &lt;- (((0-mu)^2)*.17+((1-mu)^2)*.1+((2-mu)^2)*.11+((3-mu)^2)*.11+((4-mu)^2)*.1
++((5-mu)^2)*.1+((6-mu)^2)*.07+((7-mu)^2)*.05+((8-mu)^2)*.03+((9-mu)^2)*.02
++((10-mu)^2)*.02+((11-mu)^2)*.02+((12-mu)^2)*.02+((13-mu)^2)*.02+((14-mu)^2)*.01
++((15-mu)^2)*.01+((16-mu)^2)*.01+((17-mu)^2)*.01+((18-mu)^2)*.01+((19-mu)^2)*.005
++((20-mu)^2)*.005)
+variance</code></pre>
+<pre><code>## [1] 19.85597</code></pre>
+</div>
+</div>
+<div id="d." class="section level2">
+<h2>d.</h2>
+<pre class="r"><code>sigma &lt;- sqrt(variance)
+noquote(paste0(&quot;(&quot;,round((mu-2*sigma),4),&quot;,&quot;,round((mu+2*sigma),4),&quot;) will contain at least 75% of the probability.&quot;))</code></pre>
+<pre><code>## [1] (-4.257,13.567) will contain at least 75% of the probability.</code></pre>
+</div>
 </div>
 <div id="marks-ms-4.34---pg-154" class="section level1">
 <h1>9. [4 marks] MS 4.34 - pg 154</h1>

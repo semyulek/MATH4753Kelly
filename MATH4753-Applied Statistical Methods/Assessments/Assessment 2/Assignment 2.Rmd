@@ -88,9 +88,6 @@ You have k sets of elements, n1 for the first set, n2 for the second, nk for the
 
 # 7. [3 marks] MS 4.2 - pg 138
 
-$$2\frac{\mu g}{g}$$
-Random sample of 4 homes
-
 ## a.
 
 P(0)+P(1)+P(2)+P(3)+P(4)=1
@@ -115,8 +112,58 @@ P(0)+P(1)
 .09+.3
 ```
 
-
 # 8. [4 marks] MS 4.12 - pg 143
+
+## Properties
+
+$$0\leq P(y)\leq1\\\sum_{all ~y}P(y)=1$$
+
+## a.
+
+### Condition 1
+
+All probabilities lie in the specified range.
+
+### Condition 2
+
+```{r}
+.17+.1+.11+.11+.1+.1+.07+.05+.03+.02+.02+.02+.02+.02+.01+.01+.01+.01+.01+.005+.005
+```
+
+## b.
+
+$$P(Y\geq 10)$$
+
+```{r}
+.02+.02+.02+.02+.01+.01+.01+.01+.01+.005+.005
+```
+
+## c.
+
+### MEAN
+
+```{r}
+mu<-0*.17+1*.1+2*.11+3*.11+4*.1+5*.1+6*.07+7*.05+8*.03+9*.02+10*.02+11*.02+12*.02+13*.02+14*.01+15*.01+16*.01+17*.01+18*.01+19*.005+20*.005
+mu
+```
+
+### VARIANCE
+
+```{r}
+variance <- (((0-mu)^2)*.17+((1-mu)^2)*.1+((2-mu)^2)*.11+((3-mu)^2)*.11+((4-mu)^2)*.1
++((5-mu)^2)*.1+((6-mu)^2)*.07+((7-mu)^2)*.05+((8-mu)^2)*.03+((9-mu)^2)*.02
++((10-mu)^2)*.02+((11-mu)^2)*.02+((12-mu)^2)*.02+((13-mu)^2)*.02+((14-mu)^2)*.01
++((15-mu)^2)*.01+((16-mu)^2)*.01+((17-mu)^2)*.01+((18-mu)^2)*.01+((19-mu)^2)*.005
++((20-mu)^2)*.005)
+variance
+```
+
+## d.
+
+```{r}
+sigma <- sqrt(variance)
+noquote(paste0("(",round((mu-2*sigma),4),",",round((mu+2*sigma),4),") will contain at least 75% of the probability."))
+```
 
 # 9. [4 marks] MS 4.34 - pg 154
 
