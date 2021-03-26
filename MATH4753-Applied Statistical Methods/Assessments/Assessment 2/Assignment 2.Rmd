@@ -19,17 +19,76 @@ knitr::opts_chunk$set(echo = TRUE)
 
 # 1. [3 marks] MS 3.36 pg 105-106
 
+## a. 
+
+```{r}
+noquote(paste0((1-.9212)*100,"% failure rate."))
+```
+
+## b.
+
+```{r}
+noquote(paste0((1-.7455)*100,"% failure rate."))
+```
+
+## c.
+
+It's more likely that the novice will be the one who fails to identify the match as they have a 25.45% chance of failing while the experts have a 7.88% chance of failing.
+
 # 2. [3 marks] MS 3.52 - pg 111
+
+Population of 1000, 100 illegally using testosterone, 50 users test positive, 9 nonusers test positive.
+
+## a.
+
+```{r}
+50/100
+```
+
+## b.
+
+```{r}
+(900-9)/900
+```
+
+## c.
+
+P(USER|POSITIVE) = P(POSITIVE|USER)P(USER)/P(POSITIVE)
+```{r}
+noquote(paste0(round(((50/100)*(100/1000))/(59/1000)*100,4),"% chance that an athlete is really doping."))
+```
 
 # 3. [1 marks] MS Theorem 3.1 - pg 113 Prove the theorem in your own words.
 
+## Theorem
+
+You have k sets of elements, n1 for the first set, n2 for the second, nk for the kth set. Suppose you want to form a sample of k elements by taking one element from each of the k sets. The number of different samples is n1 * n2 ... nk.
+
+## Proof
+
+
+
 # 4. [1 marks] MS Theorem 3.2 - pg 114 Prove the theorem in your own words.
+
+## Theorem
+
+## Proof
 
 # 5. [1 marks] MS Theorem 3.3 - pg 116 Prove the theorem in your own words.
 
+## Theorem
+
+## Proof
+
 # 6. [1 marks] MS Theorem 3.4 - pg 117 Prove the theorem in your own words.
 
+## Theorem
+
+## Proof
+
 # 7. [3 marks] MS 4.2 - pg 138
+
+
 
 # 8. [4 marks] MS 4.12 - pg 143
 
