@@ -225,13 +225,53 @@ pbinom(1,50,.1)
 
 # 11. [2 marks] MS 4.54 - pg 162
 
+## a.
 
+$${y-1 \choose 1-1}*.18^1*.82^1$$
+
+## b.
+
+```{r}
+noquote(paste0("Roughly ",round(1/.18,4), " or 6 consumers until one gives an answer of other."))
+```
+
+## c.
+
+```{r}
+dnbinom(x = 1-1,size = 1,prob = .18)
+```
+
+## d.
+
+```{r}
+1-pnbinom(q = 1,size = 1,prob = .18)
+```
 
 # 12. [2 marks] MS 4.66 - pg 168
 
+## a.
+
+N=209,n=10,r=8
+
+```{r}
+10*(8/209)
+```
+
+So .3828 is the amount of facilities we expect to be able to treat hazardous waste on-site. So in a random sample of 10 out of 209, we have close to 0 chance of even getting 1 in our sample.
+
+## b.
+
+```{r}
+dhyper(x = 4,m = 8,n = 201,k = 10)
+```
+
 # 13. [3 marks] MS 4.78 - pg 173
 
+
+
 # 14. [4 marks] MS 5.2 - pg 191
+
+$$f(y)=c(2-y)  \text{ if 0 } \leq{y} \leq 1 \\ 0  ~~~~~\text{ elsewhere}$$
 
 # 15. [3 marks] MS 5.10 - pg 196
 

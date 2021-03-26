@@ -469,15 +469,47 @@ noquote(paste0(&quot;(&quot;,round((mu-2*sigma),4),&quot;,&quot;,round((mu+2*sig
 </div>
 <div id="marks-ms-4.54---pg-162" class="section level1">
 <h1>11. [2 marks] MS 4.54 - pg 162</h1>
+<div id="a.-6" class="section level2">
+<h2>a.</h2>
+<p><span class="math display">\[{y-1 \choose 1-1}*.18^1*.82^1\]</span></p>
+</div>
+<div id="b.-6" class="section level2">
+<h2>b.</h2>
+<pre class="r"><code>noquote(paste0(&quot;Roughly &quot;,round(1/.18,4), &quot; or 6 consumers until one gives an answer of other.&quot;))</code></pre>
+<pre><code>## [1] Roughly 5.5556 or 6 consumers until one gives an answer of other.</code></pre>
+</div>
+<div id="c.-5" class="section level2">
+<h2>c.</h2>
+<pre class="r"><code>dnbinom(x = 1-1,size = 1,prob = .18)</code></pre>
+<pre><code>## [1] 0.18</code></pre>
+</div>
+<div id="d.-2" class="section level2">
+<h2>d.</h2>
+<pre class="r"><code>1-pnbinom(q = 1,size = 1,prob = .18)</code></pre>
+<pre><code>## [1] 0.6724</code></pre>
+</div>
 </div>
 <div id="marks-ms-4.66---pg-168" class="section level1">
 <h1>12. [2 marks] MS 4.66 - pg 168</h1>
+<div id="a.-7" class="section level2">
+<h2>a.</h2>
+<p>N=209,n=10,r=8</p>
+<pre class="r"><code>10*(8/209)</code></pre>
+<pre><code>## [1] 0.3827751</code></pre>
+<p>So .3828 is the amount of facilities we expect to be able to treat hazardous waste on-site. So in a random sample of 10 out of 209, we have close to 0 chance of even getting 1 in our sample.</p>
+</div>
+<div id="b.-7" class="section level2">
+<h2>b.</h2>
+<pre class="r"><code>dhyper(x = 4,m = 8,n = 201,k = 10)</code></pre>
+<pre><code>## [1] 0.0001688459</code></pre>
+</div>
 </div>
 <div id="marks-ms-4.78---pg-173" class="section level1">
 <h1>13. [3 marks] MS 4.78 - pg 173</h1>
 </div>
 <div id="marks-ms-5.2---pg-191" class="section level1">
 <h1>14. [4 marks] MS 5.2 - pg 191</h1>
+<p><span class="math display">\[f(y)=c(2-y)  \text{ if 0 } \leq{y} \leq 1 \\ 0  ~~~~~\text{ elsewhere}\]</span></p>
 </div>
 <div id="marks-ms-5.10---pg-196" class="section level1">
 <h1>15. [3 marks] MS 5.10 - pg 196</h1>
