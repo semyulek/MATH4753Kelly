@@ -211,9 +211,21 @@ Out of our sample of 25 PhD graduates, roughly 17.5 of them are foreign students
 
 # 10. [2 marks] MS 4.46 - pg 158
 
+## a.
 
+```{r}
+dmultinom(x = c(5,5,5,5,5,5,5,5,5,5),prob = c(.1,.1,.1,.1,.1,.1,.1,.1,.1,.1))
+```
+
+## b.
+
+```{r}
+pbinom(1,50,.1)
+```
 
 # 11. [2 marks] MS 4.54 - pg 162
+
+
 
 # 12. [2 marks] MS 4.66 - pg 168
 
