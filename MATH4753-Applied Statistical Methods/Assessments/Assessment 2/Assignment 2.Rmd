@@ -165,9 +165,53 @@ sigma <- sqrt(variance)
 noquote(paste0("(",round((mu-2*sigma),4),",",round((mu+2*sigma),4),") will contain at least 75% of the probability."))
 ```
 
+By this, if we take the interval (0,13) then we would see how much of the probability actually lies there.
+
+```{r}
+.17+.1+.11+.11+.1+.1+.07+.05+.03+.02+.02+.02+.02+.02
+```
+
 # 9. [4 marks] MS 4.34 - pg 154
 
+n=25, foreign = .7, local = .3
+
+## a.
+
+```{r}
+dbinom(10,25,.7)
+```
+
+## b.
+
+```{r}
+pbinom(5,25,.7)
+```
+
+## c.
+
+### MEAN
+
+n*p
+
+```{r}
+.7*25
+```
+
+### Standard Deviavtion
+
+$$\sqrt {n * p * q}$$
+
+```{r}
+sqrt(25*.7*.3)
+```
+
+## d.
+
+Out of our sample of 25 PhD graduates, roughly 17.5 of them are foreign students, and our deviation of 2.29 tells us that our data is close to the mean, so our standard deviation backs up our results.
+
 # 10. [2 marks] MS 4.46 - pg 158
+
+
 
 # 11. [2 marks] MS 4.54 - pg 162
 
