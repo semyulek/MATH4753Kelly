@@ -273,6 +273,9 @@ div.tocify {
 </div>
 
 
+<div id="section" class="section level1">
+<h1>12/17</h1>
+</div>
 <div id="marks-ms-3.36-pg-105-106" class="section level1">
 <h1>1. [3 marks] MS 3.36 pg 105-106</h1>
 <div id="a." class="section level2">
@@ -506,19 +509,108 @@ noquote(paste0(&quot;(&quot;,round((mu-2*sigma),4),&quot;,&quot;,round((mu+2*sig
 </div>
 <div id="marks-ms-4.78---pg-173" class="section level1">
 <h1>13. [3 marks] MS 4.78 - pg 173</h1>
+<div id="a.-8" class="section level2">
+<h2>a.</h2>
+<p><span class="math display">\[\mu=\sigma^2=.03\]</span></p>
+</div>
+<div id="b.-8" class="section level2">
+<h2>b.</h2>
+<p>We assume that the events are independent of each other, which they are since one boat sinking and another boat sinking at different place and time within 3 years have no correlation to each other. Also since these are rare events we use a Poisson distribution which allows us to use the mean and variance as the same value.</p>
+</div>
+<div id="c.-6" class="section level2">
+<h2>c.</h2>
+<pre class="r"><code>noquote(paste0(round(dpois(0,.03),4),&quot; or 97.04% chance of 0 casualties in a 3 year period.&quot;))</code></pre>
+<pre><code>## [1] 0.9704 or 97.04% chance of 0 casualties in a 3 year period.</code></pre>
+</div>
 </div>
 <div id="marks-ms-5.2---pg-191" class="section level1">
 <h1>14. [4 marks] MS 5.2 - pg 191</h1>
 <p><span class="math display">\[f(y)=c(2-y)  \text{ if 0 } \leq{y} \leq 1 \\ 0  ~~~~~\text{ elsewhere}\]</span></p>
+<div id="a.-9" class="section level2">
+<h2>a.</h2>
+<p>Since the integration of f(y) spans -infinity to infinity, but only 0 to 1 has an expression worth integrating.</p>
+<p><span class="math display">\[\int_{0}^{1}c(2-y)dy=1\]</span> <span class="math display">\[c\int_{0}^{1}(2-y)dy=1\]</span> <span class="math display">\[c(\int_{0}^{1}2dy-\int_{0}^{1}ydy)=1\]</span> <span class="math display">\[c(2y|_{0}^{1}-\frac{y^2}{2}|_{0}^{1})=1\]</span> <span class="math display">\[c(2(1)-\frac{1^2}{2})=1\]</span> <span class="math display">\[c(\frac{3}{2})=1\]</span> <span class="math display">\[c=\frac{3}{2}\]</span></p>
+<p><span class="math display">\[f(y)=\frac{3}{2}(2-y)  \text{ if 0 } \leq{y} \leq 1 \\ 0  ~~~~~\text{ elsewhere}\]</span></p>
+</div>
+<div id="b.-9" class="section level2">
+<h2>b.</h2>
+<p><span class="math display">\[F(y)=\int_{-\infty}^yf(t)dt\]</span> <span class="math display">\[F(y)=\int_{0}^y\frac{3}{2}(2-t)dt\]</span> <span class="math display">\[F(y)=\frac{3}{2}\int_{0}^y(2-t)dt\]</span> <span class="math display">\[F(y)=(3t-\frac{3t^2}{4})|_0^y\]</span> <span class="math display">\[F(y)=(3y-\frac{3y^2}{4})\]</span> <span class="math display">\[F(y)=0 ~~~\text{ -}\infty &lt; y &lt;0,\\(3y-\frac{3y^2}{4})~~~~~0\leq y\leq1, \\0~~~~1&lt;y\]</span></p>
+</div>
+<div id="c.-7" class="section level2">
+<h2>c.</h2>
+<p>F(.4)</p>
+<pre class="r"><code>(3*.4)-((3*.4^2)/4)</code></pre>
+<pre><code>## [1] 1.08</code></pre>
+</div>
+<div id="d.-3" class="section level2">
+<h2>d.</h2>
+<p>F(.6) - F(.1)</p>
+<pre class="r"><code>(3*.6)-((3*.6^2)/4) - (3*.1)-((3*.1^2)/4)</code></pre>
+<pre><code>## [1] 1.2225</code></pre>
+</div>
 </div>
 <div id="marks-ms-5.10---pg-196" class="section level1">
 <h1>15. [3 marks] MS 5.10 - pg 196</h1>
+<div id="a.-10" class="section level2">
+<h2>a.</h2>
+<p><span class="math display">\[\mu=E(Y)=\int_{-5}^5yf(y)dy=\frac{3}{500}\int_{-5}^5(25y-y^3)dy=\frac{3}{500}(\frac{25y^2}2-\frac{y^4}{4})|_{-5}^5\]</span></p>
+<pre class="r"><code>noquote(paste0(&quot;Mean is &quot;,(3/500)*((((25*5^2)/2)-(5^4)/4)-(((25*(-5)^2)/2)-((-5)^4)/4)),&quot;.&quot;))</code></pre>
+<pre><code>## [1] Mean is 0.</code></pre>
+<p><span class="math display">\[E(Y^2)=\int_{-5}^5y^2f(y)dy=\frac{3}{500}\int_{-5}^5(25y^2-y^4)dy=\frac{3}{500}(\frac{25y^3}3-\frac{y^5}{5})|_{-5}^5\]</span></p>
+<pre class="r"><code>(3/500)*((((25*5^3)/3)-(5^5)/5)-(((25*(-5)^3)/3)-((-5)^5)/5))</code></pre>
+<pre><code>## [1] 5</code></pre>
+<p><span class="math display">\[\sigma^2=E(Y^2)-\mu^2=5-0^2=5\]</span></p>
+</div>
+<div id="b.-10" class="section level2">
+<h2>b.</h2>
+<div id="mean-2" class="section level3">
+<h3>MEAN</h3>
+<pre class="r"><code>0*(1/60)</code></pre>
+<pre><code>## [1] 0</code></pre>
+</div>
+<div id="variance-1" class="section level3">
+<h3>VARIANCE</h3>
+<pre class="r"><code>5*(1/3600)</code></pre>
+<pre><code>## [1] 0.001388889</code></pre>
+</div>
+</div>
+<div id="c.-8" class="section level2">
+<h2>c.</h2>
+<div id="mean-3" class="section level3">
+<h3>MEAN</h3>
+<pre class="r"><code>0*60</code></pre>
+<pre><code>## [1] 0</code></pre>
+</div>
+<div id="variance-2" class="section level3">
+<h3>VARIANCE</h3>
+<pre class="r"><code>3600*5</code></pre>
+<pre><code>## [1] 18000</code></pre>
+</div>
+</div>
 </div>
 <div id="marks-ms-5.36---pg-205" class="section level1">
 <h1>16. [3 marks] MS 5.36 - pg 205</h1>
+<p>mean 50, sd 3.2</p>
+<div id="a.-11" class="section level2">
+<h2>a.</h2>
+<pre class="r"><code>1-pnorm(45,50,3.2)</code></pre>
+<pre><code>## [1] 0.9409149</code></pre>
+</div>
+<div id="b.-11" class="section level2">
+<h2>b.</h2>
+<pre class="r"><code>pnorm(55,50,3.2)</code></pre>
+<pre><code>## [1] 0.9409149</code></pre>
+</div>
+<div id="c.-9" class="section level2">
+<h2>c.</h2>
+<pre class="r"><code>pnorm(52,50,3.2)-pnorm(51,50,3.2)</code></pre>
+<pre><code>## [1] 0.1113448</code></pre>
+</div>
 </div>
 <div id="marks-ms-5.38--pg-205" class="section level1">
 <h1>17. [5 marks] MS 5.38- pg 205</h1>
+<p>35 mph</p>
+<pre class="r"><code>crash &lt;- read.csv(&quot;CRASH.csv&quot;)</code></pre>
 </div>
 
 
