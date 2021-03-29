@@ -113,3 +113,129 @@ var(w)
 ```
 
 ## Task 3
+
+## CLTU
+
+```{r}
+mycltu=function(n,iter,a=0,b=10){
+## r-random sample from the uniform
+y=runif(n*iter,a,b)
+## Place these numbers into a matrix
+## The columns will correspond to the iteration and the rows will equal the sample size n
+data=matrix(y,nr=n,nc=iter,byrow=TRUE)
+## apply the function mean to the columns (2) of the matrix
+## these are placed in a vector w
+w=apply(data,2,mean) #### the 2 refers that we are applying the function to the columns
+## We will make a histogram of the values in w
+## How high should we make y axis?
+## All the values used to make a histogram are placed in param (nothing is plotted yet)
+param=hist(w,plot=FALSE)
+## Since the histogram will be a density plot we will find the max density
+
+ymax=max(param$density)
+## To be on the safe side we will add 10% more to this
+ymax=1.1*ymax
+## Now we can make the histogram
+hist(w,freq=FALSE,  ylim=c(0,ymax), main=paste("Histogram of sample mean",
+"\n", "sample size= ",n,sep=""),xlab="Sample mean")
+## add a density curve made from the sample distribution
+lines(density(w),col="Blue",lwd=3) # add a density plot
+## Add a theoretical normal curve 
+curve(dnorm(x,mean=(a+b)/2,sd=(b-a)/(sqrt(12*n))),add=TRUE,col="Red",lty=2,lwd=3) # add a theoretical curve
+## Add the density from which the samples were taken
+curve(dunif(x,a,b),add=TRUE,lwd=4)
+
+}
+w = mycltu(n = 20,iter = 100000)
+```
+
+The 2 refers that we are applying the function "mean" to the columns of the data set.
+Since runif take a sample size of n * iter then 20 * 100000 = 2,000,000 terms.
+The standard deviation is different from the variance, specifically the standard devication is the square root of the variance.
+$$\sigma^2=\frac{(b-a)^2}{12},\sigma=\frac{b-a}{\sqrt{12}},~or~V(\bar{Y})=\frac{1}{n}V(Y),~so~\sigma=\frac{b-a}{\sqrt{12n}}$$
+
+## Iterations
+
+```{r}
+mycltu(n = 1,iter = 10000,a = 0,b = 10)
+mycltu(n = 2,iter = 10000,a = 0,b = 10)
+mycltu(n = 3,iter = 10000,a = 0,b = 10)
+mycltu(n = 5,iter = 10000,a = 0,b = 10)
+mycltu(n = 10,iter = 10000,a = 0,b = 10)
+mycltu(n = 30,iter = 10000,a = 0,b = 10)
+```
+
+The dunif curve that's a straight line is the mean from 0 to 10, and it does not change from changes in sample size as it remains at .1 through all the histograms. We can see the distribution change it's shape from uniform to looking like a normal distribution when the sample size increases.
+
+# Task 4
+
+## mycltb
+
+```{r}
+mycltb=function(n,iter,p=0.5,...){
+
+## r-random sample from the Binomial
+y=rbinom(n*iter,size=n,prob=p)
+## Place these numbers into a matrix
+## The columns will correspond to the iteration and the rows will equal the sample size n
+data=matrix(y,nr=n,nc=iter,byrow=TRUE)
+## apply the function mean to the columns (2) of the matrix
+## these are placed in a vector w
+w=apply(data,2,mean)
+## We will make a histogram of the values in w
+## How high should we make y axis?
+## All the values used to make a histogram are placed in param (nothing is plotted yet)
+param=hist(w,plot=FALSE)
+## Since the histogram will be a density plot we will find the max density
+
+ymax=max(param$density)
+## To be on the safe side we will add 10% more to this
+ymax=1.1*ymax
+
+## Now we can make the histogram
+## freq=FALSE means take a density
+hist(w,freq=FALSE,  ylim=c(0,ymax),
+main=paste("Histogram of sample mean","\n", "sample size= ",n,sep=""),
+xlab="Sample mean",...)
+## add a density curve made from the sample distribution
+#lines(density(w),col="Blue",lwd=3) # add a density plot
+## Add a theoretical normal curve 
+curve(dnorm(x,mean=n*p,sd=sqrt(p*(1-p))),add=TRUE,col="Red",lty=2,lwd=3) 
+
+}
+mycltb(n=5,iter=10000,p=0.5)
+```
+
+## Iterations of p = .3
+
+```{r}
+mycltb(n = 4,iter = 10000,p = .3)
+mycltb(n = 5,iter = 10000,p = .3)
+mycltb(n = 10,iter = 10000,p = .3)
+mycltb(n = 20,iter = 10000,p = .3)
+```
+
+## Iterations of p = .7
+
+```{r}
+mycltb(n = 4,iter = 10000,p = .7)
+mycltb(n = 5,iter = 10000,p = .7)
+mycltb(n = 10,iter = 10000,p = .7)
+mycltb(n = 20,iter = 10000,p = .7)
+```
+
+## Iterations of p = .5
+
+```{r}
+mycltb(n = 4,iter = 10000,p = .5)
+mycltb(n = 5,iter = 10000,p = .5)
+mycltb(n = 10,iter = 10000,p = .5)
+mycltb(n = 20,iter = 10000,p = .5)
+```
+
+## Conclusion
+
+We can see that at sample size of n = 5, the distribution looks normal, even though we are dealing with an approximation of the binomial distribution, and we can see through the red curve in each of the graphs the binomial distribution. So we can see that the CLT holds.
+
+# Task 5
+
