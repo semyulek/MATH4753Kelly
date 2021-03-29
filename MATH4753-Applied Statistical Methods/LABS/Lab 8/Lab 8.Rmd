@@ -1,0 +1,115 @@
+---
+title: "Lab 8"
+author: "Samuel Kelly"
+date: "`r Sys.Date()`"
+output: 
+  html_document:
+    toc: yes
+    toc_float: yes
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+# Task 1
+
+```{r}
+getwd()
+```
+
+# Task 2
+
+## Make our own sample using runif, which creates a uniform distribution
+
+```{r}
+sample.size = 10
+lower = 0
+upper = 5
+sample = runif(sample.size,lower,upper)
+sample
+```
+## Mean
+
+```{r}
+mu = (lower+upper)/2
+```
+
+## Variance
+
+```{r}
+v = ((upper-lower)^2)/12
+```
+
+## Mean and Varince
+
+```{r}
+noquote(paste0("The mean is: ", mu, ", and the variance is: ", round(v,4), "."))
+```
+
+## Sample mean and variance
+
+```{r}
+xbar = mean(sample)
+ssq = var(sample)
+noquote(paste0("The mean is: ", round(xbar,4), ", and the variance is: ", round(ssq,4), "."))
+```
+
+We can see that the sample mean is close to the population mean, and the sample variance is a bit further out from the population variance.
+
+$$\text{The sum of T is the sum of all }Y_{i} \text{: E(T)=} E(nY_{i})=n\frac{a+b}{2},\text{ where a is lower, and b is upper.}$$
+$$\text{The mean of } \bar{Y}:E(\bar{Y})=E(Y_{i})=\mu=\frac{a+b}{2}$$
+$$\text{The variance of sum T is: }V(T)=V(Y_{i})=n\sigma^2=n\frac{(b-a)^2}{12}.$$
+$$\text{The variance of }\bar{Y}:V(\bar{Y})=\frac{1}{n}*\sigma^2=\frac{(b-a)^2}{12n}.$$
+
+## CLT
+
+```{r}
+myclt=function(n,iter){
+y=runif(n*iter,0,5) # A: Creates a uniform distribution of size n*iter that is stored in y.
+data=matrix(y,nr=n,nc=iter,byrow=TRUE) #B: Stores the values of the uniform distribution in a matrix with n rows and iter columns, where each column represents a sample of size n, and this is stored in the variable data.
+sm=apply(data,2,sum) #C: We apply the sum function on our data set data, and we specify 1 if we want rows, and 2 for columns, so we are summing each column and storing it into sm.
+hist(sm)
+sm
+}
+w=myclt(n=10,iter=10000) #D: We call the myclt function with parameters that will output a histogram of our sums of columns, and stores the results in w.
+```
+
+## Mean of w
+
+```{r}
+mean(w)
+```
+
+## Variance
+
+```{r}
+var(w)
+```
+
+## Sample means
+
+```{r}
+myclt.mean=function(n,iter){
+y=runif(n*iter,0,5) # A: Creates a uniform distribution of size n*iter that is stored in y.
+data=matrix(y,nr=n,nc=iter,byrow=TRUE) #B: Stores the values of the uniform distribution in a matrix with n rows and iter columns, where each column represents a sample of size n, and this is stored in the variable data.
+m=apply(data,2,mean) #C: We apply the mean function on our data set data, and we specify 1 if we want rows, and 2 for columns, so we mean each column and storing it into m.
+hist(m)
+m
+}
+w=myclt.mean(n=10,iter=10000) #D: We call the myclt function with parameters that will output a histogram of our means of columns, and stores the results in w.
+```
+
+## Mean of w
+
+```{r}
+mean(w)
+```
+
+## Variance of w
+
+```{r}
+var(w)
+```
+
+## Task 3
