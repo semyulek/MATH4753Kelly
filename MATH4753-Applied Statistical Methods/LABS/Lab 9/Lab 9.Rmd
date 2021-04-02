@@ -134,7 +134,7 @@ list(ci=ci,fun=fun,x=x)# Some output to use if necessary
 }
 ```
 
-## Plot
+## Plot mean
 
 ```{r}
 set.seed(39)
@@ -160,3 +160,103 @@ sam = rbeta(20,shape1 = 3,shape2 = 4)
 myboot(x = sam,iter = 10000,alpha = .05,xlab="mean")
 ```
 
+## Population mean
+
+## Does the interval contain the population value?
+
+## Plot variance
+
+```{r}
+set.seed(39)
+sam=rnorm(25,mean = 25,sd = 10)
+myboot2(x = sam,iter = 10000,alpha = .2,fun = var,xlab="variance")
+```
+
+```{r}
+set.seed(30)
+sam=rchisq(20,df = 3)
+myboot2(x = sam,iter = 10000,alpha = .2,fun = var,xlab="variance")
+```
+
+```{r}
+set.seed(40)
+sam=rgamma(30,shape = 2,scale = 3)
+myboot2(x = sam,iter = 10000,alpha = .2,fun = var,xlab="variance")
+```
+
+```{r}
+set.seed(10)
+sam=rbeta(20,shape1 = 3,shape2 = 4)
+myboot2(x = sam,iter = 10000,alpha = .2,fun = var,xlab="variance")
+```
+
+# Task 4
+
+# Task 5
+
+## mean(x)/medium(x)
+
+```{r}
+mean.medium = function(x){
+  mean(x)/median(x)
+}
+```
+
+
+## 95% interval
+
+```{r}
+set.seed(39)
+sam=rnorm(25,mean = 25,sd = 10)
+myboot2(x = sam,iter = 10000,alpha = .05,fun = "mean.medium",xlab="mean(x)/medium(x)")
+```
+
+```{r}
+set.seed(30)
+sam=rchisq(20,df = 3)
+myboot2(x = sam,iter = 10000,alpha = .05,fun = "mean.medium",xlab="mean(x)/medium(x)")
+```
+
+```{r}
+set.seed(40)
+sam=rgamma(30,shape = 2,scale = 3)
+myboot2(x = sam,iter = 10000,alpha = .05,fun = "mean.medium",xlab="mean(x)/medium(x)")
+```
+
+```{r}
+set.seed(10)
+sam=rbeta(20,shape1 = 3,shape2 = 4)
+myboot2(x = sam,iter = 10000,alpha = .05,fun = "mean.medium",xlab="mean(x)/medium(x)")
+```
+
+## 70% interval
+
+```{r}
+set.seed(39)
+sam=rnorm(25,mean = 25,sd = 10)
+myboot2(x = sam,iter = 10000,alpha = .3,fun = "mean.medium",xlab="mean(x)/medium(x)")
+```
+
+```{r}
+set.seed(30)
+sam=rchisq(20,df = 3)
+myboot2(x = sam,iter = 10000,alpha = .3,fun = "mean.medium",xlab="mean(x)/medium(x)")
+```
+
+```{r}
+set.seed(40)
+sam=rgamma(30,shape = 2,scale = 3)
+myboot2(x = sam,iter = 10000,alpha = .3,fun = "mean.medium",xlab="mean(x)/medium(x)")
+```
+
+```{r}
+set.seed(10)
+sam=rbeta(20,shape1 = 3,shape2 = 4)
+myboot2(x = sam,iter = 10000,alpha = .3,fun = "mean.medium",xlab="mean(x)/medium(x)")
+```
+
+# Task 6
+
+# Task 7
+
+# Task 8
