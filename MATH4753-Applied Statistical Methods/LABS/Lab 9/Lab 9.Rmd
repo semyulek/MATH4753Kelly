@@ -93,6 +93,14 @@ unique(sample(sam,20,replace=FALSE) )
 
 Each one of these outputs are outputting the same exact sample, where all 20 numbers are unique, so no replacement occurs. The only real difference here is that the numbers are outputted in a different order in each case.
 
+## 21
+
+```{r}
+#sample(sam,21,replace=FALSE) 
+```
+
+The sample size we are looking at is of size 20, and the above code is of size 21, and we cannot pull 21 things out of a hat with 20 items.
+
 # Task 3
 
 ```{r}
@@ -124,5 +132,31 @@ text(ci[2],0,paste(round(ci[2],2),")",sep=""),col="Red",cex=cx)
 text(pte,max(para$density)/2,round(pte,2),cex=cx)
 list(ci=ci,fun=fun,x=x)# Some output to use if necessary
 }
+```
+
+## Plot
+
+```{r}
+set.seed(39)
+sam = rnorm(25,mean = 25,sd = 10)
+myboot(x = sam,alpha = .05,iter = 10000,xlab = "mean")
+```
+
+```{r}
+set.seed(30)
+sam = rchisq(20,df = 3)
+myboot(x = sam,iter = 10000,alpha = .05,xlab="mean")
+```
+
+```{r}
+set.seed(40)
+sam = rgamma(30,shape = 2,scale = 3)
+myboot(x = sam,iter = 10000,alpha = .05,xlab="mean")
+```
+
+```{r}
+set.seed(10)
+sam = rbeta(20,shape1 = 3,shape2 = 4)
+myboot(x = sam,iter = 10000,alpha = .05,xlab="mean")
 ```
 
