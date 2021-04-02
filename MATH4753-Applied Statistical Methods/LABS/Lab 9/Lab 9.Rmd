@@ -260,3 +260,8 @@ myboot2(x = sam,iter = 10000,alpha = .3,fun = "mean.medium",xlab="mean(x)/medium
 # Task 7
 
 # Task 8
+
+```{r}
+MATH4753Kelly::myboot2(x = MATH4753Kelly::fd$DISTANCE,iter = 10000,fun = "mean",alpha = .05,xlab="mean")
+```
+
