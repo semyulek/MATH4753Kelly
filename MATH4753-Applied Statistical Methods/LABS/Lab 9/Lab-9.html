@@ -279,6 +279,116 @@ div.tocify {
 </div>
 <div id="task-2" class="section level1">
 <h1>Task 2</h1>
+<div id="line-a-line-b" class="section level2">
+<h2>Line A, Line B</h2>
+<pre class="r"><code>myboot&lt;-function(iter=10000,x,fun=&quot;mean&quot;,alpha=0.05,...){  
+
+#Notice where the ... is repeated in the code
+n=length(x)   #sample size
+
+#Now sample with replacement
+y=sample(x,n*iter,replace=TRUE) #A
+
+# Make a matrix with all the resampled values
+rs.mat=matrix(y,nr=n,nc=iter,byrow=TRUE)
+xstat=apply(rs.mat,2,fun) 
+# xstat is a vector and will have iter values in it 
+ci=quantile(xstat,c(alpha/2,1-alpha/2)) #B
+# Nice way to form a confidence interval
+# A histogram follows
+# The object para will contain the parameters used to make the histogram
+para=hist(xstat,freq=FALSE,las=1,main=&quot;Histogram of Bootstrap sample statistics&quot;,...)
+
+#mat will be a matrix that contains the data, this is done so that I can use apply()
+mat=matrix(x,nr=length(x),nc=1,byrow=TRUE)
+
+#pte is the point estimate
+#This uses whatever fun is
+pte=apply(mat,2,fun)
+abline(v=pte,lwd=3,col=&quot;Black&quot;)# Vertical line
+segments(ci[1],0,ci[2],0,lwd=4)      #Make the segment for the ci
+text(ci[1],0,paste(&quot;(&quot;,round(ci[1],2),sep=&quot;&quot;),col=&quot;Red&quot;,cex=3)
+text(ci[2],0,paste(round(ci[2],2),&quot;)&quot;,sep=&quot;&quot;),col=&quot;Red&quot;,cex=3)
+
+# plot the point estimate 1/2 way up the density
+text(pte,max(para$density)/2,round(pte,2),cex=3)
+
+return(list(ci=ci,fun=fun,x=x))# Some output to use if necessary
+}</code></pre>
+<p>Line A assigns y the sample on a population of size n*iter, and we sample from the population with replacement that way we can get a distribution.</p>
+<p>Line B assigns ci the quantiles of our y sample that had been turned into a matrix with some function applied to it. The quantile probabilities are alpha/2 and 1-alpha/2, so our theta lies somewhere in that interval.</p>
+</div>
+<div id="why-is-replacement-necessary" class="section level2">
+<h2>Why is replacement necessary?</h2>
+<p>To get a distribution we need to replace the values, since we will need to continually resample the data to due analysis on the data as well, like if there are errors in estimates of certain functions. The replacement keeps the size of the population we are sampling from consistent.</p>
+</div>
+<div id="unique-replace" class="section level2">
+<h2>Unique replace</h2>
+<pre class="r"><code>set.seed(35) # This will give everyone the same sample
+sam=round(rnorm(20,mean=10,sd=4),2)
+unique(sample(sam,20,replace=TRUE) ) # repeat this line 5Xs</code></pre>
+<pre><code>##  [1] 12.05 23.35 11.40 14.26  8.43 13.46  2.37  8.62 17.35 11.64 14.76  9.82</code></pre>
+<pre class="r"><code>unique(sample(sam,20,replace=TRUE) )</code></pre>
+<pre><code>##  [1]  8.43 14.26  7.75  2.89 12.05  2.37  9.82 13.46  6.93 10.53 23.35 11.78
+## [13]  8.62 11.40  9.86</code></pre>
+<pre class="r"><code>unique(sample(sam,20,replace=TRUE) )</code></pre>
+<pre><code>##  [1]  9.86 10.53 14.26 17.35 12.05  6.93 23.35  8.62 11.64 16.69 11.40</code></pre>
+<pre class="r"><code>unique(sample(sam,20,replace=TRUE) )</code></pre>
+<pre><code>##  [1] 11.64  9.82  8.62 17.35 11.78 11.40  7.75  2.37 23.35  2.89</code></pre>
+<pre class="r"><code>unique(sample(sam,20,replace=TRUE) )</code></pre>
+<pre><code>##  [1]  7.75 14.76 16.69 17.35 14.26  8.62 11.40  8.43 12.05  2.89 10.53 23.35</code></pre>
+<p>The function unique only lets us output unique values, so repeats are thrown out. This data that we have outputted tells us how many times a repeat was thrown out, since there should normally be an output of 20, but all of these unique functions are outputting a number less than 20.</p>
+</div>
+<div id="unique-wo-replace" class="section level2">
+<h2>Unique w/o replace</h2>
+<pre class="r"><code>unique(sample(sam,20,replace=FALSE) )</code></pre>
+<pre><code>##  [1] 14.26 13.46  7.75 16.69  9.82  8.43 12.05 14.76 17.35  2.89 10.53  8.00
+## [13]  8.62  2.37  6.93  9.86 11.78 11.64 11.40 23.35</code></pre>
+<pre class="r"><code>unique(sample(sam,20,replace=FALSE) )</code></pre>
+<pre><code>##  [1] 14.26 13.46 17.35  8.62  7.75  8.00 10.53  2.89 16.69  9.82  2.37  6.93
+## [13]  8.43  9.86 12.05 11.40 11.64 14.76 23.35 11.78</code></pre>
+<pre class="r"><code>unique(sample(sam,20,replace=FALSE) )</code></pre>
+<pre><code>##  [1] 23.35  7.75 16.69  6.93 11.78 17.35 10.53 13.46  2.37 11.64  2.89 14.76
+## [13] 11.40 12.05  9.86  8.00 14.26  8.62  9.82  8.43</code></pre>
+<pre class="r"><code>unique(sample(sam,20,replace=FALSE) )</code></pre>
+<pre><code>##  [1]  9.86 12.05 11.64  8.00 16.69  7.75  8.62 23.35 14.26 13.46  9.82  8.43
+## [13]  2.37 11.78  2.89 10.53 14.76  6.93 17.35 11.40</code></pre>
+<pre class="r"><code>unique(sample(sam,20,replace=FALSE) )</code></pre>
+<pre><code>##  [1] 14.26  6.93  9.86  9.82  8.00  7.75 11.40 13.46  8.43 17.35  8.62 11.78
+## [13] 12.05  2.37 16.69 11.64  2.89 10.53 23.35 14.76</code></pre>
+<p>Each one of these outputs are outputting the same exact sample, where all 20 numbers are unique, so no replacement occurs. The only real difference here is that the numbers are outputted in a different order in each case.</p>
+</div>
+</div>
+<div id="task-3" class="section level1">
+<h1>Task 3</h1>
+<pre class="r"><code>myboot2&lt;-function(iter=10000,x,fun=&quot;mean&quot;,alpha=0.05,cx=1.5,...){  #Notice where the ... is repeated in the code
+n=length(x)   #sample size
+
+y=sample(x,n*iter,replace=TRUE)
+rs.mat=matrix(y,nr=n,nc=iter,byrow=TRUE)
+xstat=apply(rs.mat,2,fun) # xstat is a vector and will have iter values in it 
+ci=quantile(xstat,c(alpha/2,1-alpha/2))# Nice way to form a confidence interval
+# A histogram follows
+# The object para will contain the parameters used to make the histogram
+para=hist(xstat,freq=FALSE,las=1,
+main=paste(&quot;Histogram of Bootstrap sample statistics&quot;,&quot;\n&quot;,&quot;alpha=&quot;,alpha,&quot; iter=&quot;,iter,sep=&quot;&quot;),
+...)
+
+#mat will be a matrix that contains the data, this is done so that I can use apply()
+mat=matrix(x,nr=length(x),nc=1,byrow=TRUE)
+
+#pte is the point estimate
+#This uses whatever fun is
+pte=apply(mat,2,fun)
+abline(v=pte,lwd=3,col=&quot;Black&quot;)# Vertical line
+segments(ci[1],0,ci[2],0,lwd=4)      #Make the segment for the ci
+text(ci[1],0,paste(&quot;(&quot;,round(ci[1],2),sep=&quot;&quot;),col=&quot;Red&quot;,cex=cx)
+text(ci[2],0,paste(round(ci[2],2),&quot;)&quot;,sep=&quot;&quot;),col=&quot;Red&quot;,cex=cx)
+
+# plot the point estimate 1/2 way up the density
+text(pte,max(para$density)/2,round(pte,2),cex=cx)
+list(ci=ci,fun=fun,x=x)# Some output to use if necessary
+}</code></pre>
 </div>
 
 
