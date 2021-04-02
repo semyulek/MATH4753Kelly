@@ -388,6 +388,8 @@ myboot(x = sam,alpha = .05,iter = 10000,xlab = &quot;mean&quot;)</code></pre>
 ##  [9] 33.37002 34.61627 26.04230 24.40206 32.03731 17.45030 19.54464 20.45388
 ## [17] 23.83394 30.47815 25.79640 22.67536 10.27711 26.77487 37.10044 21.59809
 ## [25] 22.50625</code></pre>
+<pre class="r"><code>mean(sam)</code></pre>
+<pre><code>## [1] 23.88103</code></pre>
 <pre class="r"><code>set.seed(30)
 sam = rchisq(20,df = 3)
 myboot(x = sam,iter = 10000,alpha = .05,xlab=&quot;mean&quot;)</code></pre>
@@ -403,6 +405,8 @@ myboot(x = sam,iter = 10000,alpha = .05,xlab=&quot;mean&quot;)</code></pre>
 ##  [1] 0.2531032 1.6194423 5.3578133 7.3134789 0.1194100 5.0344239 5.8189991
 ##  [8] 4.3689673 1.6690814 3.2533362 0.9050305 2.5730754 1.9610329 2.9675027
 ## [15] 1.5722396 1.6959031 1.9261106 3.9198072 6.0919801 0.4082447</code></pre>
+<pre class="r"><code>mean(sam)</code></pre>
+<pre><code>## [1] 2.941449</code></pre>
 <pre class="r"><code>set.seed(40)
 sam = rgamma(30,shape = 2,scale = 3)
 myboot(x = sam,iter = 10000,alpha = .05,xlab=&quot;mean&quot;)</code></pre>
@@ -420,6 +424,8 @@ myboot(x = sam,iter = 10000,alpha = .05,xlab=&quot;mean&quot;)</code></pre>
 ## [13]  7.4419824  2.2828464  5.9877646 12.9354365  1.4996069  1.7478044
 ## [19] 12.3674161  8.4093535 10.2053201  8.0243948  6.5178039  7.9118846
 ## [25]  1.6924333 10.7938057  5.7341134 15.1533278  3.8545321  8.1861897</code></pre>
+<pre class="r"><code>mean(sam)</code></pre>
+<pre><code>## [1] 6.495501</code></pre>
 <pre class="r"><code>set.seed(10)
 sam = rbeta(20,shape1 = 3,shape2 = 4)
 myboot(x = sam,iter = 10000,alpha = .05,xlab=&quot;mean&quot;)</code></pre>
@@ -435,12 +441,12 @@ myboot(x = sam,iter = 10000,alpha = .05,xlab=&quot;mean&quot;)</code></pre>
 ##  [1] 0.4325491 0.3899825 0.1714409 0.3068918 0.4920588 0.5129946 0.1974398
 ##  [8] 0.3533577 0.1343329 0.3751208 0.6722481 0.5946901 0.3788602 0.6467397
 ## [15] 0.5914547 0.4476104 0.2407876 0.3877302 0.5336340 0.3074436</code></pre>
+<pre class="r"><code>mean(sam)</code></pre>
+<pre><code>## [1] 0.4083684</code></pre>
 </div>
 <div id="population-mean" class="section level2">
 <h2>Population mean</h2>
-</div>
-<div id="does-the-interval-contain-the-population-value" class="section level2">
-<h2>Does the interval contain the population value?</h2>
+<p>In each case we see that the population mean is very close to the mean that was estimated. All of these estimates are in the confidence interval we are looking at.</p>
 </div>
 <div id="plot-variance" class="section level2">
 <h2>Plot variance</h2>
@@ -471,7 +477,7 @@ myboot2(x = sam,iter = 10000,alpha = .2,fun = var,xlab=&quot;variance&quot;)</co
 ##     else stopifnot(is.atomic(y))
 ##     .Call(C_cov, x, y, na.method, FALSE)
 ## }
-## &lt;bytecode: 0x000000001bcbb560&gt;
+## &lt;bytecode: 0x000000001c8d99f8&gt;
 ## &lt;environment: namespace:stats&gt;
 ## 
 ## $x
@@ -506,7 +512,7 @@ myboot2(x = sam,iter = 10000,alpha = .2,fun = var,xlab=&quot;variance&quot;)</co
 ##     else stopifnot(is.atomic(y))
 ##     .Call(C_cov, x, y, na.method, FALSE)
 ## }
-## &lt;bytecode: 0x000000001bcbb560&gt;
+## &lt;bytecode: 0x000000001c8d99f8&gt;
 ## &lt;environment: namespace:stats&gt;
 ## 
 ## $x
@@ -540,7 +546,7 @@ myboot2(x = sam,iter = 10000,alpha = .2,fun = var,xlab=&quot;variance&quot;)</co
 ##     else stopifnot(is.atomic(y))
 ##     .Call(C_cov, x, y, na.method, FALSE)
 ## }
-## &lt;bytecode: 0x000000001bcbb560&gt;
+## &lt;bytecode: 0x000000001c8d99f8&gt;
 ## &lt;environment: namespace:stats&gt;
 ## 
 ## $x
@@ -576,7 +582,7 @@ myboot2(x = sam,iter = 10000,alpha = .2,fun = var,xlab=&quot;variance&quot;)</co
 ##     else stopifnot(is.atomic(y))
 ##     .Call(C_cov, x, y, na.method, FALSE)
 ## }
-## &lt;bytecode: 0x000000001bcbb560&gt;
+## &lt;bytecode: 0x000000001c8d99f8&gt;
 ## &lt;environment: namespace:stats&gt;
 ## 
 ## $x
