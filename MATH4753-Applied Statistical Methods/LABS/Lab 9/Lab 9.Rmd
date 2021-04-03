@@ -312,7 +312,66 @@ myboot2(x = sam,iter = 10000,alpha = .3,fun = "mean.medium",xlab="mean(x)/medium
 
 # Task 6
 
+## rsignrank
+
+```{r}
+sam = rsignrank(n = 20,nn = 20)
+myboot2(x = sam,iter = 10000,alpha = .2,fun = "mean",xlab="mean")
+myboot2(x = sam,iter = 10000,alpha = .2,fun = "var",xlab="variance")
+```
+
+## rexp
+
+```{r}
+sam = rexp(n = 20,rate = 5)
+myboot2(x = sam,iter = 10000,alpha = .2,fun = "mean",xlab="mean")
+myboot2(x = sam,iter = 10000,alpha = .2,fun = "var",xlab="variance")
+```
+
+## rt
+
+```{r}
+sam = rt(n = 20,df = 19)
+myboot2(x = sam,iter = 10000,alpha = .2,fun = "mean",xlab="mean")
+myboot2(x = sam,iter = 10000,alpha = .2,fun = "var",xlab="variance")
+```
+
+## rgeom
+
+```{r}
+sam = rgeom(n = 20,prob = .238)
+myboot2(x = sam,iter = 10000,alpha = .2,fun = "mean",xlab="mean")
+myboot2(x = sam,iter = 10000,alpha = .2,fun = "var",xlab="variance")
+```
+
+
 # Task 7
+
+```{r}
+set.seed(68)
+sam = rnorm(20,mean = 10,sd = 4)
+myboot2(x = sam,iter = 10000,alpha = .05,fun = "IQR",xlab="IQR")
+myboot2(x = sam,iter = 10000,alpha = .05,fun = "quantile",xlab="quantile")
+```
+
+
+## 95% CI 
+
+```{r}
+set.seed(68)
+sam = rnorm(20,mean = 10,sd = 4)
+sample.sd = sd(sam)/sqrt(20)
+qnorm(1-.05/2,mean = 10,sd = sample.sd)
+qnorm(.05/2,mean = 10,sd = sample.sd)
+```
+
+## 95% CI estimate
+
+```{r}
+set.seed(68)
+a=myboot2(x = sam,iter = 10000,fun = "mean",xlab="mean",alpha = .05)
+a$ci
+```
 
 # Task 8
 
