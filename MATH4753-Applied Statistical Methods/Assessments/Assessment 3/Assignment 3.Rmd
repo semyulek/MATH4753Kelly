@@ -1,0 +1,82 @@
+---
+title: "Assignment 3"
+author: "Samuel Kelly"
+date: '`r format(Sys.Date(),format="%A, %B %d, %Y")`'
+output: 
+  html_document:
+    df_print: paged
+    fig_caption: true
+    highlights: pygments
+    number_sections: no
+    theme: spacelab
+    toc: yes
+    toc_float: yes
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+# 1. MS 5.54 - pg 215
+
+
+
+# 2. MS 5.56 - pg 215
+
+
+
+# 3. MS 5.60 - pg 216
+
+
+
+# 4. MS 5.74 - pg 219
+
+
+
+# 5. MS 5.84 - pg 223
+
+
+
+# 6. MS 5.114 - pg 232
+
+
+
+# 7. MS 6.2 - pg 239
+
+
+
+# 8. MS 6.4 - pg 240
+
+
+
+# 9. MS 6.12 - pg 244
+
+
+
+# 10. MS 6.14 - pg 245
+
+
+
+# 11. MS 6.51 - pg 253
+
+
+
+# 12. MS 6.74 - pg 269
+
+
+
+# 13. MS 6.90 - pg 273
+
+
+
+# 14. MS 7.108 - pg 362
+
+
+
+# 15. MS 7.114 - pg 364
+
+
+
+# 16. MS 7.116 - pg 364
+
+
