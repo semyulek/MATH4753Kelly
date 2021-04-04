@@ -19,7 +19,28 @@ knitr::opts_chunk$set(echo = TRUE)
 
 # 1. MS 5.54 - pg 215
 
+## a.
 
+rate is 1/mean
+mean is in seconds, convert into minutes by 1/60
+
+```{r}
+1-pexp(q = 2,rate = 1/(95*1/60))
+```
+
+## b.
+
+```{r}
+phish <- read.csv("PHISHING.csv")
+head(phish)
+mu <- mean(phish$INTTIME)
+v <-mu^2
+mu
+sqrt(v)
+sd(phish$INTTIME)
+```
+
+We can see that the mean of the phishing data set is approximately 5/10ths off from our mean of 95 that we started with, and the sd is exactly the same as the mean when we square it to get the variance, and sqrt it to get the standard deviation. However, performing the sd() function on the data set gets us 91.54 which is a little less than our expected value of standard deviation for an exponential. The data does follow an exponential distribution.
 
 # 2. MS 5.56 - pg 215
 

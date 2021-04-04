@@ -251,6 +251,31 @@ div.tocify {
 
 <div id="ms-5.54---pg-215" class="section level1">
 <h1>1. MS 5.54 - pg 215</h1>
+<div id="a." class="section level2">
+<h2>a.</h2>
+<p>rate is 1/mean mean is in seconds, convert into minutes by 1/60</p>
+<pre class="r"><code>1-pexp(q = 2,rate = 1/(95*1/60))</code></pre>
+<pre><code>## [1] 0.2827597</code></pre>
+</div>
+<div id="b." class="section level2">
+<h2>b.</h2>
+<pre class="r"><code>phish &lt;- read.csv(&quot;PHISHING.csv&quot;)
+head(phish)</code></pre>
+<div data-pagedtable="false">
+<script data-pagedtable-source type="application/json">
+{"columns":[{"label":[""],"name":["_rn_"],"type":[""],"align":["left"]},{"label":["INTTIME"],"name":[1],"type":["dbl"],"align":["right"]}],"data":[{"1":"66.23744","_rn_":"1"},{"1":"37.12957","_rn_":"2"},{"1":"10.71588","_rn_":"3"},{"1":"77.12511","_rn_":"4"},{"1":"119.12893","_rn_":"5"},{"1":"77.63748","_rn_":"6"}],"options":{"columns":{"min":{},"max":[10]},"rows":{"min":[10],"max":[10]},"pages":{}}}
+  </script>
+</div>
+<pre class="r"><code>mu &lt;- mean(phish$INTTIME)
+v &lt;-mu^2
+mu</code></pre>
+<pre><code>## [1] 95.52377</code></pre>
+<pre class="r"><code>sqrt(v)</code></pre>
+<pre><code>## [1] 95.52377</code></pre>
+<pre class="r"><code>sd(phish$INTTIME)</code></pre>
+<pre><code>## [1] 91.53912</code></pre>
+<p>We can see that the mean of the phishing data set is approximately 5/10ths off from our mean of 95 that we started with, and the sd is exactly the same as the mean when we square it to get the variance, and sqrt it to get the standard deviation. However, performing the sd() function on the data set gets us 91.54 which is a little less than our expected value of standard deviation for an exponential. The data does follow an exponential distribution.</p>
+</div>
 </div>
 <div id="ms-5.56---pg-215" class="section level1">
 <h1>2. MS 5.56 - pg 215</h1>
