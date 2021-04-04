@@ -44,11 +44,56 @@ We can see that the mean of the phishing data set is approximately 5/10ths off f
 
 # 2. MS 5.56 - pg 215
 
+## a.
 
+$$\mu=\alpha*\beta$$
+
+```{r}
+3*.07
+```
+
+$$\sigma^2=\alpha*\beta^2$$
+
+```{r}
+3*.07^2
+```
+
+## b.
+
+```{r}
+c((3*.07)-3*(3*.07^2),(3*.07)+3*(3*.07^2))
+```
+
+We should not expect a value of .6 since the interval of .1659,.2541 is 3 sd away from the mean, so we should have at least 8/9 of the data by the Chebyshev rule. The max flood level distribution for the four year period observed should be around .2541 million cubic feet per second.
 
 # 3. MS 5.60 - pg 216
 
+## a.
 
+$$\mu=\alpha*\beta$$
+
+```{r}
+2*2
+1*4
+```
+
+## b.
+
+$$\sigma^2=\alpha*\beta^2$$
+
+```{r}
+2*2^2
+1*4^2
+```
+
+## c.
+
+```{r}
+pgamma(1,shape = 2,scale = 2)
+pgamma(1,shape = 1,scale = 4)
+```
+
+Since formula B gives us a probability of .2212 which is greater than formula A's .0902, then formula B is more likely to give us a reaction in less than 1 minute.
 
 # 4. MS 5.74 - pg 219
 
