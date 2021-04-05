@@ -332,10 +332,44 @@ $$\frac{1}{x-0},0\leq y\leq x$$
 
 # 11. MS 6.51 - pg 253
 
-
+$$\text{If two random variables X and Y are independent then Cov(X,Y)=0}$$
+The Cov(X,Y)=E(XY)-E(X)E(Y)=0, so if Cov(X,Y)=0 then we need to show that X and Y dependent. So E(XY)!=E(X)E(Y).
+So marginals of X are 4/12,4/12,4/12 and Y is 4/12,4/12,4/12.
+P(-1,-1)=P(-1)P(-1), 1/12=4/12*4/12=8/12
+P(-1,0)=P(-1)P(0), 2/12=4/12 * 4/12=8/12
+Since P(X,Y)!=P(X)P(Y) then cov=0 does not imply that X and Y are independent.
 
 # 12. MS 6.74 - pg 269
 
+## a.
+
+```{r}
+(3+1)/2
+```
+
+The mean of a uniform distribution is (a+b)/2, so (min+max)/2, so the average is 2 parts per million of uranium.
+
+## b.
+
+```{r}
+((3-1)^2)/(12*60)
+```
+
+## c. 
+
+By CLT with n large enough, we will see a Normal distribution.
+
+## d.
+
+```{r}
+pnorm(2.5,mean = 2,sd = sqrt(((3-1)^2)/(12*60)))-pnorm(1.5,mean = 2,sd = sqrt(((3-1)^2)/(12*60)))
+```
+
+## e.
+
+```{r}
+pnorm(2.2,mean = 2,sd = sqrt(((3-1)^2)/(12*60)))
+```
 
 
 # 13. MS 6.90 - pg 273

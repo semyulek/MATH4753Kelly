@@ -509,9 +509,35 @@ gran</code></pre>
 </div>
 <div id="ms-6.51---pg-253" class="section level1">
 <h1>11. MS 6.51 - pg 253</h1>
+<p><span class="math display">\[\text{If two random variables X and Y are independent then Cov(X,Y)=0}\]</span> The Cov(X,Y)=E(XY)-E(X)E(Y)=0, so if Cov(X,Y)=0 then we need to show that X and Y dependent. So E(XY)!=E(X)E(Y). So marginals of X are 4/12,4/12,4/12 and Y is 4/12,4/12,4/12. P(-1,-1)=P(-1)P(-1), 1/12=4/12<em>4/12=8/12 P(-1,0)=P(-1)P(0), 2/12=4/12 </em> 4/12=8/12 Since P(X,Y)!=P(X)P(Y) then cov=0 does not imply that X and Y are independent.</p>
 </div>
 <div id="ms-6.74---pg-269" class="section level1">
 <h1>12. MS 6.74 - pg 269</h1>
+<div id="a.-10" class="section level2">
+<h2>a.</h2>
+<pre class="r"><code>(3+1)/2</code></pre>
+<pre><code>## [1] 2</code></pre>
+<p>The mean of a uniform distribution is (a+b)/2, so (min+max)/2, so the average is 2 parts per million of uranium.</p>
+</div>
+<div id="b.-10" class="section level2">
+<h2>b.</h2>
+<pre class="r"><code>((3-1)^2)/(12*60)</code></pre>
+<pre><code>## [1] 0.005555556</code></pre>
+</div>
+<div id="c.-7" class="section level2">
+<h2>c. </h2>
+<p>By CLT with n large enough, we will see a Normal distribution.</p>
+</div>
+<div id="d.-3" class="section level2">
+<h2>d.</h2>
+<pre class="r"><code>pnorm(2.5,mean = 2,sd = sqrt(((3-1)^2)/(12*60)))-pnorm(1.5,mean = 2,sd = sqrt(((3-1)^2)/(12*60)))</code></pre>
+<pre><code>## [1] 1</code></pre>
+</div>
+<div id="e." class="section level2">
+<h2>e.</h2>
+<pre class="r"><code>pnorm(2.2,mean = 2,sd = sqrt(((3-1)^2)/(12*60)))</code></pre>
+<pre><code>## [1] 0.9963548</code></pre>
+</div>
 </div>
 <div id="ms-6.90---pg-273" class="section level1">
 <h1>13. MS 6.90 - pg 273</h1>
