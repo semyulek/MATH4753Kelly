@@ -324,12 +324,99 @@ mu</code></pre>
 </div>
 <div id="ms-5.74---pg-219" class="section level1">
 <h1>4. MS 5.74 - pg 219</h1>
+<div id="a.-3" class="section level2">
+<h2>a.</h2>
+<p>a=a, b=b^(1/a)</p>
+<pre class="r"><code>pweibull(2,2,4^(1/2))</code></pre>
+<pre><code>## [1] 0.6321206</code></pre>
+</div>
+<div id="b.-3" class="section level2">
+<h2>b.</h2>
+<div id="mean" class="section level3">
+<h3>MEAN</h3>
+<pre class="r"><code>4^(1/2)</code></pre>
+<pre><code>## [1] 2</code></pre>
+<pre class="r"><code>((2+1)/2)</code></pre>
+<pre><code>## [1] 1.5</code></pre>
+<pre class="r"><code>2*.88623 # gamma value of 1.5 from appendix</code></pre>
+<pre><code>## [1] 1.77246</code></pre>
+</div>
+<div id="sd" class="section level3">
+<h3>sd</h3>
+<pre class="r"><code>4^(2/2)</code></pre>
+<pre><code>## [1] 4</code></pre>
+<pre class="r"><code>(2+2)/2 #2</code></pre>
+<pre><code>## [1] 2</code></pre>
+<pre class="r"><code>(2+1)/2 #1.5</code></pre>
+<pre><code>## [1] 1.5</code></pre>
+<pre class="r"><code>sqrt(4*(1-.88623^2))</code></pre>
+<pre><code>## [1] 0.926491</code></pre>
+</div>
+</div>
+<div id="c.-1" class="section level2">
+<h2>c.</h2>
+<pre class="r"><code>c(1.77246-2*.926491,1.77246+2*.926491)</code></pre>
+<pre><code>## [1] -0.080522  3.625442</code></pre>
+</div>
+<div id="d." class="section level2">
+<h2>d.</h2>
+<p>It is unlikely that the washing machine will last 6 years, as we need to look at values 5 sd away from the mean to get a value of 6 years.</p>
+</div>
 </div>
 <div id="ms-5.84---pg-223" class="section level1">
 <h1>5. MS 5.84 - pg 223</h1>
+<div id="a.-4" class="section level2">
+<h2>a.</h2>
+<pre class="r"><code>2/(2+9)</code></pre>
+<pre><code>## [1] 0.1818182</code></pre>
+<pre class="r"><code>(2*9)/(((2+9)^(2))*(2+9+1))</code></pre>
+<pre><code>## [1] 0.01239669</code></pre>
+</div>
+<div id="b.-4" class="section level2">
+<h2>b.</h2>
+<pre class="r"><code>1-pbeta(.4,2,9)</code></pre>
+<pre><code>## [1] 0.0463574</code></pre>
+</div>
+<div id="c.-2" class="section level2">
+<h2>c.</h2>
+<pre class="r"><code>pbeta(.1,2,9)</code></pre>
+<pre><code>## [1] 0.2639011</code></pre>
+</div>
 </div>
 <div id="ms-5.114---pg-232" class="section level1">
 <h1>6. MS 5.114 - pg 232</h1>
+<div id="a.-5" class="section level2">
+<h2>a.</h2>
+<p><span class="math display">\[\alpha=2,\beta=16\]</span></p>
+</div>
+<div id="b.-5" class="section level2">
+<h2>b.</h2>
+<div id="mean-1" class="section level3">
+<h3>Mean</h3>
+<pre class="r"><code>(16)^(1/2)</code></pre>
+<pre><code>## [1] 4</code></pre>
+<pre class="r"><code>(2+1)/2</code></pre>
+<pre><code>## [1] 1.5</code></pre>
+<pre class="r"><code>4*.88623</code></pre>
+<pre><code>## [1] 3.54492</code></pre>
+</div>
+<div id="variance" class="section level3">
+<h3>variance</h3>
+<pre class="r"><code>16^(2/2)</code></pre>
+<pre><code>## [1] 16</code></pre>
+<pre class="r"><code>(2+2)/2</code></pre>
+<pre><code>## [1] 2</code></pre>
+<pre class="r"><code>(2+1)/2</code></pre>
+<pre><code>## [1] 1.5</code></pre>
+<pre class="r"><code>16*(1-.88623^2)</code></pre>
+<pre><code>## [1] 3.433542</code></pre>
+</div>
+</div>
+<div id="c.-3" class="section level2">
+<h2>c.</h2>
+<pre class="r"><code>1-pweibull(6,2,16^(1/2))</code></pre>
+<pre><code>## [1] 0.1053992</code></pre>
+</div>
 </div>
 <div id="ms-6.2---pg-239" class="section level1">
 <h1>7. MS 6.2 - pg 239</h1>

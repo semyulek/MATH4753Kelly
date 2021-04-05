@@ -97,14 +97,94 @@ Since formula B gives us a probability of .2212 which is greater than formula A'
 
 # 4. MS 5.74 - pg 219
 
+## a.
 
+a=a, b=b^(1/a)
+
+```{r}
+pweibull(2,2,4^(1/2))
+```
+
+## b.
+
+### MEAN
+
+```{r}
+4^(1/2)
+((2+1)/2)
+2*.88623 # gamma value of 1.5 from appendix
+```
+
+### sd
+
+```{r}
+4^(2/2)
+(2+2)/2 #2
+(2+1)/2 #1.5
+sqrt(4*(1-.88623^2))
+```
+
+## c.
+
+```{r}
+c(1.77246-2*.926491,1.77246+2*.926491)
+```
+
+## d.
+
+It is unlikely that the washing machine will last 6 years, as we need to look at values 5 sd away from the mean to get a value of 6 years.
 
 # 5. MS 5.84 - pg 223
 
+## a.
 
+```{r}
+2/(2+9)
+(2*9)/(((2+9)^(2))*(2+9+1))
+```
+
+## b.
+
+```{r}
+1-pbeta(.4,2,9)
+```
+
+## c.
+
+```{r}
+pbeta(.1,2,9)
+```
 
 # 6. MS 5.114 - pg 232
 
+## a.
+
+$$\alpha=2,\beta=16$$
+
+## b.
+
+### Mean
+
+```{r}
+(16)^(1/2)
+(2+1)/2
+4*.88623
+```
+
+### variance
+
+```{r}
+16^(2/2)
+(2+2)/2
+(2+1)/2
+16*(1-.88623^2)
+```
+
+## c.
+
+```{r}
+1-pweibull(6,2,16^(1/2))
+```
 
 
 # 7. MS 6.2 - pg 239
