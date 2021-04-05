@@ -249,6 +249,9 @@ div.tocify {
 </div>
 
 
+<div id="section" class="section level1">
+<h1>13/16</h1>
+</div>
 <div id="ms-5.54---pg-215" class="section level1">
 <h1>1. MS 5.54 - pg 215</h1>
 <div id="a." class="section level2">
@@ -541,6 +544,24 @@ gran</code></pre>
 </div>
 <div id="ms-6.90---pg-273" class="section level1">
 <h1>13. MS 6.90 - pg 273</h1>
+<div id="a.-11" class="section level2">
+<h2>a.</h2>
+<pre class="r"><code>pnorm(1.5,mean = 20*.4,sd = sqrt(20*.4*.6))</code></pre>
+<pre><code>## [1] 0.001504434</code></pre>
+</div>
+<div id="b.-11" class="section level2">
+<h2>b.</h2>
+<pre class="r"><code>1-pnorm(10.5,mean = 20*.4,sd = sqrt(20*.4*.6))</code></pre>
+<pre><code>## [1] 0.1269165</code></pre>
+</div>
+<div id="c.-8" class="section level2">
+<h2>c.</h2>
+<pre class="r"><code>pbinom(1,size = 20,prob = .4)</code></pre>
+<pre><code>## [1] 0.0005240494</code></pre>
+<pre class="r"><code>1-pbinom(10,size = 20,prob = .4)</code></pre>
+<pre><code>## [1] 0.1275212</code></pre>
+<p>The normal approximation is pretty close in the second case, but further away in the first case, but I would say the approximation is close enough.</p>
+</div>
 </div>
 <div id="ms-7.108---pg-362" class="section level1">
 <h1>14. MS 7.108 - pg 362</h1>

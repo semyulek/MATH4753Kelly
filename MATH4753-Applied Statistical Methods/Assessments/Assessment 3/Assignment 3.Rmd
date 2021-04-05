@@ -17,6 +17,8 @@ output:
 knitr::opts_chunk$set(echo = TRUE)
 ```
 
+# 13/16
+
 # 1. MS 5.54 - pg 215
 
 ## a.
@@ -374,7 +376,26 @@ pnorm(2.2,mean = 2,sd = sqrt(((3-1)^2)/(12*60)))
 
 # 13. MS 6.90 - pg 273
 
+## a.
 
+```{r}
+pnorm(1.5,mean = 20*.4,sd = sqrt(20*.4*.6))
+```
+
+## b.
+
+```{r}
+1-pnorm(10.5,mean = 20*.4,sd = sqrt(20*.4*.6))
+```
+
+## c.
+
+```{r}
+pbinom(1,size = 20,prob = .4)
+1-pbinom(10,size = 20,prob = .4)
+```
+
+The normal approximation is pretty close in the second case, but further away in the first case, but I would say the approximation is close enough.
 
 # 14. MS 7.108 - pg 362
 
