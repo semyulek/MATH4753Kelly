@@ -420,9 +420,65 @@ mu</code></pre>
 </div>
 <div id="ms-6.2---pg-239" class="section level1">
 <h1>7. MS 6.2 - pg 239</h1>
+<div id="a.-6" class="section level2">
+<h2>a.</h2>
+<p>p(x,y)=p(1,1),p(1,2),p(1,3),p(1,4),p(1,5),p(1,6),p(2,1),p(2,2),p(2,3),p(2,4),p(2,5),p(2,6),p(3,1),…p(6,5),p(6,6)=1/36 Each combination has a (1/6)*(1/6)=1/36 chance of popping up.</p>
+</div>
+<div id="b.-6" class="section level2">
+<h2>b.</h2>
+<p>p1(x)=p(1)+p(2)+p(3)+p(4)+p(5)+p(6)=1/36+1/36+1/36+1/36+1/36+1/36=1/6</p>
+<p>Similarly for p2(y)=1/6</p>
+</div>
+<div id="c.-4" class="section level2">
+<h2>c.</h2>
+<p>p1(x|y) x=1,y=1, (1/36)/(1/6)=1/6 x=1,y=2, 1/36 * 6=1/6 x=1,y=3, 1/36 * 6=1/6 x=1,y=4, 1/36 * 6=1/6 x=1,y=5, 1/36 * 6=1/6 x=1,y=6, 1/36 * 6=1/6 x=2,y=1, 1/36 * 6=1/6 x=2,y=2, 1/36 * 6=1/6 x=2,y=3, 1/36 * 6=1/6 x=2,y=4, 1/36 * 6=1/6 x=2,y=5, 1/36 * 6=1/6 … x=6,y=5, 1/36 * 6=1/6 x=6,y=6, 1/36 * 6=1/6</p>
+<p>p2(y|x) y=1,x=1, (1/36)/(1/6)=1/6 y=1,x=2, 1/36 * 6=1/6 y=1,x=3, 1/36 * 6=1/6 y=1,x=4, 1/36 * 6=1/6 y=1,x=5, 1/36 * 6=1/6 y=1,x=6, 1/36 * 6=1/6 y=2,x=1, 1/36 * 6=1/6 y=2,x=2, 1/36 * 6=1/6 y=2,x=3, 1/36 * 6=1/6 y=2,x=4, 1/36 * 6=1/6 y=2,x=5, 1/36 * 6=1/6 … y=6,x=5, 1/36 * 6=1/6 y=6,x=6, 1/36 * 6=1/6</p>
+</div>
+<div id="d.-1" class="section level2">
+<h2>d.</h2>
+<p>Since p1(x)=p1(x|y) and p2(y)=p2(y|x) then the variables are independent.</p>
+</div>
 </div>
 <div id="ms-6.4---pg-240" class="section level1">
 <h1>8. MS 6.4 - pg 240</h1>
+<div id="a.-7" class="section level2">
+<h2>a.</h2>
+<pre class="r"><code>gran &lt;- matrix(c(1/7,0,0,2/7,0,0,1/7,2/7,1/7),byrow = F,nrow = 3,ncol = 3)
+colnames(gran) &lt;- c(&quot;1 Energy&quot;,&quot;2 Energy&quot;,&quot;3 energy&quot;)
+rownames(gran) &lt;- c(&quot;1 time&quot;, &quot;2 time&quot;, &quot;3 time&quot;)
+gran &lt;- as.table(gran)
+gran</code></pre>
+<pre><code>##         1 Energy  2 Energy  3 energy
+## 1 time 0.1428571 0.2857143 0.1428571
+## 2 time 0.0000000 0.0000000 0.2857143
+## 3 time 0.0000000 0.0000000 0.1428571</code></pre>
+</div>
+<div id="b.-7" class="section level2">
+<h2>b.</h2>
+<pre class="r"><code>addmargins(gran)</code></pre>
+<pre><code>##         1 Energy  2 Energy  3 energy       Sum
+## 1 time 0.1428571 0.2857143 0.1428571 0.5714286
+## 2 time 0.0000000 0.0000000 0.2857143 0.2857143
+## 3 time 0.0000000 0.0000000 0.1428571 0.1428571
+## Sum    0.1428571 0.2857143 0.5714286 1.0000000</code></pre>
+<p>The marginal distribution p1(x) is 1/7~.1429, 2/7~.2857, 4/7~.5714</p>
+</div>
+<div id="c.-5" class="section level2">
+<h2>c.</h2>
+<p>The marginal distribution p2(y) is 4/7~.5714, 2/7~.2857, 1/7~.1429</p>
+</div>
+<div id="d.-2" class="section level2">
+<h2>d.</h2>
+<pre class="r"><code>#p2(y|x) is p2(1|1)= 1/7/1/7=1/7*7=1
+#p2(1|2)= 0/7/1/7=0/7*7=0
+#p2(1|3)= 0/7/1/7=0/7*7=0
+#p2(2|1)= 2/7/2/7=2/7*7/2=1
+#p2(2|2)= 0/7/2/7=0/7*7/2=0
+#p2(2|3)= 0/7/2/7=0/7*7/2=0
+#p2(3|1)= 1/7/4/7=1/7*7/4=1/4
+#p2(3|2)= 2/7/4/7=2/7*7/4=1/2
+#p2(3|3)= 1/7/4/7=1/7*7/4=1/4</code></pre>
+</div>
 </div>
 <div id="ms-6.12---pg-244" class="section level1">
 <h1>9. MS 6.12 - pg 244</h1>
