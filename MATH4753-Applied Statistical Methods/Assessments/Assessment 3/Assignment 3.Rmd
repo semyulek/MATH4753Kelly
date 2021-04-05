@@ -278,7 +278,20 @@ The marginal distribution p2(y) is 4/7~.5714, 2/7~.2857, 1/7~.1429
 
 # 9. MS 6.12 - pg 244
 
+## a.
 
+$$f(x,y)=\frac{e^{\frac{-y}{10}}}{10y},0<y<x<2y$$
+$$f(y)=\int_{-\infty}^{\infty}f(x,y)dx$$
+$$f(y)=\int_{y}^{2y}\frac{e^{\frac{-y}{10}}}{10y}dx$$
+$$f(y)=\frac{e^{\frac{-y}{10}}}{10y}\int_{y}^{2y}dx$$
+$$f(y)=\frac{e^{\frac{-y}{10}}}{10y}(2y-y)=\frac{e^{\frac{-y}{10}}}{10y}y=\frac{e^{\frac{-y}{10}}}{10}$$
+
+It appears to be an exponential distribution.
+$$f(y)=\frac{e^{\frac{-y}{\beta}}}{\beta}$$
+
+## b.
+
+$$E(Y)=\mu=\beta=10$$
 
 # 10. MS 6.14 - pg 245
 
