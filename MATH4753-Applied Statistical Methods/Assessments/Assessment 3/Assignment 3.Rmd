@@ -17,7 +17,7 @@ output:
 knitr::opts_chunk$set(echo = TRUE)
 ```
 
-# 13/16
+# 16/16
 
 # 1. MS 5.54 - pg 215
 
@@ -399,12 +399,50 @@ The normal approximation is pretty close in the second case, but further away in
 
 # 14. MS 7.108 - pg 362
 
+## a.
 
+```{r}
+t.test(x = c(1.32,0,13.1,.919,.657,3,1.32,4.09,4.45,0),conf.level = .99)$conf.int
+```
+
+## b.
+
+```{r}
+t.test(x = c(.508,.279,.32,.904,.221,.283,.475,.13,.22,.743),conf.level = .99)$conf.int
+```
+
+## c.
+
+The confidence intervals show that the mean value most likely falls in this interval. So the mean lead level of the water is in the interval (-1.15,6.92) and similarly for copper which is between (.15,.66).
+
+## d.
+
+We are 99% confident that our mean lies within these intervals. In the interval there is a 99% certainty that the interval contains the true value that we are looking for.
 
 # 15. MS 7.114 - pg 364
 
+```{r}
+y1 = c(782,965,948,1181,1414,1633,1852)
+y2 = c(593,672,750,988,1226,1462,1698)
+t.test(y1,y2,conf.level = .95,paired = T)$conf.int
+```
 
+We are looking at the confidence interval of the difference of 2 mean values where the interval tells us the average difference between the two locations.
 
 # 16. MS 7.116 - pg 364
 
+## a.
 
+```{r}
+y1 = c(5.4,2.7,34.2,19.9,2.4,7,6.1,7.7,18.4,27.1,16.9)
+y2 = c(24.3,16.5,47.2,12.4,24,21.6,104.3,96.9,105.3,78.7,44.6)
+t.test(y1,y2,conf.level = .9,paired = T)$conf.int
+```
+
+## b.
+
+We are assuming that the values are paired which is true since they depend on each other.
+
+## c.
+
+The mean difference of diazinon between day and night is definitely different. We have a confidence interval of (-58.89917, -18.91901), which contains the average variability between day and night, and the night values are larger than the day values.
