@@ -22,6 +22,14 @@ mow <- read.csv("mow-mow.csv")
 head(mow)
 ```
 
+# Names
+
+```{r}
+names(shallow)
+names(mow)
+```
+
+
 # 1
 
 # 2
