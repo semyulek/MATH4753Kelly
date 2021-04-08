@@ -1,0 +1,24 @@
+---
+title: "Exam 2 Study"
+author: "Samuel Kelly"
+date: "`r Sys.Date()`"
+output: 
+  html_document:
+    toc: yes
+    toc_float: yes
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+# Read in data
+
+```{r}
+getwd()
+shallow <- read.csv("SHALLOW.csv")
+head(shallow)
+mow <- read.csv("mow-mow.csv")
+head(mow)
+```
+
