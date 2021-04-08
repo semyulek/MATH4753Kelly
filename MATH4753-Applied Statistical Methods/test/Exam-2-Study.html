@@ -273,12 +273,16 @@ head(mow)</code></pre>
 </div>
 <div id="mom" class="section level1">
 <h1>MoM</h1>
+<p><span class="math display">\[E(Y^k)=\frac{1}{n}\sum y^k_i\]</span></p>
 </div>
 <div id="mle" class="section level1">
 <h1>MLE</h1>
 </div>
 <div id="rules-of-expectation" class="section level1">
 <h1>3 Rules of expectation</h1>
+<p><span class="math display">\[E(c)=c\]</span></p>
+<p><span class="math display">\[E(cY)=cE(Y)\]</span></p>
+<p><span class="math display">\[E(g_1(Y)+...+g_k(Y))=E(g_1(Y))+...+E(g_k(Y))\]</span></p>
 </div>
 <div id="rules-of-variance" class="section level1">
 <h1>Rules of Variance</h1>
@@ -286,18 +290,91 @@ head(mow)</code></pre>
 </div>
 <div id="ci" class="section level1">
 <h1>CI</h1>
+<pre class="r"><code>x&lt;-rnorm(40,20,5)
+t&lt;-qt(1-.05/2,length(x)-1)
+mp&lt;-c(-1,1)
+ci &lt;- mean(x)+mp*t*sd(x)/sqrt(length(x))
+ci</code></pre>
+<pre><code>## [1] 18.97871 21.77459</code></pre>
+<pre class="r"><code>boxplot(x)</code></pre>
+<p><img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAABUAAAAPACAMAAADDuCPrAAAAsVBMVEUAAAAAADoAAGYAOjoAOmYAOpAAZrY6AAA6OgA6Ojo6ZmY6ZpA6ZrY6kNtmAABmOgBmOjpmZmZmZpBmkJBmkLZmtttmtv+QOgCQZgCQZjqQkLaQtraQttuQtv+Q2/+2ZgC2Zjq2kGa2kLa2tpC2tra2ttu227a229u22/+2///T09PbkDrbkGbbtmbbtpDbtrbb27bb29vb2//b////tmb/25D/27b/29v//7b//9v////UDo43AAAACXBIWXMAAB2HAAAdhwGP5fFlAAAYUklEQVR4nO3dfZdcZZXG4Q4iGfEFoo46jgPBiYIDIkFg7Hz/DzZdCZ10eESfurP31D7tdf2T7lqrz+rV6z6/1HtdPQMgcnXpXwDgqAQUICSgACEBBQgJKEBIQAFCAgoQElCAkIAChAQUICSgACEBBQgJKEBIQAFCAgoQElCAkIAChAQUICSgACEBBQgJKEBIQAFCAgoQElCAkIAChAQUICSgACEBBQgJKEBIQAFCAgoQElCAkIAChAQUICSgACEBBQgJKEBIQAFCAgoQElCAkIAChAQUICSgACEBBQgJKEBIQAFCAgoQElCAkIAChAQUICSgACEBBQgJKEBIQAFCAgoQElCAkIAChAQUICSgACEBBQgJKEBIQAFCAgoQElCAkIAChAQUICSgACEBBQgJKEBIQAFCAgoQElCAkIAChAQUICSgACEBBQgJKEBIQAFCAgoQElCAkIAChAQUICSgACEBBQgJKEBIQAFCAgoQElCAkIAChAQUICSgACEBBQgJKEBIQAFCAgoQElCAkIAChAQUICSgACEBBQgJKEBIQAFCAgoQElCAkIAChAQUICSgACEBBQgJKEBIQAFCAgoQElCAkIAChAQUICSgACEBBQgJKEBIQAFCAgoQElCAkIAChAQUICSgACEBBQgJKEBIQAFCAgoQElCAkIAChAQUICSgACEBBQgJKEBIQAFCAgoQElCAkIAChAQUICSgACEBBQgJKEBIQAFCAgoQElCAkIAChAQUICSgACEBBQgJKEBIQAFCAgoQElCAkIAChAQUICSgAKHZAb0CKFOfqPIjFrr0Xxu4X8obVX3ASg3/YQD/sgQUICSgACEBBQgJKEBIQAFCAgoQElCAkIAChAQU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FgGFlaGwRUABQgIKEBJQgJCAAoQEFCAkoAAhAQUICSisDIUtAgorQ2GLgMLKUNgioLAyFLYIKKwMhS0CCitDYYuAwspQ2CKgsDIUtggorAyFLQIKEBJQgJCAAoQEFCAkoAAhAQUICShASEBhZShsEVBYGQpbBBRWhsIWAYWVobBFQGFlKGwRUFgZClsEFFaGwhYBhZWhsEVAYWUobBFQgJCAAoQEFCAkoAAhAQUICShASEABQgIKK0Nhi4DCylDYIqCwMhS2CCisDIUtAgorQ2GLgMLKUNgioLAyFLYIKKwMhS0CCitDYYuAAoQEFCAkoAAhAQUICShASEABQgIKEBJQWBkKWwQUVobCFgGFlaGwRUBhZShsEVBYGQpbBBRWhsIWAYWVobBFQDmYq/vk0n9M3pCAciyXTl6tS/81eUMCChASUICQgAKEBBQgJKAAIQEFCAkoQEhAAUICChASUICQgAKEBBQgJKAAIQEFCAkoQEhAAUICChASUICQgAKEBBQgJKAAoX+5gALUKW9U9QErXfqPDdwv5Y2qPiDAvwoBBQgJKEBIQAFCAgoQElCAkIAChAQUICSgACEBBQgJKEBIQAFCAgoQElCAkIAChAQUICSgACEBBQgJKEBIQAFCAgoQElCAkIAChAQUICSgACEBBQgJKEBIQAFCAgoQElCAkIAChAQUICSgACEBBQgJKEBIQAFCAgoQElCAkIAChAQUICSgACEBBQgJKEBIQAFCAgoQElCAkIAChAQUICSgACEBBQgJKEBIQAFCAgoQElCAkIAChAQUICSgACEBBQgJKEBIQAFCAgoQElCAkIAChAQUICSgACEBBQgJKEBIQAFCAgoQElCAkIAChAQUICSgACEBBQgJKEBIQAFCAgoQElCAkIAChAQUICSgACEBBQgJKEBIQAFCAgoQElCAkIAChAQUICSgACEBBQgJKEBIQAFCAgoQElCAkIAChAQUICSgACEBBQgJKEBIQAFCAgoQElCAkIAChAQUICSgACEBBQgJKEBIQAFCAgoQElCAkIAChAQUICSgACEBBQgJKEBIQAFCAgoQElCAkIAChAQUICSgACEBBQgJKEBIQAFCAgoQElCAkIAChAQUICSgACEBBQgJKEBIQAFCAgoQElCAkIAChAQUICSgACEBBQgJKEBIQAFCAgoQElCAkIAChAQUICSgACEBBQgJKEBIQAFCAgoQElCAkIAChAQUICSgACEBBQgJKEBIQAFCAgoQElCAkIAChAQUICSgACEBBQgJKEBIQAFCAgoQElCAkIAChAQUICSgACEBBQgJKEBIQAFCAgoQElCAkIAChAQUICSgACEBBQgJKEBIQAFCAgoQElCAkIAChAQUICSgACEBBQgJKEBIQAFCAgoQElCAkIAChAQUICSgACEBBQgJKEDo/wDOOnqKZkzWNwAAAABJRU5ErkJggg==" width="672" /></p>
 </div>
 <div id="t.test" class="section level1">
 <h1>t.test</h1>
+<pre class="r"><code>t.test(x,conf.level = .95)$conf.int</code></pre>
+<pre><code>## [1] 18.97871 21.77459
+## attr(,&quot;conf.level&quot;)
+## [1] 0.95</code></pre>
+<pre class="r"><code>y1=rnorm(30,20,5)
+y2=rnorm(40,15,8)
+
+t.test(y1,y2,conf.level = .95,var.equal = F) #mu1-mu2, so y1 then y2</code></pre>
+<pre><code>## 
+##  Welch Two Sample t-test
+## 
+## data:  y1 and y2
+## t = 3.0189, df = 67.567, p-value = 0.003577
+## alternative hypothesis: true difference in means is not equal to 0
+## 95 percent confidence interval:
+##  1.443992 7.076621
+## sample estimates:
+## mean of x mean of y 
+##  19.77217  15.51187</code></pre>
+<pre class="r"><code>t.test(y1,y2,conf.level = .95,var.equal = F)$conf.int #mu1-mu2, so y1 then y2</code></pre>
+<pre><code>## [1] 1.443992 7.076621
+## attr(,&quot;conf.level&quot;)
+## [1] 0.95</code></pre>
+<pre class="r"><code>t.test(y2,y1,conf.level = .95,var.equal = F) #mu2-mu1, so y2 then y1</code></pre>
+<pre><code>## 
+##  Welch Two Sample t-test
+## 
+## data:  y2 and y1
+## t = -3.0189, df = 67.567, p-value = 0.003577
+## alternative hypothesis: true difference in means is not equal to 0
+## 95 percent confidence interval:
+##  -7.076621 -1.443992
+## sample estimates:
+## mean of x mean of y 
+##  15.51187  19.77217</code></pre>
 </div>
 <div id="paired-samples" class="section level1">
 <h1>Paired samples</h1>
 </div>
 <div id="use-cor" class="section level1">
 <h1>Use cor()</h1>
+<pre class="r"><code>cor(shallow$Actual,shallow$Predict) # close to one so positively linearly related</code></pre>
+<pre><code>## [1] 0.99593</code></pre>
 </div>
 <div id="var.test" class="section level1">
 <h1>var.test</h1>
+<pre class="r"><code>var.test(y1,y2)$conf.int</code></pre>
+<pre><code>## [1] 0.2412367 0.9620097
+## attr(,&quot;conf.level&quot;)
+## [1] 0.95</code></pre>
+<pre class="r"><code># sigma1^2/sigma2^2
+
+t.test(y1,y2,conf.level = .95,var.equal = T)$conf.int #mu1-mu2, so y1 then y2</code></pre>
+<pre><code>## [1] 1.294509 7.226104
+## attr(,&quot;conf.level&quot;)
+## [1] 0.95</code></pre>
+<pre class="r"><code>y1=rnorm(30,20,20)
+y2=rnorm(40,15,8)
+var.test(y1,y2)$conf.int # does not contain 1 in the interval, so variance is not equal</code></pre>
+<pre><code>## [1]  3.201695 12.767796
+## attr(,&quot;conf.level&quot;)
+## [1] 0.95</code></pre>
+<pre class="r"><code>t.test(y1,y2,conf.level = .95,var.equal = F) # plausible the mu1=mu2 since 0 is in conf.int</code></pre>
+<pre><code>## 
+##  Welch Two Sample t-test
+## 
+## data:  y1 and y2
+## t = -0.064983, df = 35.958, p-value = 0.9485
+## alternative hypothesis: true difference in means is not equal to 0
+## 95 percent confidence interval:
+##  -7.843966  7.356932
+## sample estimates:
+## mean of x mean of y 
+##  16.97952  17.22304</code></pre>
 </div>
 <div id="linear-functions" class="section level1">
 <h1>Linear functions</h1>
