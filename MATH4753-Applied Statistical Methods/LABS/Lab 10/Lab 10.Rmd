@@ -1,0 +1,93 @@
+---
+title: "Lab 10"
+author: "Samuel Kelly"
+date: "`r Sys.Date()`"
+output: 
+  html_document:
+    toc: yes
+    toc_float: yes
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+# Task 1
+
+```{r}
+getwd()
+```
+
+# Task 2
+
+```{r}
+mymaxlik=function(lfun,x,param,...){
+# how many param values are there?
+np=length(param)
+# outer -- notice the order, x then param
+# this produces a matrix – try outer(1:4,5:10,function(x,y) paste(x,y,sep=" "))   to understand
+z=outer(x,param,lfun) # A 
+# z is a matrix where each x,param is replaced with the function evaluated at those values
+y=apply(z,2,sum)
+
+# y is a vector made up of the column sums
+# Each y is the log lik for a new parameter value
+plot(param,y,col="Blue",type="l",lwd=2,...)
+# which gives the index for the value of y >= max.
+# there could be a max between two values of the parameter, therefore 2 indices
+# the first max will take the larger indice
+i=max(which(y==max(y))) # B
+abline(v=param[i],lwd=2,col="Red")
+
+# plots a nice point where the max lik is
+points(param[i],y[i],pch=19,cex=1.5,col="Black")
+axis(3,param[i],round(param[i],2))
+#check slopes. If it is a max the slope should change sign from + to 
+# We should get three + and two -vs
+ifelse(i-3>=1 & i+2<=np, slope<-(y[(i-2):(i+2)]-y[(i-3):(i+1)])/(param[(i-2):(i+2)]-param[(i-3):(i+1)]),slope<-"NA")
+return(list(i=i,parami=param[i],yi=y[i],slope=slope))
+}
+
+```
+
+## A
+
+What outer does is that it takes the first argument and puts it in the first position of a matrix, then it takes the second argument and puts that in the first position  of the matrix as well. Then outer applies a function on those two values in the matrix, then continues with the rest of the values stored in x and param until we get a matrix of x rows and param columns.
+
+## B
+
+B stores in i the max index of y which y summed up all the columns.
+
+## Formula
+
+$$p(y_1,y_2,...,y_n)=p(y_1)...p(y_n)$$
+$$p(y_1,y_2,...,y_8)=p(y_1)...p(y_8)$$
+$$\text{The Binomial distribution formula is: }p(y)= {n \choose y}p^yq^{n-y}.$$
+$$p(y_1,y_2,...,y_8)={20 \choose y_1}p^{y_1}(1-p)^{20-y_1}...{20 \choose y_8}p^{y_8}(1-p)^{20-y_8}$$
+
+## R
+
+```{r}
+#dbinom(x = y1,size = 20,prob = p)*dbinom(x = y2,size = 20,prob = p)*dbinom(x = y3,size = 20,prob = p)*dbinom(x = y4,size = 20,prob = p)*dbinom(x = y5,size = 20,prob = p)*dbinom(x = y6,size = 20,prob = p)*dbinom(x = y7,size = 20,prob = p)*dbinom(x = y8,size = 20,prob = p)
+```
+
+
+## Graph
+
+```{r}
+logbin=function(x,param) log(dbinom(x,prob=param,size=20))
+y = c(3,3,4,3,4,5,5,4)
+mymaxlik(lfun = logbin,x = y,param=seq(0,1,length=1000), main = "Binomial, n = 20")
+```
+
+# Task 3
+
+# Task 4
+
+# Task 5
+
+# Task 6
+
+# Task 7
+
+# Task 8
