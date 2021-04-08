@@ -22,3 +22,234 @@ mow <- read.csv("mow-mow.csv")
 head(mow)
 ```
 
+# MoM
+
+# MLE
+
+# 3 Rules of expectation
+
+# Rules of Variance
+
+$$V(aX+b)=a^2V(X)$$
+
+# CI
+
+# t.test
+
+# Paired samples
+
+# Use cor()
+
+# var.test
+
+# Linear functions
+
+# CLT
+
+# Use CLT
+
+Suppose S = Y_1 + ... + Y_n , where Y_i iid Bern(P)
+Sc ~ N(np, npq) approx, by CLT
+
+Suppose n = 20, p = 0.4 find the following using the Normal approx
+Hint -- YOU MUST draw a normal picture!!!!!
+
+P(S>2), S discrete = approx P(Sc>=2.5) where Sc ~ N cont
+1-pnorm(2.5, 20*0.4, sqrt(20*0.4*0.6))
+1-pbinom(2,size =20,prob=0.4)
+
+P( S = 4), S is discrete = approx P( 3.5<=Sc<=4.5) where Sc ~ N cont
+
+pnorm(4.5, 20*0.4, sqrt(20*0.4*0.6)) - pnorm(3.5,20*0.4, sqrt(20*0.4*0.6))
+dbinom(4, size =20,prob=0.4)
+
+1-pnorm(2.5, 20*0.4, sqrt(20*0.4*0.6))
+0.9939702
+1-pbinom(2,size =20,prob=0.4)
+0.9963885
+pnorm(4.5, 20*0.4, sqrt(20*0.4*0.6)) - pnorm(3.5,20*0.4, sqrt(20*0.4*0.6))
+0.03508466
+dbinom(4, size =20,prob=0.4)
+0.03499079
+
+# Quizzes
+
+Suppose that Y∼Weibull(α=2,β=100)
+
+Find P(Y≤8)
+
+In R the parameters for the above would be shape = 2, scale = 10.
+
+```{r}
+pweibull(8,shape = 2,scale = 10)
+```
+
+Suppose Y∼Beta(α=2,β=3)
+
+Find the following probability
+
+P(Y>0.3)
+
+In R the parameters for the above problem are shape1 = 2, shape2 = 3.
+
+```{r}
+1-pbeta(.3,shape1 = 2,shape2 = 3)
+```
+
+Suppose Y∼Exp(β=3)
+
+Find P(Y≤4)
+
+In R the parameter for the above is λ=1/3
+
+```{r}
+pexp(4,rate = 1/3)
+```
+
+Suppose Y∼N(10,σ)where the standard deviation σ>0
+
+ is unknown.
+
+Find y such that P(Y≤y)=0.5
+
+```{r}
+qnorm(p = .5,mean = 10)
+```
+
+Please answer the following questions assuming that Y is a continuous random variable.
+P(3≤Y≤10)=P(3<Y≤10) is TRUE
+P(Y=10)=? CONTINUOUS at one point is density 0
+F(y0)=1−P(Y≤y0) FALSE F(y0)=P(Y≤y0) cumulative distribution function
+
+Suppose that Y∼N(μ=10,σ=4)
+Find using R 
+P(Y≥11)
+ to 4 decimal places.
+```{r}
+1-pnorm(11,mean = 10,sd = 4)
+```
+ 
+Suppose  X∼N(μ=10,σ=2)
+and
+Y=2X+4
+
+What is the distribution of Y? NORMAL
+Find the E(Y) 
+$$E(Y)=E(2X+4)=2E(X)+4=2*10 + 4=24$$
+Find  the variance of Y -- that is find V(Y) 
+$$V(Y)=V(2X+4)=2^2V(X)=4V(X)=4*2^2=16$$
+Suppose that L=Y−5
+
+Find E(L)
+$$E(L)=E(Y-5)=E(2X+4)-5=2E(X)+4-5=2*10-1=19$$
+
+Suppose
+
+Yi∼iidN(μ=2,σ=3), and
+l=1Y1−2Y2+3Y3
+
+Find the numerical value of E(Yi)
+$$E(Y_i)=\mu=2$$
+Find the numerical value of V(Yi)
+$$V(Y_i)=3^2=9$$
+Find the numerical value of E(l)
+$$E(l)=E(1Y_1-2Y_2+3Y_3)=(1+(-2)+3)E(Y_i)=(2)*2=2*2=4$$
+Find the numerical value of V(l)
+$$V(l)=V(1Y_1-2Y_2+3Y_3)=1^2V(Y_1)+(-2)^2V(Y_2)+3^2V(Y_3)=V(Y_1)+4V(Y_2)+9V(Y_3)=14*V(Y_i)=14*3^2=14*9=126$$
+
+Suppose that:
+Yi∼iidN(μ=0,σ=1)
+L=1Y1−2Y2+3Y3
+
+L takes a Normal distribution TRUE
+E(L) = 1 FALSE
+$$E(L)=E(Y_1)-2E(Y_2)+3E(Y_3)=(1-2+3)E(Y_i)=2*0=0$$
+V(L) = 10 FALSE
+$$V(L)=(1^2+(-2)^2+3^2)V(Y_i)=14*1^2=14$$
+cov(Y1,Y2)=0
+$$COV(Y1,Y2)=E(Y1*Y2)-\mu_{Y_{1}}\mu_{Y_2}=0-0=0$$
+
+
+Suppose that 
+Td∼Bin(n=10,p=0.6)Tc∼N(μ,σ)
+Where the mean of the binomial is np and the variance is npq.
+Where Td is the total number of successes in n Bernoulli trials. Tc is the total number of successes on the continuous scale using the CLT.
+
+When using the Normal approximation to the Binomial in the above example what is the numerical value of μ?
+```{r}
+10*.6
+```
+
+What is the numerical value of σ^2  in the Normal approximation to the Binomial
+```{r}
+10*.6*.4
+```
+
+Using σ=1.55 and μ=6
+Find the Normal approximation to the following probability
+P(TD>6) to 4 dec places
+```{r}
+#P(TD>6)=1-P(TD<=6)=1-P(TD<=6.5)
+1-pnorm(6.5,mean = 6,sd = 1.55)
+```
+
+Find the exact numerical value of P(T_D>6) to 4 dec. places
+```{r}
+1-pbinom(6,size = 10,prob = .6)
+```
+
+Suppose that Yi∼iidBern(p) then:
+T=∑n i=1 Yi
+Defines a Binomial distribution such that
+T∼Bin(n,p) TRUE
+
+Suppose that we wish to estimate the following probability using the Normal approximation.
+P(T<7)T∼Bin(n=10,p=0.5)
+Note that you can easily show 
+Tc∼N(μ=5,σ=10×0.5×0.5−−−−−−−−−−−√)
+Use pnorm() with appropriate endpoint correction, and submit the answer to 4 decimal places
+```{r}
+pnorm(6.5,mean = 5,sd = sqrt(10*.5*.5))
+```
+
+If E(θ^)=θ then we would call θ^ an unbiased estimator. TRUE
+If ρ is the correlation coefficient then 0≤|ρ|≤1 TRUE
+
+
+Suppose 
+Xi∼iidBin(n=10,p=0.4)
+Yi∼iidN(μ=10,σ=3)
+Note that E(Xi)=npV(Xi)=npq
+And 
+l=2X1+3X2−X3
+h=2Y1−3Y2+Y3
+V(l)
+$$V(l)=(2^2+3^2+(-1)^2)V(X_i)=14*(10*.4*.6)=14*2.4=33.6$$
+V(h)
+$$V(h)=(2^2+(-3^2)+1^2)V(Y_i)=14*3^2=14*9=126$$
+P(3<Yi<7)
+```{r}
+pnorm(7,mean = 10,sd = 3)-pnorm(3,mean = 10,sd = 3)
+```
+P(3<Xi<7)
+```{r}
+#P(X_i <= 6) - P(X_i <= 3)
+pbinom(6,size = 10,prob = .4)-pbinom(3,size = 10,prob = .4)
+```
+
+Suppose the following is true, L=Y1+Y2+Y3+Y4 E(Yi)=3 V(Yi)=4 Yi∼iidD
+and n=4
+To 4 decimal places calculate V(L¯)
+$$V(\bar{L})=\frac{V(L)}{n}=\frac{V(Y_1+Y_2+Y_3+Y_4)}{4}=\frac{(1^2+1^2+1^2+1^2)V(Y_i)}{4}=\frac{4*4}{4}=4$$
+E(L¯)
+$$E(\bar{L})=E(L)=(4)*E(Y_i)=4*3=12$$
+V(2L¯)
+$$V(2\bar{L})=\frac{2^2V(L)}{n}=\frac{4V(Y_1+Y_2+Y_3+Y_4)}{4}=(1^2+1^2+1^2+1^2)V(Y_i)=4*4=16$$
+E(2L¯)
+$$E(2\bar{L})=2E(L)=2(4)*E(Y_i)=2*4*3=24$$
+
+Look at the picture at the commencement of the quiz.
+Suppose L=∑ N i=1 Yi
+and N was very big i.e N→+∞
+Then DL→Normal
+TRUE
