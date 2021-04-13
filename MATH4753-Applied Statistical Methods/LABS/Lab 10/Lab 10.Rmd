@@ -82,6 +82,19 @@ mymaxlik(lfun = logbin,x = y,param=seq(0,1,length=1000), main = "Binomial, n = 2
 
 # Task 3
 
+## Graph
+
+```{r}
+y=c(4,6,7,6,5)
+logpoiss=function(x,param) log(dpois(x,lambda=param)) 
+mymaxlik(x=y,param=seq(0,10,length=1000),lfun=logpoiss,xlab=expression(lambda),main="Poisson",cex.main=1)
+```
+
+## Algebraic Poisson
+
+$$p(y_1,y_2,...,y_5)=p(y_1)...p(y_5)$$
+$$L(\lambda)=\prod^5_{i=1}\frac{\lambda^{y_i}e^{-\lambda}}{y_i!}$$
+$$$$
 # Task 4
 
 # Task 5
