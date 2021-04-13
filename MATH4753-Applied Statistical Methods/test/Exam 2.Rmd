@@ -32,25 +32,80 @@ names(mow)
 
 # 1
 
+$$\hat{\lambda}=\bar{y}$$
+$$\bar{y}=\frac{1+2+3}{3}=\frac{6}{3}=2$$
+
 # 2
+
+```{r}
+mean(c(1,2,3))
+((exp(-2)*2^1)/factorial(1))*((exp(-2)*2^2)/factorial(2))*((exp(-2)*2^3)/factorial(3))
+```
+
 
 # 3
 
+We know that for a Poisson distribution that:
+$$E(\mu)=\lambda$$
+
 # 4
+
+$$V(Y_i)=\lambda$$
+
+```{r}
+((exp(-3)*3^1)/factorial(1))*((exp(-3)*3^2)/factorial(2))*((exp(-3)*3^3)/factorial(3))*((exp(-3)*3^4)/factorial(4))
+```
+
 
 # 5
 
+Use B for population standard deviation since we know sigma or the standard deviation
+
 # 6
+
+```{r}
+y=c(3,4,5)
+t.test(x = y,conf.level = .8)$conf.int
+```
+
 
 # 7
 
+The values of actual and predicted are passed through the same structure, so the are paired.
+
+```{r}
+var.test(shallow$Actual,shallow$Predict)$conf.int
+```
+It's likely that variance is equal since 1 is in the interval
+
 # 8
+
+```{r}
+t.test(shallow$Actual,shallow$Predict,paired = T,conf.level = .99,var.equal = T)$conf.int
+```
+
 
 # 9
 
+```{r}
+cor(x = shallow$Actual,y = shallow$Predict,method = "pearson")
+```
+
+
 # 10
+
+```{r}
+var.test(mow$y1,mow$y2,conf.level = .8)$conf.int # 1 is not in the interval so variances are not equal
+```
 
 # 11
 
+```{r}
+t.test(mow$y1,mow$y2,paired = F,var.equal = F,conf.level = .92)$conf.int
+```
+
+
 # 12
+
+$$V(L)=V(Y_1-2Y_2+3Y_3)=(1^2+(-2)^2+3^2)V(Y_i)=14*2=28, \text{since V(}Y_i)=\sigma^2$$
 

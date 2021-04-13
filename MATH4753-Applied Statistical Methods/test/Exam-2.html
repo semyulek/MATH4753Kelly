@@ -11,7 +11,7 @@
 
 <meta name="author" content="Samuel Kelly" />
 
-<meta name="date" content="2021-04-08" />
+<meta name="date" content="2021-04-09" />
 
 <title>Exam 2</title>
 
@@ -243,7 +243,7 @@ div.tocify {
 
 <h1 class="title toc-ignore">Exam 2</h1>
 <h4 class="author">Samuel Kelly</h4>
-<h4 class="date">2021-04-08</h4>
+<h4 class="date">2021-04-09</h4>
 
 </div>
 
@@ -280,39 +280,75 @@ head(mow)</code></pre>
 </div>
 <div id="section" class="section level1">
 <h1>1</h1>
+<p><span class="math display">\[\hat{\lambda}=\bar{y}\]</span> <span class="math display">\[\bar{y}=\frac{1+2+3}{3}=\frac{6}{3}=2\]</span></p>
 </div>
 <div id="section-1" class="section level1">
 <h1>2</h1>
+<pre class="r"><code>mean(c(1,2,3))</code></pre>
+<pre><code>## [1] 2</code></pre>
+<pre class="r"><code>((exp(-2)*2^1)/factorial(1))*((exp(-2)*2^2)/factorial(2))*((exp(-2)*2^3)/factorial(3))</code></pre>
+<pre><code>## [1] 0.01322001</code></pre>
 </div>
 <div id="section-2" class="section level1">
 <h1>3</h1>
+<p>We know that for a Poisson distribution that: <span class="math display">\[E(\mu)=\lambda\]</span></p>
 </div>
 <div id="section-3" class="section level1">
 <h1>4</h1>
+<p><span class="math display">\[V(Y_i)=\lambda\]</span></p>
+<pre class="r"><code>((exp(-3)*3^1)/factorial(1))*((exp(-3)*3^2)/factorial(2))*((exp(-3)*3^3)/factorial(3))*((exp(-3)*3^4)/factorial(4))</code></pre>
+<pre><code>## [1] 0.001259756</code></pre>
 </div>
 <div id="section-4" class="section level1">
 <h1>5</h1>
+<p>Use B for population standard deviation since we know sigma or the standard deviation</p>
 </div>
 <div id="section-5" class="section level1">
 <h1>6</h1>
+<pre class="r"><code>y=c(3,4,5)
+t.test(x = y,conf.level = .8)$conf.int</code></pre>
+<pre><code>## [1] 2.911338 5.088662
+## attr(,&quot;conf.level&quot;)
+## [1] 0.8</code></pre>
 </div>
 <div id="section-6" class="section level1">
 <h1>7</h1>
+<p>The values of actual and predicted are passed through the same structure, so the are paired.</p>
+<pre class="r"><code>var.test(shallow$Actual,shallow$Predict)$conf.int</code></pre>
+<pre><code>## [1] 0.3110987 3.3413696
+## attr(,&quot;conf.level&quot;)
+## [1] 0.95</code></pre>
+<p>It’s likely that variance is equal since 1 is in the interval</p>
 </div>
 <div id="section-7" class="section level1">
 <h1>8</h1>
+<pre class="r"><code>t.test(shallow$Actual,shallow$Predict,paired = T,conf.level = .99,var.equal = T)$conf.int</code></pre>
+<pre><code>## [1] -6.614758  7.537835
+## attr(,&quot;conf.level&quot;)
+## [1] 0.99</code></pre>
 </div>
 <div id="section-8" class="section level1">
 <h1>9</h1>
+<pre class="r"><code>cor(x = shallow$Actual,y = shallow$Predict,method = &quot;pearson&quot;)</code></pre>
+<pre><code>## [1] 0.99593</code></pre>
 </div>
 <div id="section-9" class="section level1">
 <h1>10</h1>
+<pre class="r"><code>var.test(mow$y1,mow$y2,conf.level = .8)$conf.int # 1 is not in the interval so variances are not equal</code></pre>
+<pre><code>## [1]  4.843354 11.096792
+## attr(,&quot;conf.level&quot;)
+## [1] 0.8</code></pre>
 </div>
 <div id="section-10" class="section level1">
 <h1>11</h1>
+<pre class="r"><code>t.test(mow$y1,mow$y2,paired = F,var.equal = F,conf.level = .92)$conf.int</code></pre>
+<pre><code>## [1] 4.246798 7.144467
+## attr(,&quot;conf.level&quot;)
+## [1] 0.92</code></pre>
 </div>
 <div id="section-11" class="section level1">
 <h1>12</h1>
+<p><span class="math display">\[V(L)=V(Y_1-2Y_2+3Y_3)=(1^2+(-2)^2+3^2)V(Y_i)=14*2=28, \text{since V(}Y_i)=\sigma^2\]</span></p>
 </div>
 
 
