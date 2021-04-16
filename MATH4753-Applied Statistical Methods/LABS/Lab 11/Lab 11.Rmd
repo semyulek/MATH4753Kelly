@@ -15,11 +15,107 @@ knitr::opts_chunk$set(echo = TRUE)
 
 # Task 1
 
+```{r}
+getwd()
+```
 
 
 # Task 2
 
+## Diameter of washers (cm)
 
+```{r}
+d=c(5.0581, 4.9707, 5.0893, 4.9334, 4.9777, 5.0285, 4.8555, 4.9565, 
+4.9769, 4.9722, 4.999, 4.9925, 4.9686, 5.0662, 4.9239, 4.9781, 
+5.0485, 5.0014, 4.9957, 5.0195, 5.0118, 4.9928, 5.0361, 5.0185, 
+4.9879)
+```
+
+## 95% ci mean
+
+```{r}
+t.test(x = d,conf.level = .95)$conf.int
+t=qt(1-.05/2,df = length(d) - 1)
+mp <- c(-1,1)
+ci <- mean(d)+mp*t*sd(d)/sqrt(length(d))
+ci
+```
+
+## 90% ci mean
+
+```{r}
+t.test(x = d,conf.level = .90)$conf.int
+t=qt(1-.1/2,df = length(d) - 1)
+mp <- c(-1,1)
+ci <- mean(d)+mp*t*sd(d)/sqrt(length(d))
+ci
+```
+
+## 80% ci mean
+
+```{r}
+t.test(x = d,conf.level = .80)$conf.int
+t=qt(1-.2/2,df = length(d) - 1)
+mp <- c(-1,1)
+ci <- mean(d)+mp*t*sd(d)/sqrt(length(d))
+ci
+```
+
+As we can see through t.test, the values between what we calculated and what R calculated are exactly the same.
+
+## 50% ci mean
+
+```{r}
+t.test(x = d,conf.level = .5)$conf.int
+t=qt(1-.5/2,df = length(d) - 1)
+mp <- c(-1,1)
+ci <- mean(d)+mp*t*sd(d)/sqrt(length(d))
+ci
+```
+
+## 95% ci standard deviation
+
+```{r}
+chisq1=qchisq(1-.05/2,df = length(d)-1)
+chisq2=qchisq(.05/2,df = length(d)-1)
+ci=c()
+ci[1]<-(length(d)-1)*var(d)/chisq1
+ci[2]<-(length(d)-1)*var(d)/chisq2
+ci
+```
+
+## 90% ci standard deviation
+
+```{r}
+chisq1=qchisq(1-.1/2,df = length(d)-1)
+chisq2=qchisq(.1/2,df = length(d)-1)
+ci=c()
+ci[1]<-(length(d)-1)*var(d)/chisq1
+ci[2]<-(length(d)-1)*var(d)/chisq2
+ci
+```
+
+## 80% ci standard deviation
+
+```{r}
+chisq1=qchisq(1-.2/2,df = length(d)-1)
+chisq2=qchisq(.2/2,df = length(d)-1)
+ci=c()
+ci[1]<-(length(d)-1)*var(d)/chisq1
+ci[2]<-(length(d)-1)*var(d)/chisq2
+ci
+```
+
+## 50% ci standard deviation
+
+```{r}
+chisq1=qchisq(1-.5/2,df = length(d)-1)
+chisq2=qchisq(.5/2,df = length(d)-1)
+ci=c()
+ci[1]<-(length(d)-1)*var(d)/chisq1
+ci[2]<-(length(d)-1)*var(d)/chisq2
+ci
+```
 
 # Task 3
 

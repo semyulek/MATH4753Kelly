@@ -250,9 +250,107 @@ div.tocify {
 
 <div id="task-1" class="section level1">
 <h1>Task 1</h1>
+<pre class="r"><code>getwd()</code></pre>
+<pre><code>## [1] &quot;C:/Users/semyu/OneDrive/Desktop/IDE/RPackages/MATH4753Kelly/MATH4753-Applied Statistical Methods/LABS/Lab 11&quot;</code></pre>
 </div>
 <div id="task-2" class="section level1">
 <h1>Task 2</h1>
+<div id="diameter-of-washers-cm" class="section level2">
+<h2>Diameter of washers (cm)</h2>
+<pre class="r"><code>d=c(5.0581, 4.9707, 5.0893, 4.9334, 4.9777, 5.0285, 4.8555, 4.9565, 
+4.9769, 4.9722, 4.999, 4.9925, 4.9686, 5.0662, 4.9239, 4.9781, 
+5.0485, 5.0014, 4.9957, 5.0195, 5.0118, 4.9928, 5.0361, 5.0185, 
+4.9879)</code></pre>
+</div>
+<div id="ci-mean" class="section level2">
+<h2>95% ci mean</h2>
+<pre class="r"><code>t.test(x = d,conf.level = .95)$conf.int</code></pre>
+<pre><code>## [1] 4.974137 5.014607
+## attr(,&quot;conf.level&quot;)
+## [1] 0.95</code></pre>
+<pre class="r"><code>t=qt(1-.05/2,df = length(d) - 1)
+mp &lt;- c(-1,1)
+ci &lt;- mean(d)+mp*t*sd(d)/sqrt(length(d))
+ci</code></pre>
+<pre><code>## [1] 4.974137 5.014607</code></pre>
+</div>
+<div id="ci-mean-1" class="section level2">
+<h2>90% ci mean</h2>
+<pre class="r"><code>t.test(x = d,conf.level = .90)$conf.int</code></pre>
+<pre><code>## [1] 4.977598 5.011146
+## attr(,&quot;conf.level&quot;)
+## [1] 0.9</code></pre>
+<pre class="r"><code>t=qt(1-.1/2,df = length(d) - 1)
+mp &lt;- c(-1,1)
+ci &lt;- mean(d)+mp*t*sd(d)/sqrt(length(d))
+ci</code></pre>
+<pre><code>## [1] 4.977598 5.011146</code></pre>
+</div>
+<div id="ci-mean-2" class="section level2">
+<h2>80% ci mean</h2>
+<pre class="r"><code>t.test(x = d,conf.level = .80)$conf.int</code></pre>
+<pre><code>## [1] 4.981452 5.007292
+## attr(,&quot;conf.level&quot;)
+## [1] 0.8</code></pre>
+<pre class="r"><code>t=qt(1-.2/2,df = length(d) - 1)
+mp &lt;- c(-1,1)
+ci &lt;- mean(d)+mp*t*sd(d)/sqrt(length(d))
+ci</code></pre>
+<pre><code>## [1] 4.981452 5.007292</code></pre>
+<p>As we can see through t.test, the values between what we calculated and what R calculated are exactly the same.</p>
+</div>
+<div id="ci-mean-3" class="section level2">
+<h2>50% ci mean</h2>
+<pre class="r"><code>t.test(x = d,conf.level = .5)$conf.int</code></pre>
+<pre><code>## [1] 4.987658 5.001086
+## attr(,&quot;conf.level&quot;)
+## [1] 0.5</code></pre>
+<pre class="r"><code>t=qt(1-.5/2,df = length(d) - 1)
+mp &lt;- c(-1,1)
+ci &lt;- mean(d)+mp*t*sd(d)/sqrt(length(d))
+ci</code></pre>
+<pre><code>## [1] 4.987658 5.001086</code></pre>
+</div>
+<div id="ci-standard-deviation" class="section level2">
+<h2>95% ci standard deviation</h2>
+<pre class="r"><code>chisq1=qchisq(1-.05/2,df = length(d)-1)
+chisq2=qchisq(.05/2,df = length(d)-1)
+ci=c()
+ci[1]&lt;-(length(d)-1)*var(d)/chisq1
+ci[2]&lt;-(length(d)-1)*var(d)/chisq2
+ci</code></pre>
+<pre><code>## [1] 0.001465121 0.004650629</code></pre>
+</div>
+<div id="ci-standard-deviation-1" class="section level2">
+<h2>90% ci standard deviation</h2>
+<pre class="r"><code>chisq1=qchisq(1-.1/2,df = length(d)-1)
+chisq2=qchisq(.1/2,df = length(d)-1)
+ci=c()
+ci[1]&lt;-(length(d)-1)*var(d)/chisq1
+ci[2]&lt;-(length(d)-1)*var(d)/chisq2
+ci</code></pre>
+<pre><code>## [1] 0.001583773 0.004164600</code></pre>
+</div>
+<div id="ci-standard-deviation-2" class="section level2">
+<h2>80% ci standard deviation</h2>
+<pre class="r"><code>chisq1=qchisq(1-.2/2,df = length(d)-1)
+chisq2=qchisq(.2/2,df = length(d)-1)
+ci=c()
+ci[1]&lt;-(length(d)-1)*var(d)/chisq1
+ci[2]&lt;-(length(d)-1)*var(d)/chisq2
+ci</code></pre>
+<pre><code>## [1] 0.001737340 0.003683142</code></pre>
+</div>
+<div id="ci-standard-deviation-3" class="section level2">
+<h2>50% ci standard deviation</h2>
+<pre class="r"><code>chisq1=qchisq(1-.5/2,df = length(d)-1)
+chisq2=qchisq(.5/2,df = length(d)-1)
+ci=c()
+ci[1]&lt;-(length(d)-1)*var(d)/chisq1
+ci[2]&lt;-(length(d)-1)*var(d)/chisq2
+ci</code></pre>
+<pre><code>## [1] 0.002042167 0.003029489</code></pre>
+</div>
 </div>
 <div id="task-3" class="section level1">
 <h1>Task 3</h1>
