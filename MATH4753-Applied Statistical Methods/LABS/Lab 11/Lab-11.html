@@ -354,6 +354,66 @@ ci</code></pre>
 </div>
 <div id="task-3" class="section level1">
 <h1>Task 3</h1>
+<div id="blue-cod-fish" class="section level2">
+<h2>Blue cod fish</h2>
+<pre class="r"><code>blue=c(21.65, 17.48, 20.1, 21.57, 14.82, 19.17, 21.08, 18.23, 22.93, 
+15.66, 20.89, 21.66, 18.5, 20.59, 18.63, 18.91, 19.53, 17.7, 16.5, 19.03)</code></pre>
+</div>
+<div id="snapper" class="section level2">
+<h2>Snapper</h2>
+<pre class="r"><code>snapper=c(31.65, 27.48, 30.1, 31.57, 24.82, 29.17, 31.08, 28.23, 32.93, 25.66, 30.89, 31.66, 28.5, 30.59, 28.63)</code></pre>
+</div>
+<div id="z-vs.-t" class="section level2">
+<h2>z vs. t</h2>
+<p>Use t for small populations, i.e. n &lt; 30, if both populations are greater than 30, use z.</p>
+</div>
+<div id="ci-for-blue---snapper" class="section level2">
+<h2>95% ci for blue - snapper</h2>
+<pre class="r"><code>t.test(x = blue,y = snapper,conf.level = .95,var.equal = T,paired = F)$conf.int</code></pre>
+<pre><code>## [1] -11.840749  -8.757585
+## attr(,&quot;conf.level&quot;)
+## [1] 0.95</code></pre>
+<pre class="r"><code>spsq=((length(blue)-1)*var(blue)+(length(snapper)-1)*var(snapper))/(length(blue)+length(snapper)-2)
+t=qt(1-.05/2,df = length(blue)+length(snapper)-2)
+mp&lt;-c(-1,1)
+ci&lt;-mean(blue)-mean(snapper)+mp*t*sqrt(spsq*(1/length(blue)+1/length(snapper)))
+ci</code></pre>
+<pre><code>## [1] -11.840749  -8.757585</code></pre>
+</div>
+<div id="ci-for-snapper---blue" class="section level2">
+<h2>95% ci for snapper - blue</h2>
+<pre class="r"><code>t.test(x = snapper,y = blue,conf.level = .95,var.equal = T,paired = F)$conf.int</code></pre>
+<pre><code>## [1]  8.757585 11.840749
+## attr(,&quot;conf.level&quot;)
+## [1] 0.95</code></pre>
+<pre class="r"><code>spsq=((length(snapper)-1)*var(snapper)+(length(blue)-1)*var(blue))/(length(snapper)+length(blue)-2)
+t=qt(1-.05/2,df = length(snapper)+length(blue)-2)
+mp&lt;-c(-1,1)
+ci&lt;-mean(snapper)-mean(blue)+mp*t*sqrt(spsq*(1/length(snapper)+1/length(blue)))
+ci</code></pre>
+<pre><code>## [1]  8.757585 11.840749</code></pre>
+<p>The estimated interval for where the mean lies in the difference of the means of the two sample populations lies in the range of 8.76 to 11.84. So we can say the mean difference in size between snappers and cods is between 8.76 to 11.84.</p>
+</div>
+<div id="t.test" class="section level2">
+<h2>t.test</h2>
+<pre class="r"><code>t.test(x = snapper,y = blue,conf.level = .95,var.equal = T)$conf.int</code></pre>
+<pre><code>## [1]  8.757585 11.840749
+## attr(,&quot;conf.level&quot;)
+## [1] 0.95</code></pre>
+<pre class="r"><code>t.test(x = snapper,y = blue,conf.level = .85,var.equal = T)$conf.int</code></pre>
+<pre><code>## [1]  9.182414 11.415919
+## attr(,&quot;conf.level&quot;)
+## [1] 0.85</code></pre>
+<pre class="r"><code>t.test(x = snapper,y = blue,conf.level = .75,var.equal = T)$conf.int</code></pre>
+<pre><code>## [1]  9.411911 11.186422
+## attr(,&quot;conf.level&quot;)
+## [1] 0.75</code></pre>
+<pre class="r"><code>t.test(x = snapper,y = blue,conf.level = .25,var.equal = T)$conf.int</code></pre>
+<pre><code>## [1] 10.05570 10.54263
+## attr(,&quot;conf.level&quot;)
+## [1] 0.25</code></pre>
+<p>Our estimate on the interval gets smaller. This comes naturally from the fact that as our confidence level decreases, so to does our value of t, and since we multiply by t in our estimate formula, then the smaller t becomes, the smaller our interval.</p>
+</div>
 </div>
 <div id="task-4" class="section level1">
 <h1>Task 4</h1>
