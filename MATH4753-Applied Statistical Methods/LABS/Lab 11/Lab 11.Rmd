@@ -135,3 +135,9 @@ ci
 
 # Task 7
 
+```{r}
+set.seed(23);x = rnorm(30,mean=10,sd=12)
+#MATH4753Kelly::myci(x)
+
+```
+

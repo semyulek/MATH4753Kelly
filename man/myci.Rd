@@ -16,5 +16,5 @@ A 95% confidence interval.
 Calculates 95% confidence interval for mu of the data
 }
 \examples{
-\dontrun{sam=rnorm(10,mean=10,sd=5);myci(sam)}
+#sam=rnorm(10,mean=10,sd=5);myci(sam)
 }

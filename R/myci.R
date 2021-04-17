@@ -6,7 +6,7 @@
 #' @export
 #'
 #' @examples
-#' \dontrun{sam=rnorm(10,mean=10,sd=5);myci(sam)}
+#' #sam=rnorm(10,mean=10,sd=5);myci(sam)
 myci<-function(x){
   t=qt(1-.05/2,df = length(x) - 1)
   mp <- c(-1,1)
