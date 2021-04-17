@@ -464,9 +464,114 @@ t.test(x = mud,conf.level = .9)$conf.int</code></pre>
 </div>
 <div id="task-5" class="section level1">
 <h1>Task 5</h1>
+<div id="read-in-file" class="section level2">
+<h2>Read in file</h2>
+<pre class="r"><code>nzbirds&lt;-read.csv(&quot;NZBIRDS.csv&quot;)
+head(nzbirds)</code></pre>
+<pre><code>##   ï..Species          Name Extinct Habitat Nest.Site Nest.Density Diet Flight
+## 1     Grebes  P. cristatus      No       A         G            L    F    Yes
+## 2     Grebes P. rufopectus      No       A         G            L    F    Yes
+## 3    Petrels      P. gavia     Yes       A        GC            H    F    Yes
+## 4    Petrels    P. huttoni  Absent       A        GC            H    F    Yes
+## 5    Petrels   P. spelaeus  Absent       A        GC            H    F    Yes
+## 6    Petrels  P. assimilis     Yes       A        GC            H    F    Yes
+##   Body.Mass Egg.Length
+## 1      1100         57
+## 2       250         43
+## 3       300         57
+## 4       350         60
+## 5       250         55
+## 6       200         54</code></pre>
+</div>
+<div id="table" class="section level2">
+<h2>Table</h2>
+<pre class="r"><code>addmargins(with(nzbirds,table(Extinct,Flight)))</code></pre>
+<pre><code>##         Flight
+## Extinct   No Yes Sum
+##   Absent   5  11  16
+##   No       7  71  78
+##   Yes     21  17  38
+##   Sum     33  99 132</code></pre>
+<pre class="r"><code>extinct.flight=21/38
+extinct.flightless=7/78
+z=qnorm(1-.05/2,0,1)</code></pre>
+<p>Check if np&gt;=4, nq&gt;=4</p>
+<pre class="r"><code>extinct.flightless*78&gt;=4</code></pre>
+<pre><code>## [1] TRUE</code></pre>
+<pre class="r"><code>extinct.flight*38&gt;=4</code></pre>
+<pre><code>## [1] TRUE</code></pre>
+<pre class="r"><code>sqrt.ex=sqrt((extinct.flightless*(1-extinct.flightless)/78)+(extinct.flight*(1-extinct.flight))/38)
+differ=extinct.flight-extinct.flightless
+c(differ-sqrt.ex*z,differ+sqrt.ex*z)</code></pre>
+<pre><code>## [1] 0.2925475 0.6332285</code></pre>
+</div>
 </div>
 <div id="task-6" class="section level1">
 <h1>Task 6</h1>
+<div id="sample-seeds" class="section level2">
+<h2>Sample seeds</h2>
+<pre class="r"><code>set.seed(35);sam1=rnorm(25,mean=10,sd=5); set.seed(45);sam2=rnorm(34,mean=40,sd=8)</code></pre>
+</div>
+<div id="ci" class="section level2">
+<h2>95% ci</h2>
+<pre class="r"><code>ci=c()
+ci[1]=var(sam1)/(var(sam2)*(qf(1-.05/2,df1 = 24,df2 = 33)))
+ci[2]=(var(sam1)/var(sam2))*((qf(1-.05/2,df1 = 33,df2 = 24)))
+ci</code></pre>
+<pre><code>## [1] 0.2257732 1.0309437</code></pre>
+<pre class="r"><code>var.test(sam1,sam2,conf.level = .95)$conf.int</code></pre>
+<pre><code>## [1] 0.2257732 1.0309437
+## attr(,&quot;conf.level&quot;)
+## [1] 0.95</code></pre>
+</div>
+<div id="ci-1" class="section level2">
+<h2>80% ci</h2>
+<pre class="r"><code>ci=c()
+ci[1]=var(sam1)/(var(sam2)*(qf(1-.2/2,df1 = 24,df2 = 33)))
+ci[2]=(var(sam1)/var(sam2))*((qf(1-.2/2,df1 = 33,df2 = 24)))
+ci</code></pre>
+<pre><code>## [1] 0.2920457 0.7831464</code></pre>
+<pre class="r"><code>var.test(sam1,sam2,conf.level = .8)$conf.int</code></pre>
+<pre><code>## [1] 0.2920457 0.7831464
+## attr(,&quot;conf.level&quot;)
+## [1] 0.8</code></pre>
+</div>
+<div id="ci-2" class="section level2">
+<h2>70% ci</h2>
+<pre class="r"><code>ci=c()
+ci[1]=var(sam1)/(var(sam2)*(qf(1-.3/2,df1 = 24,df2 = 33)))
+ci[2]=(var(sam1)/var(sam2))*((qf(1-.3/2,df1 = 33,df2 = 24)))
+ci</code></pre>
+<pre><code>## [1] 0.3204384 0.7105597</code></pre>
+<pre class="r"><code>var.test(sam1,sam2,conf.level = .7)$conf.int</code></pre>
+<pre><code>## [1] 0.3204384 0.7105597
+## attr(,&quot;conf.level&quot;)
+## [1] 0.7</code></pre>
+</div>
+<div id="ci-3" class="section level2">
+<h2>60% ci</h2>
+<pre class="r"><code>ci=c()
+ci[1]=var(sam1)/(var(sam2)*(qf(1-.4/2,df1 = 24,df2 = 33)))
+ci[2]=(var(sam1)/var(sam2))*((qf(1-.4/2,df1 = 33,df2 = 24)))
+ci</code></pre>
+<pre><code>## [1] 0.3449688 0.6581343</code></pre>
+<pre class="r"><code>var.test(sam1,sam2,conf.level = .6)$conf.int</code></pre>
+<pre><code>## [1] 0.3449688 0.6581343
+## attr(,&quot;conf.level&quot;)
+## [1] 0.6</code></pre>
+</div>
+<div id="ci-4" class="section level2">
+<h2>50% ci</h2>
+<pre class="r"><code>ci=c()
+ci[1]=var(sam1)/(var(sam2)*(qf(1-.5/2,df1 = 24,df2 = 33)))
+ci[2]=(var(sam1)/var(sam2))*((qf(1-.5/2,df1 = 33,df2 = 24)))
+ci</code></pre>
+<pre><code>## [1] 0.3675269 0.6165110</code></pre>
+<pre class="r"><code>var.test(sam1,sam2,conf.level = .5)$conf.int</code></pre>
+<pre><code>## [1] 0.3675269 0.6165110
+## attr(,&quot;conf.level&quot;)
+## [1] 0.5</code></pre>
+</div>
 </div>
 <div id="task-7" class="section level1">
 <h1>Task 7</h1>
