@@ -366,6 +366,13 @@ ci</code></pre>
 </div>
 <div id="task-7" class="section level1">
 <h1>Task 7</h1>
+<pre class="r"><code>set.seed(23);x = rnorm(30,mean=10,sd=12)
+t.test(x = x,conf.level = .95)$conf.int</code></pre>
+<pre><code>## [1]  8.124741 15.648939
+## attr(,&quot;conf.level&quot;)
+## [1] 0.95</code></pre>
+<pre class="r"><code>MATH4753Kelly::myci(x)</code></pre>
+<pre><code>## [1]  8.124741 15.648939</code></pre>
 </div>
 
 

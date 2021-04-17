@@ -137,7 +137,7 @@ ci
 
 ```{r}
 set.seed(23);x = rnorm(30,mean=10,sd=12)
-#MATH4753Kelly::myci(x)
-
+t.test(x = x,conf.level = .95)$conf.int
+MATH4753Kelly::myci(x)
 ```
 
