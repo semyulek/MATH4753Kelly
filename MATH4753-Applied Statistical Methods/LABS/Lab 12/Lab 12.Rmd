@@ -264,7 +264,47 @@ The above output compared to these graphs, while giving the same information, th
 
 # Task 7
 
+o	> t.test(x1,mu=23) # A 
+o	
+o	        One Sample t-test # B 
+o	
+o	data:  x1
+o	t = 2.3563, df = 29, p-value = 0.02543 # C 
+o	alternative hypothesis: true mean is not equal to 23 #D
+o	95 percent confidence interval: #E
+o	 23.30198 27.27320 #F
+o	sample estimates:
+o	mean of x 
+o	 25.28759 #G
 
+## A
+
+Does the t test on sample x1 with a null hypothesis of mu equals 23.
+
+## B
+
+The name of the test.
+
+## C
+
+$$t_{calc}=\frac{\bar{x1}-\mu_0}{\frac{s}{\sqrt{n}}}$$
+The different statistics that are calculated from the t.test. The t value which is calculated using the tcalc formula above. The degrees of freedom which is 30-1=29. The p-value which is the region below tcalc and above tcalc all subtracted by 1.
+
+## D
+
+The researchers hunch or alternative hypothesis where mu does not equal 23.
+
+## E
+
+Our confidence level with alpha=.05 since 1-.05=.95.
+
+## F
+
+Our 95% confidence interval.
+
+## G
+
+The estimated mean of x1.
 
 # Task 8
 

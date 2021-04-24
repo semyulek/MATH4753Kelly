@@ -597,6 +597,37 @@ return(list(pvalue=pvalue,tcalc=tcalc,n=n,x=x,test=test,ci=ci))
 </div>
 <div id="task-7" class="section level1">
 <h1>Task 7</h1>
+<p>o &gt; t.test(x1,mu=23) # A o<br />
+o One Sample t-test # B o<br />
+o data: x1 o t = 2.3563, df = 29, p-value = 0.02543 # C o alternative hypothesis: true mean is not equal to 23 #D o 95 percent confidence interval: #E o 23.30198 27.27320 #F o sample estimates: o mean of x o 25.28759 #G</p>
+<div id="a" class="section level2">
+<h2>A</h2>
+<p>Does the t test on sample x1 with a null hypothesis of mu equals 23.</p>
+</div>
+<div id="b" class="section level2">
+<h2>B</h2>
+<p>The name of the test.</p>
+</div>
+<div id="c" class="section level2">
+<h2>C</h2>
+<p><span class="math display">\[t_{calc}=\frac{\bar{x1}-\mu_0}{\frac{s}{\sqrt{n}}}\]</span> The different statistics that are calculated from the t.test. The t value which is calculated using the tcalc formula above. The degrees of freedom which is 30-1=29. The p-value which is the region below tcalc and above tcalc all subtracted by 1.</p>
+</div>
+<div id="d" class="section level2">
+<h2>D</h2>
+<p>The researchers hunch or alternative hypothesis where mu does not equal 23.</p>
+</div>
+<div id="e" class="section level2">
+<h2>E</h2>
+<p>Our confidence level with alpha=.05 since 1-.05=.95.</p>
+</div>
+<div id="f" class="section level2">
+<h2>F</h2>
+<p>Our 95% confidence interval.</p>
+</div>
+<div id="g" class="section level2">
+<h2>G</h2>
+<p>The estimated mean of x1.</p>
+</div>
 </div>
 <div id="task-8" class="section level1">
 <h1>Task 8</h1>
