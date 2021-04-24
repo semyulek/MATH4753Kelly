@@ -308,4 +308,8 @@ The estimated mean of x1.
 
 # Task 8
 
+```{r}
+tcalc=(mean(x1)-25)/(sd(x1)/sqrt(30))
+MATH4753Kelly::mypvalue(t0 = tcalc,n = 30,alpha = .05)
+```
 
