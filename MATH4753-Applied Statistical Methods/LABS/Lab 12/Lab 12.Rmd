@@ -246,19 +246,6 @@ bootpval(x = x1,mu0 = 26,test = "two")
 
 The above output compared to these graphs, while giving the same information, the graphs better illustrates how much of the distribution our p-value takes up.
 
-# Task 3
-
-
-
-# Task 4
-
-
-
-# Task 5
-
-
-
-# Task 6
 
 
 
