@@ -250,7 +250,7 @@ div.tocify {
 
 
 <div id="section" class="section level1">
-<h1>1/10</h1>
+<h1>2/10</h1>
 </div>
 <div id="wd" class="section level1">
 <h1>WD</h1>
@@ -335,6 +335,24 @@ nq2&gt;=4</code></pre>
 </div>
 <div id="ms-7.120---pg-365" class="section level1">
 <h1>2. MS 7.120 - pg 365</h1>
+<div id="a.-1" class="section level2">
+<h2>a.</h2>
+<p>n1=100, n2=47 are both greater than 30, so we know which 2-sample formula to use. <span class="math display">\[(\bar{y_1}-\bar{y_2})\pm z_{\frac{\alpha}{2}}\sqrt{\frac{s_1^2}{n_1}+\frac{s_2^2}{n_2}}\]</span></p>
+<pre class="r"><code>(1312-1352)+mp*qnorm(1-.1/2)*sqrt((422^2)/100+(271^2)/47)</code></pre>
+<pre><code>## [1] -135.10916   55.10916</code></pre>
+</div>
+<div id="b.-1" class="section level2">
+<h2>b.</h2>
+<p><span class="math display">\[(\frac{s_1^2}{s_2^2})\frac{1}{F_{\alpha/2(\nu_1,\nu_2)}}\leq \frac{\sigma_1^2}{\sigma_2^2}\leq (\frac{s_1^2}{s_2^2})F_{\alpha/2(\nu_2,\nu_1)}\]</span></p>
+<pre class="r"><code>f1=qf(1-.1/2,df1 = 99,df2 = 46)
+f2=qf(1-.1/2,df1 = 46,df2 = 99)
+l=(422^2)/271^2*(1/f1)
+u=(422^2)/271^2*(f2)
+ci=c(l,u)
+ci</code></pre>
+<pre><code>## [1] 1.566267 3.617750</code></pre>
+<p>We can say that the variances do indeed differ as 1 is not in the interval (1.566267, 3.617750).</p>
+</div>
 </div>
 <div id="ms-7.128---pg-367" class="section level1">
 <h1>3. MS 7.128 - pg 367</h1>

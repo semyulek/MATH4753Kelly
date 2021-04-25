@@ -17,7 +17,7 @@ output:
 knitr::opts_chunk$set(echo = TRUE)
 ```
 
-# 1/10
+# 2/10
 
 # WD
 
@@ -101,7 +101,30 @@ Yes, we 95% confident that 21/38=.5526 lies in the interval while 7/78=.0897 doe
 
 # 2. MS 7.120 - pg 365
 
+## a.
 
+n1=100, n2=47 are both greater than 30, so we know which 2-sample formula to use.
+$$(\bar{y_1}-\bar{y_2})\pm z_{\frac{\alpha}{2}}\sqrt{\frac{s_1^2}{n_1}+\frac{s_2^2}{n_2}}$$
+
+```{r}
+(1312-1352)+mp*qnorm(1-.1/2)*sqrt((422^2)/100+(271^2)/47)
+```
+
+
+## b.
+
+$$(\frac{s_1^2}{s_2^2})\frac{1}{F_{\alpha/2(\nu_1,\nu_2)}}\leq \frac{\sigma_1^2}{\sigma_2^2}\leq (\frac{s_1^2}{s_2^2})F_{\alpha/2(\nu_2,\nu_1)}$$
+
+```{r}
+f1=qf(1-.1/2,df1 = 99,df2 = 46)
+f2=qf(1-.1/2,df1 = 46,df2 = 99)
+l=(422^2)/271^2*(1/f1)
+u=(422^2)/271^2*(f2)
+ci=c(l,u)
+ci
+```
+
+We can say that the variances do indeed differ as 1 is not in the interval (1.566267, 3.617750).
 
 # 3. MS 7.128 - pg 367
 
