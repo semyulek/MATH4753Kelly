@@ -17,7 +17,7 @@ output:
 knitr::opts_chunk$set(echo = TRUE)
 ```
 
-# 0/10
+# 1/10
 
 # WD
 
@@ -28,7 +28,76 @@ getwd()
 
 # 1. MS 7.118 - pg 364
 
+116 bird species, measured were body mass(g), egg length(mm)
 
+## a.
+
+```{r}
+nzbird=read.csv("NZBIRDS.csv")
+head(nzbird)
+set.seed(50)
+sam=nzbird[sample(1:nrow(nzbird),size = 35),]
+```
+
+## b.
+
+Body mass
+
+```{r}
+mean(sam$Body.Mass)
+sd(sam$Body.Mass)
+t.test(x = nzbird$Body.Mass,conf.level = .95,mu = 6680.371)$conf.int
+```
+
+## c.
+
+We accept our null hypothesis that the mean of our sample, 6680.371g, is in the confidence interval of (3208.217, 13397.434), since 6680.371 is in this interval.
+
+## d.
+
+The true mean of 9113g is in the interval (3208.217, 13397.434). The confidence level we have chosen is alpha=.05, or 95% confidence, and since 95% covers most of the data set, we can be fairly certain that the true mean lies in the interval.
+
+## e.
+
+Egg length
+
+```{r}
+mean(sam$Egg.Length,na.rm = T)
+sd(sam$Egg.Length,na.rm = T)
+t.test(x = nzbird$Egg.Length,conf.level = .95,mu = 55.5303)$conf.int
+```
+
+We accept the null hypothesis that 55.5303 is in the interval (53.02102, 68.28667).
+61.06 is also in our interval, and since we cover 95% of the data we can be fairly certain that the true mean lies n the interval.
+
+## f.
+
+```{r}
+flight_extinct=21/38
+flight_alive=7/78
+z=qnorm(1-.05/2)
+np=38*flight_extinct
+np>=4
+nq=38*(1-flight_extinct)
+nq>=4
+np2=78*flight_alive
+np2>=4
+nq2=78*(1-flight_alive)
+nq2>=4
+```
+
+Since our approximations are greater than or equal to 4, than we can use CLT.
+
+```{r}
+mp=c(-1,1)
+(flight_extinct-flight_alive)+mp*z*sqrt((flight_extinct*(1-flight_extinct))/38+(flight_alive*(1-flight_alive))/78)
+```
+
+Our 95% ci is (0.2925475, 0.6332285).
+
+## g.
+
+Yes, we 95% confident that 21/38=.5526 lies in the interval while 7/78=.0897 does not, so the proportion of extinct birds is higher.
 
 # 2. MS 7.120 - pg 365
 
@@ -62,6 +131,6 @@ getwd()
 
 
 
-# 10.
+# 10. Plot
 
 

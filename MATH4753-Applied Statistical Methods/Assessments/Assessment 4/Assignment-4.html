@@ -244,13 +244,13 @@ div.tocify {
 
 <h1 class="title toc-ignore">Assingment 4</h1>
 <h4 class="author">Samuel Kelly</h4>
-<h4 class="date">Saturday, April 24, 2021</h4>
+<h4 class="date">Sunday, April 25, 2021</h4>
 
 </div>
 
 
 <div id="section" class="section level1">
-<h1>0/10</h1>
+<h1>1/10</h1>
 </div>
 <div id="wd" class="section level1">
 <h1>WD</h1>
@@ -259,6 +259,79 @@ div.tocify {
 </div>
 <div id="ms-7.118---pg-364" class="section level1">
 <h1>1. MS 7.118 - pg 364</h1>
+<p>116 bird species, measured were body mass(g), egg length(mm)</p>
+<div id="a." class="section level2">
+<h2>a.</h2>
+<pre class="r"><code>nzbird=read.csv(&quot;NZBIRDS.csv&quot;)
+head(nzbird)</code></pre>
+<div data-pagedtable="false">
+<script data-pagedtable-source type="application/json">
+{"columns":[{"label":[""],"name":["_rn_"],"type":[""],"align":["left"]},{"label":["ï..Species"],"name":[1],"type":["chr"],"align":["left"]},{"label":["Name"],"name":[2],"type":["chr"],"align":["left"]},{"label":["Extinct"],"name":[3],"type":["chr"],"align":["left"]},{"label":["Habitat"],"name":[4],"type":["chr"],"align":["left"]},{"label":["Nest.Site"],"name":[5],"type":["chr"],"align":["left"]},{"label":["Nest.Density"],"name":[6],"type":["chr"],"align":["left"]},{"label":["Diet"],"name":[7],"type":["chr"],"align":["left"]},{"label":["Flight"],"name":[8],"type":["chr"],"align":["left"]},{"label":["Body.Mass"],"name":[9],"type":["int"],"align":["right"]},{"label":["Egg.Length"],"name":[10],"type":["dbl"],"align":["right"]}],"data":[{"1":"Grebes","2":"P. cristatus","3":"No","4":"A","5":"G","6":"L","7":"F","8":"Yes","9":"1100","10":"57","_rn_":"1"},{"1":"Grebes","2":"P. rufopectus","3":"No","4":"A","5":"G","6":"L","7":"F","8":"Yes","9":"250","10":"43","_rn_":"2"},{"1":"Petrels","2":"P. gavia","3":"Yes","4":"A","5":"GC","6":"H","7":"F","8":"Yes","9":"300","10":"57","_rn_":"3"},{"1":"Petrels","2":"P. huttoni","3":"Absent","4":"A","5":"GC","6":"H","7":"F","8":"Yes","9":"350","10":"60","_rn_":"4"},{"1":"Petrels","2":"P. spelaeus","3":"Absent","4":"A","5":"GC","6":"H","7":"F","8":"Yes","9":"250","10":"55","_rn_":"5"},{"1":"Petrels","2":"P. assimilis","3":"Yes","4":"A","5":"GC","6":"H","7":"F","8":"Yes","9":"200","10":"54","_rn_":"6"}],"options":{"columns":{"min":{},"max":[10]},"rows":{"min":[10],"max":[10]},"pages":{}}}
+  </script>
+</div>
+<pre class="r"><code>set.seed(50)
+sam=nzbird[sample(1:nrow(nzbird),size = 35),]</code></pre>
+</div>
+<div id="b." class="section level2">
+<h2>b.</h2>
+<p>Body mass</p>
+<pre class="r"><code>mean(sam$Body.Mass)</code></pre>
+<pre><code>## [1] 6680.371</code></pre>
+<pre class="r"><code>sd(sam$Body.Mass)</code></pre>
+<pre><code>## [1] 26369.59</code></pre>
+<pre class="r"><code>t.test(x = nzbird$Body.Mass,conf.level = .95,mu = 6680.371)$conf.int</code></pre>
+<pre><code>## [1]  3208.217 13397.434
+## attr(,&quot;conf.level&quot;)
+## [1] 0.95</code></pre>
+</div>
+<div id="c." class="section level2">
+<h2>c.</h2>
+<p>We accept our null hypothesis that the mean of our sample, 6680.371g, is in the confidence interval of (3208.217, 13397.434), since 6680.371 is in this interval.</p>
+</div>
+<div id="d." class="section level2">
+<h2>d.</h2>
+<p>The true mean of 9113g is in the interval (3208.217, 13397.434). The confidence level we have chosen is alpha=.05, or 95% confidence, and since 95% covers most of the data set, we can be fairly certain that the true mean lies in the interval.</p>
+</div>
+<div id="e." class="section level2">
+<h2>e.</h2>
+<p>Egg length</p>
+<pre class="r"><code>mean(sam$Egg.Length,na.rm = T)</code></pre>
+<pre><code>## [1] 55.5303</code></pre>
+<pre class="r"><code>sd(sam$Egg.Length,na.rm = T)</code></pre>
+<pre><code>## [1] 41.82963</code></pre>
+<pre class="r"><code>t.test(x = nzbird$Egg.Length,conf.level = .95,mu = 55.5303)$conf.int</code></pre>
+<pre><code>## [1] 53.02102 68.28667
+## attr(,&quot;conf.level&quot;)
+## [1] 0.95</code></pre>
+<p>We accept the null hypothesis that 55.5303 is in the interval (53.02102, 68.28667). 61.06 is also in our interval, and since we cover 95% of the data we can be fairly certain that the true mean lies n the interval.</p>
+</div>
+<div id="f." class="section level2">
+<h2>f.</h2>
+<pre class="r"><code>flight_extinct=21/38
+flight_alive=7/78
+z=qnorm(1-.05/2)
+np=38*flight_extinct
+np&gt;=4</code></pre>
+<pre><code>## [1] TRUE</code></pre>
+<pre class="r"><code>nq=38*(1-flight_extinct)
+nq&gt;=4</code></pre>
+<pre><code>## [1] TRUE</code></pre>
+<pre class="r"><code>np2=78*flight_alive
+np2&gt;=4</code></pre>
+<pre><code>## [1] TRUE</code></pre>
+<pre class="r"><code>nq2=78*(1-flight_alive)
+nq2&gt;=4</code></pre>
+<pre><code>## [1] TRUE</code></pre>
+<p>Since our approximations are greater than or equal to 4, than we can use CLT.</p>
+<pre class="r"><code>mp=c(-1,1)
+(flight_extinct-flight_alive)+mp*z*sqrt((flight_extinct*(1-flight_extinct))/38+(flight_alive*(1-flight_alive))/78)</code></pre>
+<pre><code>## [1] 0.2925475 0.6332285</code></pre>
+<p>Our 95% ci is (0.2925475, 0.6332285).</p>
+</div>
+<div id="g." class="section level2">
+<h2>g.</h2>
+<p>Yes, we 95% confident that 21/38=.5526 lies in the interval while 7/78=.0897 does not, so the proportion of extinct birds is higher.</p>
+</div>
 </div>
 <div id="ms-7.120---pg-365" class="section level1">
 <h1>2. MS 7.120 - pg 365</h1>
@@ -284,8 +357,8 @@ div.tocify {
 <div id="ms-8.104---pg-439" class="section level1">
 <h1>9. MS 8.104 - pg 439</h1>
 </div>
-<div id="section-1" class="section level1">
-<h1>10.</h1>
+<div id="plot" class="section level1">
+<h1>10. Plot</h1>
 </div>
 
 
