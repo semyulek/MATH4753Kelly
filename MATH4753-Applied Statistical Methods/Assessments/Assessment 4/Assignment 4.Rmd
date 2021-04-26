@@ -17,7 +17,7 @@ output:
 knitr::opts_chunk$set(echo = TRUE)
 ```
 
-# 5/10
+# 6/10
 
 # WD
 
@@ -221,7 +221,32 @@ Since our t statistic 2.0467 does not fall outside the rejection region of -2.22
 
 # 7. MS 8.84 - pg 425 – This refers to 8.39 NOT 8.33!
 
+Variances are equal
 
+## a.
+
+```{r}
+gt=read.csv("GASTURBINE.csv")
+head(gt)
+```
+
+```{r}
+gtrad=filter(gt,ï..ENGINE == "Traditional")
+gae=filter(gt,ï..ENGINE == "Aeroderiv")
+gad=filter(gt,ï..ENGINE == "Advanced")
+var.test(x = gtrad$HEATRATE,y = gae$HEATRATE,conf.level = .95,ratio = 1)
+qf(c(.05/2,1-.05/2),df1 = 6,df2 = 38)
+```
+
+Since F is not our rejection region, and that interval does not contain 1, then we can say that we reject the null hypothesis that sigma1^2/sigma2^2=1. So there is a significant difference between the heat rates between the two different types of engines.
+
+## b.
+
+```{r}
+var.test(x = gad$HEATRATE,y = gae$HEATRATE,conf.level = .95,ratio = 1)
+```
+
+There is an even greater divide between these heat rates, as .05> 1.192e-06, and F is not in our ci. The heat rates of the two engines are significantly different. 
 
 # 8. MS 8.99 - pg 438
 

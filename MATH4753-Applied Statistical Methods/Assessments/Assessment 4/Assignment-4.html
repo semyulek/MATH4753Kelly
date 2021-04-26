@@ -250,7 +250,7 @@ div.tocify {
 
 
 <div id="section" class="section level1">
-<h1>5/10</h1>
+<h1>6/10</h1>
 </div>
 <div id="wd" class="section level1">
 <h1>WD</h1>
@@ -496,6 +496,51 @@ orch</code></pre>
 </div>
 <div id="ms-8.84---pg-425-this-refers-to-8.39-not-8.33" class="section level1">
 <h1>7. MS 8.84 - pg 425 – This refers to 8.39 NOT 8.33!</h1>
+<p>Variances are equal</p>
+<div id="a.-5" class="section level2">
+<h2>a.</h2>
+<pre class="r"><code>gt=read.csv(&quot;GASTURBINE.csv&quot;)
+head(gt)</code></pre>
+<div data-pagedtable="false">
+<script data-pagedtable-source type="application/json">
+{"columns":[{"label":[""],"name":["_rn_"],"type":[""],"align":["left"]},{"label":["ï..ENGINE"],"name":[1],"type":["chr"],"align":["left"]},{"label":["SHAFTS"],"name":[2],"type":["int"],"align":["right"]},{"label":["RPM"],"name":[3],"type":["int"],"align":["right"]},{"label":["CPRATIO"],"name":[4],"type":["dbl"],"align":["right"]},{"label":["INLET.TEMP"],"name":[5],"type":["int"],"align":["right"]},{"label":["EXH.TEMP"],"name":[6],"type":["int"],"align":["right"]},{"label":["AIRFLOW"],"name":[7],"type":["int"],"align":["right"]},{"label":["POWER"],"name":[8],"type":["int"],"align":["right"]},{"label":["HEATRATE"],"name":[9],"type":["int"],"align":["right"]},{"label":["LHV."],"name":[10],"type":["dbl"],"align":["right"]},{"label":["ISOWORK"],"name":[11],"type":["dbl"],"align":["right"]}],"data":[{"1":"Traditional","2":"1","3":"27245","4":"9.2","5":"1134","6":"602","7":"7","8":"1630","9":"14622","10":"24.6","11":"232.86","_rn_":"1"},{"1":"Traditional","2":"1","3":"14000","4":"12.2","5":"950","6":"446","7":"15","8":"2726","9":"13196","10":"27.3","11":"181.73","_rn_":"2"},{"1":"Traditional","2":"1","3":"17384","4":"14.8","5":"1149","6":"537","7":"20","8":"5247","9":"11948","10":"30.1","11":"262.35","_rn_":"3"},{"1":"Traditional","2":"1","3":"11085","4":"11.8","5":"1024","6":"478","7":"27","8":"6726","9":"11289","10":"31.9","11":"249.11","_rn_":"4"},{"1":"Traditional","2":"1","3":"14045","4":"13.2","5":"1149","6":"553","7":"29","8":"7726","9":"11964","10":"30.1","11":"266.41","_rn_":"5"},{"1":"Traditional","2":"1","3":"6211","4":"15.7","5":"1172","6":"517","7":"176","8":"52600","9":"10526","10":"34.2","11":"298.86","_rn_":"6"}],"options":{"columns":{"min":{},"max":[10]},"rows":{"min":[10],"max":[10]},"pages":{}}}
+  </script>
+</div>
+<pre class="r"><code>gtrad=filter(gt,ï..ENGINE == &quot;Traditional&quot;)
+gae=filter(gt,ï..ENGINE == &quot;Aeroderiv&quot;)
+gad=filter(gt,ï..ENGINE == &quot;Advanced&quot;)
+var.test(x = gtrad$HEATRATE,y = gae$HEATRATE,conf.level = .95,ratio = 1)</code></pre>
+<pre><code>## 
+##  F test to compare two variances
+## 
+## data:  gtrad$HEATRATE and gae$HEATRATE
+## F = 0.23272, num df = 38, denom df = 6, p-value = 0.004234
+## alternative hypothesis: true ratio of variances is not equal to 1
+## 95 percent confidence interval:
+##  0.04635082 0.64308536
+## sample estimates:
+## ratio of variances 
+##          0.2327207</code></pre>
+<pre class="r"><code>qf(c(.05/2,1-.05/2),df1 = 6,df2 = 38)</code></pre>
+<pre><code>## [1] 0.1991693 2.7633350</code></pre>
+<p>Since F is not our rejection region, and that interval does not contain 1, then we can say that we reject the null hypothesis that sigma1<sup>2/sigma2</sup>2=1. So there is a significant difference between the heat rates between the two different types of engines.</p>
+</div>
+<div id="b.-5" class="section level2">
+<h2>b.</h2>
+<pre class="r"><code>var.test(x = gad$HEATRATE,y = gae$HEATRATE,conf.level = .95,ratio = 1)</code></pre>
+<pre><code>## 
+##  F test to compare two variances
+## 
+## data:  gad$HEATRATE and gae$HEATRATE
+## F = 0.057974, num df = 20, denom df = 6, p-value = 1.192e-06
+## alternative hypothesis: true ratio of variances is not equal to 1
+## 95 percent confidence interval:
+##  0.0112170 0.1813622
+## sample estimates:
+## ratio of variances 
+##         0.05797393</code></pre>
+<p>There is an even greater divide between these heat rates, as .05&gt; 1.192e-06, and F is not in our ci. The heat rates of the two engines are significantly different.</p>
+</div>
 </div>
 <div id="ms-8.99---pg-438" class="section level1">
 <h1>8. MS 8.99 - pg 438</h1>
