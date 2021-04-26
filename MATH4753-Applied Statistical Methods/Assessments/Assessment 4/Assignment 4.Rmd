@@ -17,7 +17,7 @@ output:
 knitr::opts_chunk$set(echo = TRUE)
 ```
 
-# 3/10
+# 4/10
 
 # WD
 
@@ -165,7 +165,33 @@ Since our test statistic t lies in the 95% ci, then we can conclude that we are 
 
 # 5. MS 8.28 - pg 392
 
+## a.
 
+```{r}
+lake=c(9.6,4.5,13.2,4.1,22.6,2.7,14.7,3.5,13.6,19.8,14.3,56.9,25.1,18.4,2.7,4.2,30.2,10.3,17.6,2.4,17.3,38.8,3.0,5.8,7.6)
+t.test(x = lake,mu = 15,conf.level = .9)
+```
+
+With the t test we can see that our p-value is .8535>.1 so we can accept our null hypothesis, and since the estimate mean is 14.516, we can say that this sample may closely reflect all of Wisconsin.
+
+## b.
+
+$$t=\frac{\bar{y}-\mu_0}{s/\sqrt n}\Rightarrow \bar{y}=t\frac{s}{\sqrt n}+\mu_0$$
+
+```{r}
+s=sd(lake)
+t=qt(1-.1/2,df = 24)
+mu=15
+ci=mp*t*(s/sqrt(25))+mu
+ci
+```
+
+We would reject the null if mu fell into the region (-infinity,10.56413)U(19.43587,infinity).
+So the probability that t will lie in that region is:
+```{r}
+pt((10.56413-14)/(s/sqrt(25)),df = 24) + (1-pt((19.43587-14)/(s/sqrt(25)),df = 24))
+```
+The probability that t will be in the rejection region is: 12.21687%.
 
 # 6. MS 8.44 - pg 401
 
