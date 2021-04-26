@@ -250,7 +250,7 @@ div.tocify {
 
 
 <div id="section" class="section level1">
-<h1>4/10</h1>
+<h1>5/10</h1>
 </div>
 <div id="wd" class="section level1">
 <h1>WD</h1>
@@ -424,6 +424,75 @@ ci</code></pre>
 </div>
 <div id="ms-8.44---pg-401" class="section level1">
 <h1>6. MS 8.44 - pg 401</h1>
+<pre class="r"><code>orch=read.csv(&quot;ORCHARD.csv&quot;)
+head(orch)</code></pre>
+<div data-pagedtable="false">
+<script data-pagedtable-source type="application/json">
+{"columns":[{"label":[""],"name":["_rn_"],"type":[""],"align":["left"]},{"label":["ï..DAY"],"name":[1],"type":["int"],"align":["right"]},{"label":["CONDITION"],"name":[2],"type":["chr"],"align":["left"]},{"label":["THION"],"name":[3],"type":["dbl"],"align":["right"]},{"label":["OXON"],"name":[4],"type":["dbl"],"align":["right"]},{"label":["RATIO"],"name":[5],"type":["dbl"],"align":["right"]}],"data":[{"1":"15","2":"FOG","3":"38.2","4":"10.3","5":"0.270","_rn_":"1"},{"1":"17","2":"FOG","3":"28.6","4":"6.9","5":"0.241","_rn_":"2"},{"1":"18","2":"FOG","3":"30.2","4":"6.2","5":"0.205","_rn_":"3"},{"1":"19","2":"FOG","3":"23.7","4":"12.4","5":"0.523","_rn_":"4"},{"1":"20","2":"FOG","3":"62.3","4":"NA","5":"NA","_rn_":"5"},{"1":"20","2":"CLEAR","3":"74.1","4":"45.8","5":"0.618","_rn_":"6"}],"options":{"columns":{"min":{},"max":[10]},"rows":{"min":[10],"max":[10]},"pages":{}}}
+  </script>
+</div>
+<pre class="r"><code>library(dplyr)</code></pre>
+<pre><code>## Warning: package &#39;dplyr&#39; was built under R version 4.0.4</code></pre>
+<pre><code>## 
+## Attaching package: &#39;dplyr&#39;</code></pre>
+<pre><code>## The following objects are masked from &#39;package:stats&#39;:
+## 
+##     filter, lag</code></pre>
+<pre><code>## The following objects are masked from &#39;package:base&#39;:
+## 
+##     intersect, setdiff, setequal, union</code></pre>
+<pre class="r"><code>dim(orch)</code></pre>
+<pre><code>## [1] 13  5</code></pre>
+<pre class="r"><code>filter(orch,CONDITION == &quot;FOG&quot;)</code></pre>
+<div data-pagedtable="false">
+<script data-pagedtable-source type="application/json">
+{"columns":[{"label":["ï..DAY"],"name":[1],"type":["int"],"align":["right"]},{"label":["CONDITION"],"name":[2],"type":["chr"],"align":["left"]},{"label":["THION"],"name":[3],"type":["dbl"],"align":["right"]},{"label":["OXON"],"name":[4],"type":["dbl"],"align":["right"]},{"label":["RATIO"],"name":[5],"type":["dbl"],"align":["right"]}],"data":[{"1":"15","2":"FOG","3":"38.2","4":"10.3","5":"0.270"},{"1":"17","2":"FOG","3":"28.6","4":"6.9","5":"0.241"},{"1":"18","2":"FOG","3":"30.2","4":"6.2","5":"0.205"},{"1":"19","2":"FOG","3":"23.7","4":"12.4","5":"0.523"},{"1":"20","2":"FOG","3":"62.3","4":"NA","5":"NA"},{"1":"21","2":"FOG","3":"88.2","4":"9.9","5":"0.112"},{"1":"22","2":"FOG","3":"135.9","4":"44.8","5":"0.330"},{"1":"23","2":"FOG","3":"102.9","4":"27.8","5":"0.270"},{"1":"25","2":"FOG","3":"46.9","4":"11.2","5":"0.239"}],"options":{"columns":{"min":{},"max":[10]},"rows":{"min":[10],"max":[10]},"pages":{}}}
+  </script>
+</div>
+<pre class="r"><code>filter(orch,CONDITION == &quot;CLEAR&quot;|CONDITION==&quot;CLOUD&quot;)</code></pre>
+<div data-pagedtable="false">
+<script data-pagedtable-source type="application/json">
+{"columns":[{"label":["ï..DAY"],"name":[1],"type":["int"],"align":["right"]},{"label":["CONDITION"],"name":[2],"type":["chr"],"align":["left"]},{"label":["THION"],"name":[3],"type":["dbl"],"align":["right"]},{"label":["OXON"],"name":[4],"type":["dbl"],"align":["right"]},{"label":["RATIO"],"name":[5],"type":["dbl"],"align":["right"]}],"data":[{"1":"20","2":"CLEAR","3":"74.1","4":"45.8","5":"0.618"},{"1":"21","2":"CLEAR","3":"46.4","4":"27.4","5":"0.591"},{"1":"23","2":"CLOUD","3":"28.9","4":"6.5","5":"0.225"},{"1":"25","2":"CLEAR","3":"44.3","4":"16.6","5":"0.375"}],"options":{"columns":{"min":{},"max":[10]},"rows":{"min":[10],"max":[10]},"pages":{}}}
+  </script>
+</div>
+<pre class="r"><code>dfog=with(orch,orch[CONDITION == &quot;FOG&quot;,])
+dfclcloud=with(orch, orch[CONDITION == &quot;CLEAR&quot; | CONDITION == &quot;CLOUD&quot;,])
+dfog</code></pre>
+<div data-pagedtable="false">
+<script data-pagedtable-source type="application/json">
+{"columns":[{"label":[""],"name":["_rn_"],"type":[""],"align":["left"]},{"label":["ï..DAY"],"name":[1],"type":["int"],"align":["right"]},{"label":["CONDITION"],"name":[2],"type":["chr"],"align":["left"]},{"label":["THION"],"name":[3],"type":["dbl"],"align":["right"]},{"label":["OXON"],"name":[4],"type":["dbl"],"align":["right"]},{"label":["RATIO"],"name":[5],"type":["dbl"],"align":["right"]}],"data":[{"1":"15","2":"FOG","3":"38.2","4":"10.3","5":"0.270","_rn_":"1"},{"1":"17","2":"FOG","3":"28.6","4":"6.9","5":"0.241","_rn_":"2"},{"1":"18","2":"FOG","3":"30.2","4":"6.2","5":"0.205","_rn_":"3"},{"1":"19","2":"FOG","3":"23.7","4":"12.4","5":"0.523","_rn_":"4"},{"1":"20","2":"FOG","3":"62.3","4":"NA","5":"NA","_rn_":"5"},{"1":"21","2":"FOG","3":"88.2","4":"9.9","5":"0.112","_rn_":"7"},{"1":"22","2":"FOG","3":"135.9","4":"44.8","5":"0.330","_rn_":"9"},{"1":"23","2":"FOG","3":"102.9","4":"27.8","5":"0.270","_rn_":"10"},{"1":"25","2":"FOG","3":"46.9","4":"11.2","5":"0.239","_rn_":"12"}],"options":{"columns":{"min":{},"max":[10]},"rows":{"min":[10],"max":[10]},"pages":{}}}
+  </script>
+</div>
+<pre class="r"><code>dfclcloud</code></pre>
+<div data-pagedtable="false">
+<script data-pagedtable-source type="application/json">
+{"columns":[{"label":[""],"name":["_rn_"],"type":[""],"align":["left"]},{"label":["ï..DAY"],"name":[1],"type":["int"],"align":["right"]},{"label":["CONDITION"],"name":[2],"type":["chr"],"align":["left"]},{"label":["THION"],"name":[3],"type":["dbl"],"align":["right"]},{"label":["OXON"],"name":[4],"type":["dbl"],"align":["right"]},{"label":["RATIO"],"name":[5],"type":["dbl"],"align":["right"]}],"data":[{"1":"20","2":"CLEAR","3":"74.1","4":"45.8","5":"0.618","_rn_":"6"},{"1":"21","2":"CLEAR","3":"46.4","4":"27.4","5":"0.591","_rn_":"8"},{"1":"23","2":"CLOUD","3":"28.9","4":"6.5","5":"0.225","_rn_":"11"},{"1":"25","2":"CLEAR","3":"44.3","4":"16.6","5":"0.375","_rn_":"13"}],"options":{"columns":{"min":{},"max":[10]},"rows":{"min":[10],"max":[10]},"pages":{}}}
+  </script>
+</div>
+<pre class="r"><code>fog_rat=subset(orch,CONDITION == &quot;FOG&quot;, RATIO)
+cc_rat=subset(orch,CONDITION == &quot;CLOUD&quot; | CONDITION == &quot;CLEAR&quot;, RATIO)
+orch=mutate(orch,Cond=recode(CONDITION,CLOUD=&quot;CLCL&quot;,CLEAR=&quot;CLCL&quot;))
+orch</code></pre>
+<div data-pagedtable="false">
+<script data-pagedtable-source type="application/json">
+{"columns":[{"label":["ï..DAY"],"name":[1],"type":["int"],"align":["right"]},{"label":["CONDITION"],"name":[2],"type":["chr"],"align":["left"]},{"label":["THION"],"name":[3],"type":["dbl"],"align":["right"]},{"label":["OXON"],"name":[4],"type":["dbl"],"align":["right"]},{"label":["RATIO"],"name":[5],"type":["dbl"],"align":["right"]},{"label":["Cond"],"name":[6],"type":["chr"],"align":["left"]}],"data":[{"1":"15","2":"FOG","3":"38.2","4":"10.3","5":"0.270","6":"FOG"},{"1":"17","2":"FOG","3":"28.6","4":"6.9","5":"0.241","6":"FOG"},{"1":"18","2":"FOG","3":"30.2","4":"6.2","5":"0.205","6":"FOG"},{"1":"19","2":"FOG","3":"23.7","4":"12.4","5":"0.523","6":"FOG"},{"1":"20","2":"FOG","3":"62.3","4":"NA","5":"NA","6":"FOG"},{"1":"20","2":"CLEAR","3":"74.1","4":"45.8","5":"0.618","6":"CLCL"},{"1":"21","2":"FOG","3":"88.2","4":"9.9","5":"0.112","6":"FOG"},{"1":"21","2":"CLEAR","3":"46.4","4":"27.4","5":"0.591","6":"CLCL"},{"1":"22","2":"FOG","3":"135.9","4":"44.8","5":"0.330","6":"FOG"},{"1":"23","2":"FOG","3":"102.9","4":"27.8","5":"0.270","6":"FOG"},{"1":"23","2":"CLOUD","3":"28.9","4":"6.5","5":"0.225","6":"CLCL"},{"1":"25","2":"FOG","3":"46.9","4":"11.2","5":"0.239","6":"FOG"},{"1":"25","2":"CLEAR","3":"44.3","4":"16.6","5":"0.375","6":"CLCL"}],"options":{"columns":{"min":{},"max":[10]},"rows":{"min":[10],"max":[10]},"pages":{}}}
+  </script>
+</div>
+<pre class="r"><code>t.test(RATIO ~ Cond,data = orch,mu=0,var.equal=T)</code></pre>
+<pre><code>## 
+##  Two Sample t-test
+## 
+## data:  RATIO by Cond
+## t = 2.0467, df = 10, p-value = 0.06788
+## alternative hypothesis: true difference in means is not equal to 0
+## 95 percent confidence interval:
+##  -0.01581919  0.37281919
+## sample estimates:
+## mean in group CLCL  mean in group FOG 
+##            0.45225            0.27375</code></pre>
+<pre class="r"><code>qt(1-.05/2,df = 8+4-2)</code></pre>
+<pre><code>## [1] 2.228139</code></pre>
+<p>Since our t statistic 2.0467 does not fall outside the rejection region of -2.228139 or 2.228139 then we do not reject the null hypothesis that mu0-mu1=0. The p-value also backs this up since .06788&gt;.05.</p>
 </div>
 <div id="ms-8.84---pg-425-this-refers-to-8.39-not-8.33" class="section level1">
 <h1>7. MS 8.84 - pg 425 – This refers to 8.39 NOT 8.33!</h1>

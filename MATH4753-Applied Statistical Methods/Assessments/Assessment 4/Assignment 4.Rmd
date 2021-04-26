@@ -17,7 +17,7 @@ output:
 knitr::opts_chunk$set(echo = TRUE)
 ```
 
-# 4/10
+# 5/10
 
 # WD
 
@@ -195,7 +195,29 @@ The probability that t will be in the rejection region is: 12.21687%.
 
 # 6. MS 8.44 - pg 401
 
+```{r}
+orch=read.csv("ORCHARD.csv")
+head(orch)
+library(dplyr)
+dim(orch)
+filter(orch,CONDITION == "FOG")
+filter(orch,CONDITION == "CLEAR"|CONDITION=="CLOUD")
+dfog=with(orch,orch[CONDITION == "FOG",])
+dfclcloud=with(orch, orch[CONDITION == "CLEAR" | CONDITION == "CLOUD",])
+dfog
+dfclcloud
+fog_rat=subset(orch,CONDITION == "FOG", RATIO)
+cc_rat=subset(orch,CONDITION == "CLOUD" | CONDITION == "CLEAR", RATIO)
+orch=mutate(orch,Cond=recode(CONDITION,CLOUD="CLCL",CLEAR="CLCL"))
+orch
+```
 
+```{r}
+t.test(RATIO ~ Cond,data = orch,mu=0,var.equal=T)
+qt(1-.05/2,df = 8+4-2)
+```
+
+Since our t statistic 2.0467 does not fall outside the rejection region of -2.228139 or 2.228139 then we do not reject the null hypothesis that mu0-mu1=0. The p-value also backs this up since .06788>.05.
 
 # 7. MS 8.84 - pg 425 – This refers to 8.39 NOT 8.33!
 
