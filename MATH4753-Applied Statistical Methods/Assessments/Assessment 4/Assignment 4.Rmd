@@ -17,7 +17,7 @@ output:
 knitr::opts_chunk$set(echo = TRUE)
 ```
 
-# 2/10
+# 3/10
 
 # WD
 
@@ -128,11 +128,40 @@ We can say that the variances do indeed differ as 1 is not in the interval (1.56
 
 # 3. MS 7.128 - pg 367
 
+## a.
+
+
+
+## b.
+
 
 
 # 4. MS 8.24 - pg 390
 
+## a.
 
+The Null Hypothesis is mu=2, the alternative hypothesis is that mu!=2.
+
+## b.
+
+The t statistic is -1.02, and the p-value is .322
+
+## c.
+
+```{r}
+qt(1-.05/2,df = 19)
+```
+
+
+We reject when the t statistic falls in the interval (-infinity,-2.093024)U(2.093024,infinity)
+
+## d.
+
+We accept mu=2 as a possible value. Not only does t lie in the ci, but our p-value is greater than alpha, .322>.05.
+
+## e.
+
+Since our test statistic t lies in the 95% ci, then we can conclude that we are fairly certain our mean lies in the interval.
 
 # 5. MS 8.28 - pg 392
 
