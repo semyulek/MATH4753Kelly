@@ -17,7 +17,7 @@ output:
 knitr::opts_chunk$set(echo = TRUE)
 ```
 
-# 6/10
+# 7/10
 
 # WD
 
@@ -244,17 +244,47 @@ Since F is not our rejection region, and that interval does not contain 1, then 
 
 ```{r}
 var.test(x = gad$HEATRATE,y = gae$HEATRATE,conf.level = .95,ratio = 1)
+qf(c(.05/2,1-.05/2),df1 = 6,df2 = 20)
 ```
 
 There is an even greater divide between these heat rates, as .05> 1.192e-06, and F is not in our ci. The heat rates of the two engines are significantly different. 
 
 # 8. MS 8.99 - pg 438
 
+## a.
+
+
+
+## b.
+
+
+
+## c.
+
+
+
+## d.
+
+
+
+## e.
+
+
+
+## f.
+
 
 
 # 9. MS 8.104 - pg 439
 
+```{r}
+human=c(185.4,146.3,174.4,184.9,240,253.8,238.8,263.5)
+robot=c(180.4,248.5,185.5,216.4,269.3,249.6,282,315.9)
+t.test(x = human,y = robot,paired = T,conf.level = .95)
+qt(c(.05/2,1-.05/2),df = 7)
+```
 
+The t test clearly shows that mu1-mu2 does not equal to 0, and this is supported by the p-value .03396<.05, and t lying in the rejection region. Since our estimate is negative, then our mean must be greater for mu2, so the robots clearly took more time than their human counterparts, so the humans were more efficient in their work.
 
 # 10. Plot
 

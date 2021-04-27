@@ -250,7 +250,7 @@ div.tocify {
 
 
 <div id="section" class="section level1">
-<h1>6/10</h1>
+<h1>7/10</h1>
 </div>
 <div id="wd" class="section level1">
 <h1>WD</h1>
@@ -539,14 +539,51 @@ var.test(x = gtrad$HEATRATE,y = gae$HEATRATE,conf.level = .95,ratio = 1)</code><
 ## sample estimates:
 ## ratio of variances 
 ##         0.05797393</code></pre>
+<pre class="r"><code>qf(c(.05/2,1-.05/2),df1 = 6,df2 = 20)</code></pre>
+<pre><code>## [1] 0.1934834 3.1283400</code></pre>
 <p>There is an even greater divide between these heat rates, as .05&gt; 1.192e-06, and F is not in our ci. The heat rates of the two engines are significantly different.</p>
 </div>
 </div>
 <div id="ms-8.99---pg-438" class="section level1">
 <h1>8. MS 8.99 - pg 438</h1>
+<div id="a.-6" class="section level2">
+<h2>a.</h2>
+</div>
+<div id="b.-6" class="section level2">
+<h2>b.</h2>
+</div>
+<div id="c.-2" class="section level2">
+<h2>c.</h2>
+</div>
+<div id="d.-2" class="section level2">
+<h2>d.</h2>
+</div>
+<div id="e.-2" class="section level2">
+<h2>e.</h2>
+</div>
+<div id="f.-1" class="section level2">
+<h2>f.</h2>
+</div>
 </div>
 <div id="ms-8.104---pg-439" class="section level1">
 <h1>9. MS 8.104 - pg 439</h1>
+<pre class="r"><code>human=c(185.4,146.3,174.4,184.9,240,253.8,238.8,263.5)
+robot=c(180.4,248.5,185.5,216.4,269.3,249.6,282,315.9)
+t.test(x = human,y = robot,paired = T,conf.level = .95)</code></pre>
+<pre><code>## 
+##  Paired t-test
+## 
+## data:  human and robot
+## t = -2.629, df = 7, p-value = 0.03396
+## alternative hypothesis: true difference in means is not equal to 0
+## 95 percent confidence interval:
+##  -61.850346  -3.274654
+## sample estimates:
+## mean of the differences 
+##                -32.5625</code></pre>
+<pre class="r"><code>qt(c(.05/2,1-.05/2),df = 7)</code></pre>
+<pre><code>## [1] -2.364624  2.364624</code></pre>
+<p>The t test clearly shows that mu1-mu2 does not equal to 0, and this is supported by the p-value .03396&lt;.05, and t lying in the rejection region. Since our estimate is negative, then our mean must be greater for mu2, so the robots clearly took more time than their human counterparts, so the humans were more efficient in their work.</p>
 </div>
 <div id="plot" class="section level1">
 <h1>10. Plot</h1>
