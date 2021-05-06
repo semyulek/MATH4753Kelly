@@ -1,0 +1,55 @@
+---
+title: 'Lab 14: Example'
+author: "Dr Wayne Stewart"
+date: "`r Sys.Date()`"
+output: 
+  html_document:
+    toc: yes
+    toc_float: yes
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+# Introduction
+
+This is NOT precisely the same as lab 14. In lab 14 you must make some functions that create slr estimates.
+We will simply use the `lm` function and obtain estimates the easy way.
+
+
+# Task 3
+
+## OJUICE
+
+```{r ,cache=TRUE}
+v <- Intro2R::myreadxl()
+
+```
+
+```{r}
+oj <- v$OJUICE
+names(oj)
+plot(SweetIndex ~ Pectin, data =oj)
+ylm <- lm(SweetIndex ~ Pectin, data =oj)
+abline(ylm)
+summary(ylm)
+```
+
+```{r}
+predict(ylm,newdata = data.frame(Pectin = 300), interval = "confidence")
+```
+
+## Use ggplot2
+
+```{r}
+library(ggplot2)
+
+g <- ggplot(oj, aes(x = Pectin, y = SweetIndex)) 
+g <- g + geom_point() 
+g <- g + geom_smooth(method = "lm", formula = "y~x")
+g
+```
+
+
+
